@@ -8,5 +8,10 @@ namespace GameLogic
 {
     interface IGameLogic
     {
+        void MoveLeft();
+        void MoveRight();
+        void Shoot();
+        void Jump();
+        void Damage();
     }
 }
