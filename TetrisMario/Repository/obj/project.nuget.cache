@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TtxPVFXgzgOpakMZ1Wf0+awqeixbCb8DM7OG2OlaCDyHH4N+SoCJDgDcnCtpETVPJYROAKspBopXgv1PDh0w9g==",
+  "dgSpecHash": "zRwxJgyHQjiAHrDLX9EIUYLsMrTWBUMtc0smXkKnsjnIGByAxQEntASTZCaVJNCGTcf7r+sa3I8I7ZxqYBI1rg==",
   "success": true,
   "projectFilePath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\Repository\\Repository.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\csoor\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
   "logs": []
 }

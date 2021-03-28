@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fCnxZ8TpEWoKxC3GLBvWBjb/awQoVhg55gV2Pep0Abxm+AtJdr4kHpyOHEGQCySraoI5BcIBNmjJqdh1kAYQ5g==",
+  "dgSpecHash": "x0vjGvNLFHbTAJ+gfL+c+XwCfg35xzeqvcez6BLdFF047+hdjT0fIOHcsyumZbCy69xtz5UIQDm3/XdfcLlfOQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameModel\\GameModel.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\csoor\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
   "logs": []
 }

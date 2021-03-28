@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Y8TD6veCGPUMR9qqSP39UXaqGH9Hkl7QEE8k89KN/79mIG3Kxgjt/pAzy5iRWobkKcP+aOvTsKuEESYzM/7eDg==",
+  "dgSpecHash": "Vp0b32a6fJ9KdAQYCGUIeQMgZ+WiGBtidWzAZR9KHCUnWZScb4l+L307lpmaAaAj4xJ+sGxwSQXA4jfgkyt7WA==",
   "success": true,
   "projectFilePath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogic\\GameLogic.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\csoor\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
   "logs": []
 }

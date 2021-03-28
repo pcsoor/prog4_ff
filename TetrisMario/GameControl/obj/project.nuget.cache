@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+GrsPPdhU+Zx6eY7O1CYwhvIM/CCyK0OgUdtohYRhnFQm069Xs4JXHTPOuYOcsm0GtszDy2okZpy02YIBCApqg==",
+  "dgSpecHash": "w88hoJDQcREl5dM0+nc0xByTy2ZDPjdj4qRIR9BKhbT771UHC32iVD2a/EPqloXpu1FN5b6YX/+r/NMI0GOtpQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameControl\\GameControl.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\csoor\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
   "logs": []
 }
