@@ -1,5 +1,5 @@
-﻿// <copyright file="IStorageRepository.cs" company="C80LD7">
-// Copyright (c) C80LD7. All rights reserved.
+﻿// <copyright file="IStorageRepository.cs" company="MGNM6W_C80LD7">
+// Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
 namespace Repository

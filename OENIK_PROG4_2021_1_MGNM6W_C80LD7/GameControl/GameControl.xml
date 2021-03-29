@@ -6,7 +6,7 @@
     <members>
         <member name="T:GameControl.App">
             <summary>
-            Interaction logic for App.xaml
+            Interaction logic for App.xaml.
             </summary>
             <summary>
             App
@@ -24,10 +24,15 @@
         </member>
         <member name="T:GameControl.MainWindow">
             <summary>
-            Interaction logic for MainWindow.xaml
+            Interaction logic for MainWindow.xaml.
             </summary>
             <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="M:GameControl.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameControl.MainWindow"/> class.
             </summary>
         </member>
         <member name="M:GameControl.MainWindow.InitializeComponent">

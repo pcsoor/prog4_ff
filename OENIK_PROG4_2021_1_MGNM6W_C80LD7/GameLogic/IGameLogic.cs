@@ -1,5 +1,5 @@
-﻿// <copyright file="IGameLogic.cs" company="C80LD7">
-// Copyright (c) C80LD7. All rights reserved.
+﻿// <copyright file="IGameLogic.cs" company="MGNM6W_C80LD7">
+// Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
 namespace GameLogic
