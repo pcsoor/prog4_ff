@@ -1,5 +1,0 @@
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\TetrisMario\GameControl\obj\Debug\net5.0-windows\GameControl.csprojAssemblyReference.cache
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\TetrisMario\GameControl\obj\Debug\net5.0-windows\MainWindow.g.cs
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\TetrisMario\GameControl\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\TetrisMario\GameControl\obj\Debug\net5.0-windows\GameControl_MarkupCompile.cache
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\TetrisMario\GameControl\obj\Debug\net5.0-windows\GameControl_MarkupCompile.lref
