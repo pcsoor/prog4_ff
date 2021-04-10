@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameControl", "GameControl\GameControl.csproj", "{86491038-CC50-4C76-95F1-FB20E389EA7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameControl", "GameControl\GameControl.csproj", "{86491038-CC50-4C76-95F1-FB20E389EA7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{5FA44EE9-DD31-4544-A5FF-E5FA14449840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{5FA44EE9-DD31-4544-A5FF-E5FA14449840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameModel", "GameModel\GameModel.csproj", "{AB51CC86-9401-4919-8869-3A5CC8934438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameModel", "GameModel\GameModel.csproj", "{AB51CC86-9401-4919-8869-3A5CC8934438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{C9320194-57FF-4A38-8D03-0BDB9861F20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "GameLogic\GameLogic.csproj", "{C9320194-57FF-4A38-8D03-0BDB9861F20C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogicTests", "GameLogicTests\GameLogicTests.csproj", "{876C0B55-2767-4C4E-BF23-E900DA22C199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogicTests", "GameLogicTests\GameLogicTests.csproj", "{876C0B55-2767-4C4E-BF23-E900DA22C199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRenderer", "GameRenderer\GameRenderer.csproj", "{EFE13574-BCAD-4243-854C-525421D30F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRenderer", "GameRenderer\GameRenderer.csproj", "{EFE13574-BCAD-4243-854C-525421D30F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

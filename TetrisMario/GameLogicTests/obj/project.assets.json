@@ -8,23 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\csoor\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\farka\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\GameLogicTests.csproj",
+      "projectUniqueName": "C:\\Users\\farka\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\GameLogicTests.csproj",
       "projectName": "GameLogicTests",
-      "projectPath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\GameLogicTests.csproj",
-      "packagesPath": "C:\\Users\\csoor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\csoor\\OneDrive\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\obj\\",
+      "projectPath": "C:\\Users\\farka\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\GameLogicTests.csproj",
+      "packagesPath": "C:\\Users\\farka\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\farka\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\TetrisMario\\GameLogicTests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\csoor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\farka\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

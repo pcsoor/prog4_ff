@@ -12,7 +12,7 @@
     /// </summary>
     interface IGameModel
     {
-        int[,] Walls { get; set; }
+        int[,] Map { get; set; }
         string Block { get; set; }
         Point Mario { get; set; }
     }
