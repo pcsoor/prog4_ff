@@ -19,7 +19,7 @@ namespace GameModel
         /// <summary>
         /// Gets or sets place of walls.
         /// </summary>
-        int[,] Walls { get; set; }
+        int[,] Map { get; set; }
 
         /// <summary>
         /// Gets or sets blocks.
