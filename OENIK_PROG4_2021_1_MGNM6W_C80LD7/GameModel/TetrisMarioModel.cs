@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace GameModel
 {
-    public class MarioTetrisModel : IGameModel
+    public class MarioTetrisModel
     {
-        public int[,] Map { get; set; }
+        public int[,] Map { get; private set; }
+
         public string Block { get; set; }
+
         public Point Mario { get; set; }
+
+        public double GameWidth { get; private set; }
+
+        public double GameHeight { get; private set; }
+
+        public double TileSize { get; set; }
 
         public MarioTetrisModel()
         {
