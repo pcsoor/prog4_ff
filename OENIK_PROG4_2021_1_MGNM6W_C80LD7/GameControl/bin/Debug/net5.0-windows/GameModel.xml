@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameModel</name>
+    </assembly>
+    <members>
+        <member name="T:GameModel.IGameModel">
+            <summary>
+            Game Model Interface.
+            </summary>
+        </member>
+        <member name="P:GameModel.IGameModel.Map">
+            <summary>
+            Gets or sets place of walls.
+            </summary>
+        </member>
+        <member name="P:GameModel.IGameModel.Block">
+            <summary>
+            Gets or sets blocks.
+            </summary>
+        </member>
+        <member name="P:GameModel.IGameModel.Mario">
+            <summary>
+            Gets or sets Mario's position.
+            </summary>
+        </member>
+    </members>
+</doc>

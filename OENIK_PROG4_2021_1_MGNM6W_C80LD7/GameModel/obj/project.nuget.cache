@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lWUqWu5919ZtFAH2sTw5nUKSoGvbyB021HT2koFQjEhAK+JoOy2nHqYbLAkq4ahRoa00whfgF1xDV6LARRKoTw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\farka\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\OENIK_PROG4_2021_1_MGNM6W_C80LD7\\GameModel\\GameModel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\farka\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}

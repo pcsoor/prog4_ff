@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fa8I88Ygj8Ny6M8hW1ATN5Jsw6FysOLIxit0/gFLfWABptL2iKlCDS8PpGA1D1gWXE2t0gXRbThyY9334ODyhA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\farka\\Documents\\oenik_prog4_2021_1_mgnm6w_c80ld7\\OENIK_PROG4_2021_1_MGNM6W_C80LD7\\GameLogic\\GameLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\farka\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}
