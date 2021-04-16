@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Repository</name>
+    </assembly>
+    <members>
+        <member name="T:Repository.IStorageRepository">
+            <summary>
+            Storage repository interface.
+            </summary>
+        </member>
+        <member name="P:Repository.IStorageRepository.Highscore">
+            <summary>
+            Gets or sets highscore.
+            </summary>
+        </member>
+        <member name="P:Repository.IStorageRepository.Board">
+            <summary>
+            Gets or sets game board.
+            </summary>
+        </member>
+    </members>
+</doc>
