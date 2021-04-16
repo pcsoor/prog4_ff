@@ -1,4 +1,8 @@
-﻿namespace GameLogic
+﻿// <copyright file="MarioTetrisLogic.cs" company="MGNM6W_C80LD7">
+// Copyright (c) MGNM6W_C80LD7. All rights reserved.
+// </copyright>
+
+namespace GameLogic
 {
     using System;
     using System.Collections.Generic;
@@ -9,37 +13,33 @@
     using System.Threading.Tasks;
     using GameModel;
 
+    /// <summary>
+    /// Game logic.
+    /// </summary>
     public class MarioTetrisLogic
     {
+        /// <summary>
+        /// Inputs.
+        /// </summary>
+        private static int nextBoxCounter;
+        public Queue<Enums.Directions> inputs;
         private MarioTetrisModel model;
-        static int nextBoxCounter;
-        public Queue<Enums.Directions> Inputs;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarioTetrisLogic"/> class.
+        /// </summary>
+        /// <param name="model">Game model referece.</param>
         public MarioTetrisLogic(MarioTetrisModel model)
         {
             this.model = model;
             this.InitModel();
             nextBoxCounter = 0;
-            Inputs = new Queue<Enums.Directions>();
+            this.inputs = new Queue<Enums.Directions>();
         }
 
-        public void InitModel()
-        {
-            model.TileSize = Math.Min(model.GameWidth / 26, model.GameHeight / 16);
-            for (int i = 0; i < MarioTetrisModel.Map.GetLength(0); i++)
-            {
-                for (int j = 0; j < MarioTetrisModel.Map.GetLength(1); j++)
-                {
-                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
-                    {
-                        MarioTetrisModel.Map[i, j] = new GameObject(GameModel.Enums.Types.Wall, i, j);
-                    }
-                }
-            }
-
-            MarioTetrisModel.Map[13, 14] = new Player(13, 14);
-        }
-
+        /// <summary>
+        /// Spawn one block in random place.
+        /// </summary>
         public void SpawnBlock()
         {
             if (nextBoxCounter == 0)
@@ -55,6 +55,9 @@
             }
         }
 
+        /// <summary>
+        /// Check last layer of game area.
+        /// </summary>
         public void CheckIfBottomIsFull()
         {
             bool result = true;
@@ -75,6 +78,29 @@
             }
         }
 
+        /// <summary>
+        /// Initializing method.
+        /// </summary>
+        public void InitModel()
+        {
+            this.model.TileSize = Math.Min(this.model.GameWidth / 26, this.model.GameHeight / 16);
+            for (int i = 0; i < MarioTetrisModel.Map.GetLength(0); i++)
+            {
+                for (int j = 0; j < MarioTetrisModel.Map.GetLength(1); j++)
+                {
+                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
+                    {
+                        MarioTetrisModel.Map[i, j] = new GameObject(GameModel.Enums.Types.Wall, i, j);
+                    }
+                }
+            }
+
+            MarioTetrisModel.Map[13, 14] = new Player(13, 14);
+        }
+
+        /// <summary>
+        /// Updates all game item.
+        /// </summary>
         public void Update()
         {
             foreach (GameItem item in MarioTetrisModel.Map)
@@ -87,18 +113,18 @@
                         {
                             if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
                             {
-                                item.WaitTime = (int)Enums.eWaitTime.PlayerJump;
+                                item.WaitTime = (int)Enums.WaitTime.PlayerJump;
                             }
-                            else if (Inputs.Count != 0)
+                            else if (this.inputs.Count != 0)
                             {
                                 if ((item as Player).lastMove == Enums.Directions.Up)
                                 {
-                                    item.WaitTime = (int)Enums.eWaitTime.PlayerRecover;
+                                    item.WaitTime = (int)Enums.WaitTime.PlayerRecover;
                                     (item as Player).lastMove = Enums.Directions.Null;
                                 }
                                 else
                                 {
-                                    Enums.Directions input = Inputs.Dequeue();
+                                    Enums.Directions input = this.inputs.Dequeue();
                                     Enums.Types result = item.Push(input);
                                     if (result == Enums.Types.Empty)
                                     {
@@ -133,9 +159,9 @@
                             {
                                 item.Push(Enums.Directions.Dowm);
                             }
-                            else if (Inputs.Count != 0)
+                            else if (this.inputs.Count != 0)
                             {
-                                Enums.Directions input = Inputs.Dequeue();
+                                Enums.Directions input = this.inputs.Dequeue();
 
                                 if ((item as Player).lastMove == Enums.Directions.Up && (input == Enums.Directions.Right || input == Enums.Directions.Left))
                                 {
@@ -186,7 +212,7 @@
                         {
                             if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
                             {
-                                item.WaitTime = (int)Enums.eWaitTime.Box;
+                                item.WaitTime = (int)Enums.WaitTime.Box;
                             }
                         }
                         else if (item.WaitTime != 0)
