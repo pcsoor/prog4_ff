@@ -9,7 +9,7 @@
             Game Model Interface.
             </summary>
         </member>
-        <member name="P:GameModel.IGameModel.Walls">
+        <member name="P:GameModel.IGameModel.Map">
             <summary>
             Gets or sets place of walls.
             </summary>
