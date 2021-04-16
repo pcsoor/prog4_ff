@@ -14,7 +14,7 @@ namespace GameModel
     /// <summary>
     /// Game Model Interface.
     /// </summary>
-    internal interface IGameModel
+    interface IGameModel
     {
         /// <summary>
         /// Gets or sets place of walls.
