@@ -43,7 +43,8 @@ namespace GameModel
             Player = 0,
             PlayerJump = -150,
             PlayerRecover = -50,
-            Box = -100
+            Box = -100,
+            hahi = 2
         }
     }
 }
