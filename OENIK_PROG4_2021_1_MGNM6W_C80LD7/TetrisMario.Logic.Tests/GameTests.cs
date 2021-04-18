@@ -6,6 +6,7 @@ namespace TetrisMario.Logic.Tests
 {
     using Moq;
     using NUnit.Framework;
+    using TetrisMario.Model;
 
     /// <summary>
     /// Logic tests.
@@ -13,19 +14,26 @@ namespace TetrisMario.Logic.Tests
     [TestFixture]
     public class GameTests
     {
+        private Enumerators.Directions directions;
+        private Enumerators.Types types;
+
+        private Mock<IGameItem> MockedGameItem { get; set; }
+
         /// <summary>
         /// SetUp method.
         /// </summary>
         [SetUp]
         public void Setup()
         {
+            this.MockedGameItem = new Mock<IGameItem>(MockBehavior.Loose);
         }
 
         /// <summary>
         /// Test spawn method.
         /// </summary>
-        public void TestSpawnBlock()
+        public void TestUpdate()
         {
+            this.MockedGameItem.Setup(model => model.Push(It.IsAny<Enumerators.Directions>())).Returns(this.types);
         }
     }
 }

@@ -122,7 +122,7 @@ namespace TetrisMario.Logic
                     {
                         if (item.WaitTime >= 0)
                         {
-                            if (item.CheckSurrounding(Enumerators.Directions.Dowm).Type == Enumerators.Types.Empty)
+                            if (item.CheckSurrounding(Enumerators.Directions.Down).Type == Enumerators.Types.Empty)
                             {
                                 item.WaitTime = (int)Enumerators.WaitTime.PlayerJump;
                             }
@@ -147,7 +147,7 @@ namespace TetrisMario.Logic
                                         GameObject block = (GameObject)item.CheckSurrounding(input);
                                         if ((block.CheckSurrounding(Enumerators.Directions.Up).Type == Enumerators.Types.Empty) && (block.CheckSurrounding(input).Type == Enumerators.Types.Empty))
                                         {
-                                            if (block.CheckSurrounding(Enumerators.Directions.Dowm).Type != Enumerators.Types.Empty)
+                                            if (block.CheckSurrounding(Enumerators.Directions.Down).Type != Enumerators.Types.Empty)
                                             {
                                                 if (block.Push(input) == Enumerators.Types.Empty)
                                                 {
@@ -168,7 +168,7 @@ namespace TetrisMario.Logic
                             item.WaitTime += 5;
                             if (item.WaitTime == 0)
                             {
-                                item.Push(Enumerators.Directions.Dowm);
+                                item.Push(Enumerators.Directions.Down);
                             }
                             else if (this.inputs.Count != 0)
                             {
@@ -199,7 +199,7 @@ namespace TetrisMario.Logic
                                             GameObject block = (GameObject)item.CheckSurrounding(input);
                                             if ((block.CheckSurrounding(Enumerators.Directions.Up).Type == Enumerators.Types.Empty) && (block.CheckSurrounding(input).Type == Enumerators.Types.Empty))
                                             {
-                                                if (block.CheckSurrounding(Enumerators.Directions.Dowm).Type != Enumerators.Types.Empty)
+                                                if (block.CheckSurrounding(Enumerators.Directions.Down).Type != Enumerators.Types.Empty)
                                                 {
                                                     if (block.Push(input) == Enumerators.Types.Empty)
                                                     {
@@ -221,7 +221,7 @@ namespace TetrisMario.Logic
                     {
                         if (item.WaitTime >= 0)
                         {
-                            if (item.CheckSurrounding(Enumerators.Directions.Dowm).Type == Enumerators.Types.Empty)
+                            if (item.CheckSurrounding(Enumerators.Directions.Down).Type == Enumerators.Types.Empty)
                             {
                                 item.WaitTime = (int)Enumerators.WaitTime.Box;
                             }
@@ -231,7 +231,7 @@ namespace TetrisMario.Logic
                             item.WaitTime += 5;
                             if (item.WaitTime == 0)
                             {
-                                item.Push(Enumerators.Directions.Dowm);
+                                item.Push(Enumerators.Directions.Down);
                             }
                         }
                     }

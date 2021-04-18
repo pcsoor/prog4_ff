@@ -14,7 +14,7 @@ namespace TetrisMario.Model
     /// <summary>
     /// Game item class.
     /// </summary>
-    public abstract class GameItem
+    public abstract class GameItem : IGameItem
     {
         private Types type = Types.Undecided;
         private UiElements ui = UiElements.Undecided;
@@ -86,7 +86,7 @@ namespace TetrisMario.Model
                     newX = this.X;
                     newY = this.Y - 1;
                     break;
-                case Directions.Dowm:
+                case Directions.Down:
                     newX = this.X;
                     newY = this.Y + 1;
                     break;
@@ -171,7 +171,7 @@ namespace TetrisMario.Model
                     }
 
                     break;
-                case Directions.Dowm:
+                case Directions.Down:
                     if (GameModel.Map[this.x, this.y + 1] == null)
                     {
                         item = new GameObject(Types.Empty);
