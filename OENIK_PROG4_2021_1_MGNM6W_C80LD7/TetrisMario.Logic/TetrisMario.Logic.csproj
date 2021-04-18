@@ -1,16 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
+    <TargetFramework>net5.0</TargetFramework>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>GameControl.xml</DocumentationFile>
+    <DocumentationFile>GameLogic.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,9 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
-    <ProjectReference Include="..\GameModel\GameModel.csproj" />
-    <ProjectReference Include="..\GameRenderer\GameRenderer.csproj" />
+    <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,3 +6,4 @@ using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("", "CA1014", Justification = "<NikGitStats>", Scope = "module")]
 [assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<pendinga>", Scope = "member", Target = "~M:GameLogic.MarioTetrisLogic.SpawnBlock")]
+[assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Random>", Scope = "member", Target = "~M:TetrisMario.Logic.GameLogic.SpawnBlock")]

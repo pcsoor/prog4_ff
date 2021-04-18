@@ -2,7 +2,7 @@
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
-namespace GameModel
+namespace TetrisMario.Model
 {
     using System;
     using System.Collections.Generic;

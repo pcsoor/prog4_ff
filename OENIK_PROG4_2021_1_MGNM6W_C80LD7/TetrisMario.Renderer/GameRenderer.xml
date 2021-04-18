@@ -1,36 +1,36 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>GameRenderer</name>
+        <name>TetrisMario.Renderer</name>
     </assembly>
     <members>
-        <member name="T:GameRenderer.MarioTetrisRenderer">
+        <member name="T:TetrisMario.Renderer.GameRenderer">
             <summary>
             Game renderer class.
             </summary>
         </member>
-        <member name="M:GameRenderer.MarioTetrisRenderer.#ctor(GameModel.MarioTetrisModel)">
+        <member name="M:TetrisMario.Renderer.GameRenderer.#ctor(TetrisMario.Model.GameModel)">
             <summary>
-            Initializes a new instance of the <see cref="T:GameRenderer.MarioTetrisRenderer"/> class.
+            Initializes a new instance of the <see cref="T:TetrisMario.Renderer.GameRenderer"/> class.
             </summary>
             <param name="model">model reference.</param>
         </member>
-        <member name="P:GameRenderer.MarioTetrisRenderer.PlayerBrush">
+        <member name="P:TetrisMario.Renderer.GameRenderer.PlayerBrush">
             <summary>
             Gets player's brush.
             </summary>
         </member>
-        <member name="P:GameRenderer.MarioTetrisRenderer.BlockBrush">
+        <member name="P:TetrisMario.Renderer.GameRenderer.BlockBrush">
             <summary>
             Gets block's brush.
             </summary>
         </member>
-        <member name="P:GameRenderer.MarioTetrisRenderer.WallBrush">
+        <member name="P:TetrisMario.Renderer.GameRenderer.WallBrush">
             <summary>
             Gets wall's brush.
             </summary>
         </member>
-        <member name="M:GameRenderer.MarioTetrisRenderer.GetBrush(System.String,System.Boolean)">
+        <member name="M:TetrisMario.Renderer.GameRenderer.GetBrush(System.String,System.Boolean)">
             <summary>
             Returns a brush for a specific item.
             </summary>
@@ -38,7 +38,7 @@
             <param name="isTiled">check if tiled.</param>
             <returns>brush.</returns>
         </member>
-        <member name="M:GameRenderer.MarioTetrisRenderer.BuildDisplay(System.Windows.Media.DrawingContext)">
+        <member name="M:TetrisMario.Renderer.GameRenderer.BuildDisplay(System.Windows.Media.DrawingContext)">
             <summary>
             Builder method.
             </summary>

@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameControl", "GameControl\GameControl.csproj", "{86491038-CC50-4C76-95F1-FB20E389EA7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Control", "TetrisMario.Control\TetrisMario.Control.csproj", "{86491038-CC50-4C76-95F1-FB20E389EA7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{5FA44EE9-DD31-4544-A5FF-E5FA14449840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Repository", "TetrisMario.Repository\TetrisMario.Repository.csproj", "{5FA44EE9-DD31-4544-A5FF-E5FA14449840}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameModel", "GameModel\GameModel.csproj", "{AB51CC86-9401-4919-8869-3A5CC8934438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Model", "TetrisMario.Model\TetrisMario.Model.csproj", "{AB51CC86-9401-4919-8869-3A5CC8934438}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "GameLogic\GameLogic.csproj", "{C9320194-57FF-4A38-8D03-0BDB9861F20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Logic", "TetrisMario.Logic\TetrisMario.Logic.csproj", "{C9320194-57FF-4A38-8D03-0BDB9861F20C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogicTests", "GameLogicTests\GameLogicTests.csproj", "{876C0B55-2767-4C4E-BF23-E900DA22C199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Logic.Tests", "TetrisMario.Logic.Tests\TetrisMario.Logic.Tests.csproj", "{876C0B55-2767-4C4E-BF23-E900DA22C199}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRenderer", "GameRenderer\GameRenderer.csproj", "{EFE13574-BCAD-4243-854C-525421D30F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisMario.Renderer", "TetrisMario.Renderer\TetrisMario.Renderer.csproj", "{EFE13574-BCAD-4243-854C-525421D30F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

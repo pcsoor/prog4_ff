@@ -1,29 +1,29 @@
-﻿// <copyright file="MarioTetrisRenderer.cs" company="MGNM6W_C80LD7">
+﻿// <copyright file="GameRenderer.cs" company="MGNM6W_C80LD7">
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
-namespace GameRenderer
+namespace TetrisMario.Renderer
 {
     using System.Collections.Generic;
     using System.Reflection;
     using System.Windows;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using GameModel;
+    using TetrisMario.Model;
 
     /// <summary>
     /// Game renderer class.
     /// </summary>
-    public class MarioTetrisRenderer
+    public class GameRenderer
     {
-        private MarioTetrisModel model;
+        private GameModel model;
         private Dictionary<string, Brush> myBrushes = new Dictionary<string, Brush>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarioTetrisRenderer"/> class.
+        /// Initializes a new instance of the <see cref="GameRenderer"/> class.
         /// </summary>
         /// <param name="model">model reference.</param>
-        public MarioTetrisRenderer(MarioTetrisModel model)
+        public GameRenderer(GameModel model)
         {
             this.model = model;
         }
@@ -35,7 +35,7 @@ namespace GameRenderer
         {
             get
             {
-                return this.GetBrush("GameRenderer.Images.Karakter.bmp", false);
+                return this.GetBrush("TetrisMario.Renderer.Images.Karakter.bmp", false);
             }
         }
 
@@ -46,7 +46,7 @@ namespace GameRenderer
         {
             get
             {
-                return this.GetBrush("GameRenderer.Images.Blue Brick.bmp", false);
+                return this.GetBrush("TetrisMario.Renderer.Images.Blue Brick.bmp", false);
             }
         }
 
@@ -57,7 +57,7 @@ namespace GameRenderer
         {
             get
             {
-                return this.GetBrush("GameRenderer.Images.Border.bmp", true);
+                return this.GetBrush("TetrisMario.Renderer.Images.Border.bmp", true);
             }
         }
 
@@ -97,25 +97,25 @@ namespace GameRenderer
         {
             if (ctx != null)
             {
-                for (int x = 0; x < MarioTetrisModel.Map.GetLength(0); x++)
+                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
                 {
-                    for (int y = 0; y < MarioTetrisModel.Map.GetLength(1); y++)
+                    for (int y = 0; y < GameModel.Map.GetLength(1); y++)
                     {
-                        if (MarioTetrisModel.Map[x, y] != null)
+                        if (GameModel.Map[x, y] != null)
                         {
-                            if (MarioTetrisModel.Map[x, y].Type == Enums.Types.Block)
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.Block)
                             {
                                 Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                 ctx.DrawGeometry(this.BlockBrush, null, box);
                             }
 
-                            if (MarioTetrisModel.Map[x, y].Type == Enums.Types.Wall)
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.Wall)
                             {
                                 Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                 ctx.DrawGeometry(this.WallBrush, null, box);
                             }
 
-                            if (MarioTetrisModel.Map[x, y].Type == Enums.Types.Player)
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.Player)
                             {
                                 Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                 ctx.DrawGeometry(this.PlayerBrush, null, box);

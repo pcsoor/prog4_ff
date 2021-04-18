@@ -1,8 +1,8 @@
-﻿// <copyright file="MarioTetrisControl.cs" company="MGNM6W_C80LD7">
+﻿// <copyright file="GameControl.cs" company="MGNM6W_C80LD7">
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
-namespace GameControl
+namespace TetrisMario.Control
 {
     using System;
     using System.Diagnostics;
@@ -10,25 +10,24 @@ namespace GameControl
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
-    using GameLogic;
-    using GameModel;
-    using GameRenderer;
+    using TetrisMario.Model;
+    using TetrisMario.Renderer;
 
     /// <summary>
     /// Game control class.
     /// </summary>
-    public class MarioTetrisControl : FrameworkElement
+    public class GameControl : FrameworkElement
     {
-        private MarioTetrisModel model;
-        private MarioTetrisLogic logic;
-        private MarioTetrisRenderer renderer;
+        private GameModel model;
+        private Logic.GameLogic logic;
+        private GameRenderer renderer;
         private Stopwatch stw;
         private DispatcherTimer mainTimer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarioTetrisControl"/> class.
+        /// Initializes a new instance of the <see cref="GameControl"/> class.
         /// </summary>
-        public MarioTetrisControl()
+        public GameControl()
         {
             this.Loaded += this.MarioTetrisControl_Loaded;
         }
@@ -48,9 +47,9 @@ namespace GameControl
         private void MarioTetrisControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.stw = new Stopwatch();
-            this.model = new MarioTetrisModel(this.ActualWidth, this.ActualHeight);
-            this.logic = new MarioTetrisLogic(this.model);
-            this.renderer = new MarioTetrisRenderer(this.model);
+            this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+            this.logic = new Logic.GameLogic(this.model);
+            this.renderer = new GameRenderer(this.model);
 
             Window win = Window.GetWindow(this);
             if (win != null)
@@ -69,10 +68,10 @@ namespace GameControl
         {
             switch (e.Key)
             {
-                case Key.W: this.logic.inputs.Enqueue(Enums.Directions.Up); break;
-                case Key.S: this.logic.inputs.Enqueue(Enums.Directions.Dowm); break;
-                case Key.A: this.logic.inputs.Enqueue(Enums.Directions.Left); break;
-                case Key.D: this.logic.inputs.Enqueue(Enums.Directions.Right); break;
+                case Key.W: this.logic.Inputs.Enqueue(Enumerators.Directions.Up); break;
+                case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Dowm); break;
+                case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
+                case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
             }
 
             this.InvalidateVisual();

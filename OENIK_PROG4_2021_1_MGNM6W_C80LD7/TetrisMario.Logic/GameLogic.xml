@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TetrisMario.Logic</name>
+    </assembly>
+    <members>
+        <member name="T:TetrisMario.Logic.GameLogic">
+            <summary>
+            Game logic.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Logic.GameLogic.nextBoxCounter">
+            <summary>
+            Inputs.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.GameLogic.#ctor(TetrisMario.Model.GameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Logic.GameLogic"/> class.
+            </summary>
+            <param name="model">Game model referece.</param>
+        </member>
+        <member name="P:TetrisMario.Logic.GameLogic.Inputs">
+            <summary>
+            Gets key input.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.GameLogic.SpawnBlock">
+            <summary>
+            Spawn one block in random place.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.GameLogic.CheckIfBottomIsFull">
+            <summary>
+            Check last layer of game area.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.GameLogic.InitModel">
+            <summary>
+            Initializing method.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.GameLogic.Update">
+            <summary>
+            Updates all game item.
+            </summary>
+        </member>
+        <member name="T:TetrisMario.Logic.IGameLogic">
+            <summary>
+            IGameLogic interface.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.IGameLogic.Update">
+            <summary>
+            Updates all game item.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.IGameLogic.InitModel">
+            <summary>
+            Initialize model.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.IGameLogic.CheckIfBottomIsFull">
+            <summary>
+            Checks that bottom layer is wether full or not.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.IGameLogic.SpawnBlock">
+            <summary>
+            Spawn one block.
+            </summary>
+        </member>
+    </members>
+</doc>

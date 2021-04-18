@@ -2,7 +2,7 @@
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
-namespace GameLogic
+namespace TetrisMario.Logic
 {
     using System;
     using System.Collections.Generic;
@@ -16,28 +16,23 @@ namespace GameLogic
     internal interface IGameLogic
     {
         /// <summary>
-        /// Moves character left.
+        /// Updates all game item.
         /// </summary>
-        void MoveLeft();
+        void Update();
 
         /// <summary>
-        /// Moves character left.
+        /// Initialize model.
         /// </summary>
-        void MoveRight();
+        void InitModel();
 
         /// <summary>
-        /// Shoot with character.
+        /// Checks that bottom layer is wether full or not.
         /// </summary>
-        void Shoot();
+        void CheckIfBottomIsFull();
 
         /// <summary>
-        /// jump with character.
+        /// Spawn one block.
         /// </summary>
-        void Jump();
-
-        /// <summary>
-        /// Damage taken by character.
-        /// </summary>
-        void Damage();
+        void SpawnBlock();
     }
 }

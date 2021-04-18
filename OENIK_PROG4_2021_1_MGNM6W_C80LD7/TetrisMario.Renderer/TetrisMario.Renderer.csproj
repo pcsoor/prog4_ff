@@ -1,22 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows7.0</TargetFramework>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>GameLogic.xml</DocumentationFile>
+    <DocumentationFile>GameRenderer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Blue Brick.bmp" />
+    <None Remove="Images\Border.bmp" />
+    <None Remove="Images\Karakter.bmp" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Blue Brick.bmp" />
+    <EmbeddedResource Include="Images\Border.bmp" />
+    <EmbeddedResource Include="Images\Karakter.bmp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameModel\GameModel.csproj" />
+    <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
   </ItemGroup>
 
 </Project>

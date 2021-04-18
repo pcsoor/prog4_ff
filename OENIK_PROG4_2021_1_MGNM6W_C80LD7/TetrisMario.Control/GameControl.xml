@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>GameControl</name>
+        <name>TetrisMario.Control</name>
     </assembly>
     <members>
         <member name="T:GameControl.App">
@@ -40,23 +40,23 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:GameControl.MarioTetrisControl">
+        <member name="T:TetrisMario.Control.GameControl">
             <summary>
             Game control class.
             </summary>
         </member>
-        <member name="M:GameControl.MarioTetrisControl.#ctor">
+        <member name="M:TetrisMario.Control.GameControl.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:GameControl.MarioTetrisControl"/> class.
+            Initializes a new instance of the <see cref="T:TetrisMario.Control.GameControl"/> class.
             </summary>
         </member>
-        <member name="M:GameControl.MarioTetrisControl.OnRender(System.Windows.Media.DrawingContext)">
+        <member name="M:TetrisMario.Control.GameControl.OnRender(System.Windows.Media.DrawingContext)">
             <summary>
             Calls renderer.
             </summary>
             <param name="drawingContext">drawing context.</param>
         </member>
-        <member name="M:GameControl.MarioTetrisControl.TimerTick(System.Object,System.EventArgs)">
+        <member name="M:TetrisMario.Control.GameControl.TimerTick(System.Object,System.EventArgs)">
             <summary>
             one tick in game.
             </summary>
