@@ -7,7 +7,7 @@ namespace TetrisMario.Model
     /// <summary>
     /// Model class.
     /// </summary>
-    public class GameModel
+    public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
 
@@ -30,21 +30,6 @@ namespace TetrisMario.Model
             get { return map; }
             set { map = value; }
         }
-
-        /// <summary>
-        /// Gets or sets one block.
-        /// </summary>
-        public GameObject Block { get; set; }
-
-        /// <summary>
-        /// Gets or sets one wall.
-        /// </summary>
-        public GameObject Wall { get; set; }
-
-        /// <summary>
-        /// Gets or sets one mario.
-        /// </summary>
-        public Player Mario { get; set; }
 
         /// <summary>
         /// Gets game width.

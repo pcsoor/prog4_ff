@@ -7,6 +7,7 @@ namespace TetrisMario.Logic.Tests
     using Moq;
     using NUnit.Framework;
     using TetrisMario.Model;
+    using static TetrisMario.Model.Enumerators;
 
     /// <summary>
     /// Logic tests.
@@ -14,10 +15,13 @@ namespace TetrisMario.Logic.Tests
     [TestFixture]
     public class GameTests
     {
-        private Enumerators.Directions directions;
-        private Enumerators.Types types;
+        private Types types;
 
         private Mock<IGameItem> MockedGameItem { get; set; }
+
+        private Mock<IGameModel> MockedGameModel { get; set; }
+
+        private GameLogic GameLogic { get; set; }
 
         /// <summary>
         /// SetUp method.
@@ -26,14 +30,23 @@ namespace TetrisMario.Logic.Tests
         public void Setup()
         {
             this.MockedGameItem = new Mock<IGameItem>(MockBehavior.Loose);
+            this.MockedGameModel = new Mock<IGameModel>(MockBehavior.Loose);
+            this.GameLogic = new GameLogic(this.MockedGameModel.Object);
+
+            this.types = Types.Block;
         }
 
         /// <summary>
         /// Test spawn method.
         /// </summary>
+        [Test]
         public void TestUpdate()
         {
-            this.MockedGameItem.Setup(model => model.Push(It.IsAny<Enumerators.Directions>())).Returns(this.types);
+            this.MockedGameItem.Setup(model => model.Push(It.Is<Directions>(dir => dir.Equals(Directions.Down)))).Returns(this.types);
+
+            this.GameLogic.Update();
+
+            this.MockedGameItem.Verify(p => p.Push(It.Is<Directions>(dir => dir.Equals(Directions.Null))), Times.Never);
         }
     }
 }

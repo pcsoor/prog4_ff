@@ -23,13 +23,13 @@ namespace TetrisMario.Logic
         /// </summary>
         private static int nextBoxCounter;
         private Queue<Enumerators.Directions> inputs;
-        private GameModel model;
+        private IGameModel model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
         /// <param name="model">Game model referece.</param>
-        public GameLogic(GameModel model)
+        public GameLogic(IGameModel model)
         {
             this.model = model;
             this.InitModel();

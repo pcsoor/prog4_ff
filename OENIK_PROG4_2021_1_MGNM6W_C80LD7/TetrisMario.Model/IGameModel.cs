@@ -14,21 +14,21 @@ namespace TetrisMario.Model
     /// <summary>
     /// Game Model Interface.
     /// </summary>
-    internal interface IGameModel
+    public interface IGameModel
     {
         /// <summary>
-        /// Gets or sets place of walls.
+        /// Gets game width.
         /// </summary>
-        int[,] Map { get; set; }
+        double GameWidth { get; }
 
         /// <summary>
-        /// Gets or sets blocks.
+        /// Gets game height.
         /// </summary>
-        string Block { get; set; }
+        double GameHeight { get; }
 
         /// <summary>
-        /// Gets or sets Mario's position.
+        /// Gets or sets tile size.
         /// </summary>
-        Point Mario { get; set; }
+        double TileSize { get; set; }
     }
 }

@@ -4,5 +4,20 @@
         <name>TetrisMario.Logic.Tests</name>
     </assembly>
     <members>
+        <member name="T:TetrisMario.Logic.Tests.GameTests">
+            <summary>
+            Logic tests.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.Setup">
+            <summary>
+            SetUp method.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.TestUpdate">
+            <summary>
+            Test spawn method.
+            </summary>
+        </member>
     </members>
 </doc>

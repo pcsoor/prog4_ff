@@ -14,7 +14,7 @@
             Inputs.
             </summary>
         </member>
-        <member name="M:TetrisMario.Logic.GameLogic.#ctor(TetrisMario.Model.GameModel)">
+        <member name="M:TetrisMario.Logic.GameLogic.#ctor(TetrisMario.Model.IGameModel)">
             <summary>
             Initializes a new instance of the <see cref="T:TetrisMario.Logic.GameLogic"/> class.
             </summary>

@@ -95,7 +95,7 @@ namespace TetrisMario.Model
             /// <summary>
             /// Down direction.
             /// </summary>
-            Dowm,
+            Down,
 
             /// <summary>
             /// Lower left direction.
