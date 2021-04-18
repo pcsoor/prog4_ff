@@ -13,7 +13,7 @@ namespace TetrisMario.Logic
     /// <summary>
     /// IGameLogic interface.
     /// </summary>
-    internal interface IGameLogic
+    public interface IGameLogic
     {
         /// <summary>
         /// Updates all game item.
