@@ -129,34 +129,6 @@ namespace TetrisMario.Model
         }
 
         /// <summary>
-        /// Creating a game item.
-        /// </summary>
-        /// <param name="newX">x coordinates.</param>
-        /// <param name="newY">y coordinates.</param>
-        /// <returns>Type.</returns>
-        public Types Create(int newX, int newY)
-        {
-            if (GameModel.Map != null)
-            {
-                if (GameModel.Map[newX, newY] == null)
-                {
-                    this.X = newX;
-                    this.Y = newY;
-                    GameModel.Map[this.X, this.Y] = this;
-                    return Types.Empty;
-                }
-                else
-                {
-                    return GameModel.Map[this.X, this.Y].Type;
-                }
-            }
-            else
-            {
-                return Types.Empty;
-            }
-        }
-
-        /// <summary>
         /// Checks surrounded items.
         /// </summary>
         /// <param name="direction">direction.</param>

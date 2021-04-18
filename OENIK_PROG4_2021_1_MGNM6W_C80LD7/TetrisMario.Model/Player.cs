@@ -38,15 +38,7 @@ namespace TetrisMario.Model
         /// </summary>
         public Directions LastMove
         {
-            get
-            {
-                return this.lastMove;
-            }
-
-            set
-            {
-                this.lastMove = value;
-            }
+            get { return this.lastMove; } set { this.lastMove = value; }
         }
     }
 }
