@@ -12,7 +12,7 @@
             <ImageBrush ImageSource="images/background_empty.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <Label Content="Username" HorizontalAlignment="Left" Margin="320,166,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Consolas" />
-        <Label Content="Difficulity" HorizontalAlignment="Left" Margin="287,216,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Consolas" />
+        <Label Content="Difficulty" HorizontalAlignment="Left" Margin="298,216,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Consolas" />
 
         <TextBox HorizontalAlignment="Left" Height="26" Margin="450,170,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
         <ComboBox HorizontalAlignment="Left" Height="26" Margin="450,216,0,0" VerticalAlignment="Top" Width="199"/>
