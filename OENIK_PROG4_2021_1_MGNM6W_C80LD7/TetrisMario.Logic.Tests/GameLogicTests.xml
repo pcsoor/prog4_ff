@@ -19,5 +19,10 @@
             Test spawn method.
             </summary>
         </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.CheckIfBottomIsFullTest">
+            <summary>
+            Testing check that last layer is full or not.
+            </summary>
+        </member>
     </members>
 </doc>

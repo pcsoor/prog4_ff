@@ -16,14 +16,14 @@ namespace TetrisMario.Renderer
     /// </summary>
     public class GameRenderer
     {
-        private GameModel model;
+        private IGameModel model;
         private Dictionary<string, Brush> myBrushes = new Dictionary<string, Brush>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameRenderer"/> class.
         /// </summary>
         /// <param name="model">model reference.</param>
-        public GameRenderer(GameModel model)
+        public GameRenderer(IGameModel model)
         {
             this.model = model;
         }

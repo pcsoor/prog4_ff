@@ -18,7 +18,8 @@ namespace TetrisMario.Control
     /// </summary>
     public class GameControl : FrameworkElement
     {
-        private GameModel model;
+        private IGameModel model;
+        private IGameItem gameItem;
         private Logic.GameLogic logic;
         private GameRenderer renderer;
         private Stopwatch stw;
@@ -48,6 +49,7 @@ namespace TetrisMario.Control
         {
             this.stw = new Stopwatch();
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+            this.gameItem = new GameItem();
             this.logic = new Logic.GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
 

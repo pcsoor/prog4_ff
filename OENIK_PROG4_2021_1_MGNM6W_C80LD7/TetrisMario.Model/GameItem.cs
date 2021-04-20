@@ -14,7 +14,7 @@ namespace TetrisMario.Model
     /// <summary>
     /// Game item class.
     /// </summary>
-    public abstract class GameItem : IGameItem
+    public class GameItem : IGameItem
     {
         private Types type = Types.Undecided;
         private UiElements ui = UiElements.Undecided;
@@ -67,7 +67,7 @@ namespace TetrisMario.Model
         /// </summary>
         /// <param name="direction">direction.</param>
         /// <returns>Types.</returns>
-        public Types Push(Directions direction)
+        public virtual Types Push(Directions direction)
         {
             int newX = this.X;
             int newY = this.Y;

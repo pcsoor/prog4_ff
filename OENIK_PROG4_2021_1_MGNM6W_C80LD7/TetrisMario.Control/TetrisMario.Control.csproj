@@ -14,11 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\background.jpg" />
+    <None Remove="images\background_empty.jpg" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\background.jpg" />
+    <Resource Include="images\background_empty.jpg" />
   </ItemGroup>
 
   <ItemGroup>

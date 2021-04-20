@@ -286,7 +286,7 @@
         </member>
         <member name="P:TetrisMario.Model.IGameModel.TileSize">
             <summary>
-            Gets tile size.
+            Gets or sets tile size.
             </summary>
         </member>
         <member name="T:TetrisMario.Model.Player">

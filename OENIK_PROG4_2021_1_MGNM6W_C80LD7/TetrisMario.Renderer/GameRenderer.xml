@@ -9,7 +9,7 @@
             Game renderer class.
             </summary>
         </member>
-        <member name="M:TetrisMario.Renderer.GameRenderer.#ctor(TetrisMario.Model.GameModel)">
+        <member name="M:TetrisMario.Renderer.GameRenderer.#ctor(TetrisMario.Model.IGameModel)">
             <summary>
             Initializes a new instance of the <see cref="T:TetrisMario.Renderer.GameRenderer"/> class.
             </summary>

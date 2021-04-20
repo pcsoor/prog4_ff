@@ -16,12 +16,12 @@ namespace TetrisMario.Logic.Tests
     public class GameTests
     {
         private Types types;
+        private Directions dir;
+        private GameLogic logic;
 
-        private Mock<IGameItem> MockedGameItem { get; set; }
+        private Mock<GameItem> MockedGameItem { get; set; }
 
         private Mock<IGameModel> MockedGameModel { get; set; }
-
-        private GameLogic GameLogic { get; set; }
 
         /// <summary>
         /// SetUp method.
@@ -29,11 +29,12 @@ namespace TetrisMario.Logic.Tests
         [SetUp]
         public void Setup()
         {
-            this.MockedGameItem = new Mock<IGameItem>(MockBehavior.Loose);
+            this.MockedGameItem = new Mock<GameItem>(MockBehavior.Loose);
             this.MockedGameModel = new Mock<IGameModel>(MockBehavior.Loose);
-            this.GameLogic = new GameLogic(this.MockedGameModel.Object);
 
-            this.types = Types.Block;
+            this.logic = new GameLogic(this.MockedGameModel.Object);
+
+            // this.types = Types.Block;
         }
 
         /// <summary>
@@ -42,11 +43,49 @@ namespace TetrisMario.Logic.Tests
         [Test]
         public void TestUpdate()
         {
-            this.MockedGameItem.Setup(model => model.Push(It.Is<Directions>(dir => dir.Equals(Directions.Down)))).Returns(this.types);
+            // Arrange
+            this.types = Types.Block;
+            this.dir = Directions.Down;
 
-            this.GameLogic.Update();
+            this.MockedGameItem.Setup(item => item.Push(It.IsAny<Directions>()));
 
-            this.MockedGameItem.Verify(p => p.Push(It.Is<Directions>(dir => dir.Equals(Directions.Null))), Times.Never);
+            // Act
+            this.logic.Update();
+
+            // Assert
+            this.MockedGameItem.Verify(item => item.Push(this.dir), Times.AtLeastOnce);
+        }
+
+        /// <summary>
+        /// Testing check that last layer is full or not.
+        /// </summary>
+        [Test]
+        public void CheckIfBottomIsFullTest()
+        {
+            // Arrange
+            bool result = true;
+
+            for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
+            {
+                if (GameModel.Map[i, GameModel.Map.GetLength(1) - 2] == null || GameModel.Map[i, GameModel.Map.GetLength(1) - 2].Type == Enumerators.Types.Player)
+                {
+                    result = false;
+                }
+            }
+
+            // Act
+            if (result)
+            {
+                for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
+                {
+                    GameModel.Map[i, GameModel.Map.GetLength(1) - 2] = null;
+                }
+            }
+
+            this.logic.CheckIfBottomIsFull();
+
+            // Assert
+            Assert.IsTrue(result);
         }
     }
 }

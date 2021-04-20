@@ -1,0 +1,19 @@
+﻿<Window x:Class="TetrisMario.Control.Highscores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TetrisMario.Control"
+        mc:Ignorable="d"
+        Title="Highscores" Height="700" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/background_empty.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <Button Content="Back" HorizontalAlignment="Center" Height="52" Margin="0,575,0,0" VerticalAlignment="Top" Width="190" FontSize="22" FontFamily="Consolas" Background="#FDFFFFFF" Click="BackToMainMenu_Click"/>
+        <ListBox HorizontalAlignment="Center" Height="375" Margin="0,132,0,0" VerticalAlignment="Top" Width="401"/>
+        <Label Content="Highscores" HorizontalAlignment="Center" Height="48" Margin="0,46,0,0" VerticalAlignment="Top" Width="279" Foreground="White" FontSize="30" HorizontalContentAlignment="Center" FontFamily="Consolas"/>
+    </Grid>
+</Window>
