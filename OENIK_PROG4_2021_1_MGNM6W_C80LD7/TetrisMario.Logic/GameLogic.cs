@@ -1,26 +1,3 @@
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-﻿namespace GameLogic
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Xml.Linq;
-    using GameModel;
-
-    public class MarioTetrisLogic
-    {
-        private MarioTetrisModel model;
-        static int nextBoxCounter;
-        public Queue<Enums.Directions> Inputs;
-
-        public MarioTetrisLogic(MarioTetrisModel model)
-=======
 ﻿// <copyright file="GameLogic.cs" company="MGNM6W_C80LD7">
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
@@ -49,31 +26,10 @@ namespace TetrisMario.Logic
         /// </summary>
         /// <param name="model">Game model referece.</param>
         public GameLogic(IGameModel model)
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         {
             this.model = model;
             this.InitModel();
             nextBoxCounter = 0;
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-            Inputs = new Queue<Enums.Directions>();
-        }
-
-        public void InitModel()
-        {
-            model.TileSize = Math.Min(model.GameWidth / MarioTetrisModel.Map.GetLength(0), model.GameHeight / MarioTetrisModel.Map.GetLength(1));
-            for (int i = 0; i < MarioTetrisModel.Map.GetLength(0); i++)
-            {
-                for (int j = 0; j < MarioTetrisModel.Map.GetLength(1); j++)
-                {
-                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
-                    {
-                        MarioTetrisModel.Map[i, j] = new GameObject(GameModel.Enums.Types.Wall, i, j);
-                    }
-                }
-            }
-
-            MarioTetrisModel.Map[13, 14] = new Player(13, 14);
-=======
             this.inputs = new Queue<Directions>();
         }
 
@@ -86,66 +42,11 @@ namespace TetrisMario.Logic
             {
                 return this.inputs;
             }
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         }
 
-        //public void Save()
-        //{
-        //    string lines = string.Empty;
-        //    for (int x = 0; x < MarioTetrisModel.Map.GetLength(0); x++)
-        //    {
-        //        for (int y = 0; y < MarioTetrisModel.Map.GetLength(1); y++)
-        //        {
-        //            switch (MarioTetrisModel.Map[x, y].Type)
-        //            {
-        //                case Enums.Types.Wall:
-        //                    lines += '1';
-        //                    break;
-        //                case Enums.Types.Player:
-        //                    lines += '7';
-        //                    break;
-        //                case Enums.Types.Block:
-        //                    lines += '2';
-        //                    break;
-        //                default:
-        //                    lines += ' ';
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //    string docPath = "OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic";
-        //    File.WriteAllText(docPath, lines);
-        //}
-
-        //public void Load()
-        //{
-        //    Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt");
-        //    StreamReader sr = new StreamReader(stream);
-        //    string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
-        //    for (int x = 0; x < MarioTetrisModel.Map.GetLength(0); x++)
-        //    {
-        //        for (int y = 0; y < MarioTetrisModel.Map.GetLength(1); y++)
-        //        {
-        //            char current = lines[y][x];
-        //            switch (current)
-        //            {
-        //                case '1':
-        //                    MarioTetrisModel.Map[x, y] = new GameObject(Enums.Types.Wall, x, y);
-        //                    break;
-        //                case '7':
-        //                    MarioTetrisModel.Map[x, y] = new Player(x, y);
-        //                    break;
-        //                case '2':
-        //                    MarioTetrisModel.Map[x, y] = new GameObject(Enums.Types.Block, x, y);
-        //                    break;
-        //                default:
-        //                    MarioTetrisModel.Map[x, y] = null;
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //}
-
+        /// <summary>
+        /// Spawn one block in random place.
+        /// </summary>
         public void SpawnBlock()
         {
             if (nextBoxCounter == 0)
@@ -161,6 +62,9 @@ namespace TetrisMario.Logic
             }
         }
 
+        /// <summary>
+        /// Check last layer of game area.
+        /// </summary>
         public void CheckIfBottomIsFull()
         {
             bool result = true;
@@ -181,8 +85,6 @@ namespace TetrisMario.Logic
             }
         }
 
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-=======
         /// <summary>
         /// Initializing method.
         /// </summary>
@@ -206,7 +108,6 @@ namespace TetrisMario.Logic
         /// <summary>
         /// Updates all game item.
         /// </summary>
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         public void Update()
         {
             foreach (GameItem item in GameModel.Map)
@@ -219,26 +120,12 @@ namespace TetrisMario.Logic
                         {
                             if (item.CheckSurrounding(Directions.Down).Type == Types.Empty)
                             {
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-                                item.WaitTime = (int)Enums.eWaitTime.PlayerJump;
-=======
                                 item.WaitTime = (int)WaitTime.PlayerJump;
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                             }
-                            else if (Inputs.Count != 0)
+                            else if (this.inputs.Count != 0)
                             {
                                 if ((item as Player).LastMove == Directions.Up)
                                 {
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-                                    item.WaitTime = (int)Enums.eWaitTime.PlayerRecover;
-                                    (item as Player).lastMove = Enums.Directions.Null;
-                                }
-                                else
-                                {
-                                    Enums.Directions input = Inputs.Dequeue();
-                                    Enums.Types result = item.Push(input);
-                                    if (result == Enums.Types.Empty)
-=======
                                     item.WaitTime = (int)WaitTime.PlayerRecover;
                                     (item as Player).LastMove = Directions.Null;
                                 }
@@ -247,7 +134,6 @@ namespace TetrisMario.Logic
                                     Directions input = this.inputs.Dequeue();
                                     Types result = item.Push(input);
                                     if (result == Types.Empty)
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                                     {
                                         (item as Player).LastMove = input;
                                         input = Directions.Null;
@@ -280,13 +166,9 @@ namespace TetrisMario.Logic
                             {
                                 item.Push(Directions.Down);
                             }
-                            else if (Inputs.Count != 0)
+                            else if (this.inputs.Count != 0)
                             {
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-                                Enums.Directions input = Inputs.Dequeue();
-=======
                                 Directions input = this.inputs.Dequeue();
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
 
                                 if ((item as Player).LastMove == Directions.Up && (input == Directions.Right || input == Directions.Left))
                                 {
@@ -337,11 +219,7 @@ namespace TetrisMario.Logic
                         {
                             if (item.CheckSurrounding(Directions.Down).Type == Types.Empty)
                             {
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
-                                item.WaitTime = (int)Enums.eWaitTime.Box;
-=======
                                 item.WaitTime = (int)WaitTime.Box;
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                             }
                         }
                         else if (item.WaitTime != 0)

@@ -4,8 +4,6 @@
         <name>TetrisMario.Renderer</name>
     </assembly>
     <members>
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameRenderer/GameRenderer.xml
-=======
         <member name="T:TetrisMario.Renderer.GameRenderer">
             <summary>
             Game renderer class.
@@ -46,6 +44,5 @@
             </summary>
             <param name="ctx">drawing context.</param>
         </member>
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Renderer/GameRenderer.xml
     </members>
 </doc>

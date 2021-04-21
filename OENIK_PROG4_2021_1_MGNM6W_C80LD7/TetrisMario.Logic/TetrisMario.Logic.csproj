@@ -12,16 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Save.txt" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Save.txt" />
   </ItemGroup>
 
   <ItemGroup>

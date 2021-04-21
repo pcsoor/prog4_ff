@@ -35,8 +35,6 @@
             Check last layer of game area.
             </summary>
         </member>
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/GameLogic.xml
-=======
         <member name="M:TetrisMario.Logic.GameLogic.InitModel">
             <summary>
             Initializing method.
@@ -72,6 +70,5 @@
             Spawn one block.
             </summary>
         </member>
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.xml
     </members>
 </doc>

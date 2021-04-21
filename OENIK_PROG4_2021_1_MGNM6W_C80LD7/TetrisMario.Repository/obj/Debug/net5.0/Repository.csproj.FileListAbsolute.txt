@@ -35,4 +35,4 @@ C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGN
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\Repository\obj\Debug\net5.0\Repository.dll
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\Repository\obj\Debug\net5.0\ref\Repository.dll
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\Repository\obj\Debug\net5.0\Repository.pdb
-C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache

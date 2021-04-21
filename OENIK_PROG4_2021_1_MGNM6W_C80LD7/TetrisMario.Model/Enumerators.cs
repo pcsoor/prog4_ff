@@ -15,8 +15,6 @@ namespace TetrisMario.Model
     /// </summary>
     public static class Enumerators
     {
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameModel/Enums.cs
-=======
         /// <summary>
         /// Ui elements.
         /// </summary>
@@ -46,24 +44,53 @@ namespace TetrisMario.Model
         /// <summary>
         /// Tile types.
         /// </summary>
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Model/Enumerators.cs
         public enum Types
         {
+            /// <summary>
+            /// Player tile.
+            /// </summary>
             Player,
+
+            /// <summary>
+            /// Block tile.
+            /// </summary>
             Block,
+
+            /// <summary>
+            /// Wall tile.
+            /// </summary>
             Wall,
+
+            /// <summary>
+            /// Undecided tile.
+            /// </summary>
             Undecided,
-            Empty
+
+            /// <summary>
+            /// Empty tile.
+            /// </summary>
+            Empty,
         }
 
+        /// <summary>
+        /// All direction.
+        /// </summary>
         public enum Directions
         {
+            /// <summary>
+            /// Left direction.
+            /// </summary>
             Left,
+
+            /// <summary>
+            /// Right direction.
+            /// </summary>
             Right,
+
+            /// <summary>
+            /// Up direction.
+            /// </summary>
             Up,
-<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameModel/Enums.cs
-            Dowm,
-=======
 
             /// <summary>
             /// Down direction.
@@ -73,20 +100,53 @@ namespace TetrisMario.Model
             /// <summary>
             /// Lower left direction.
             /// </summary>
->>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Model/Enumerators.cs
             LowerLeft,
+
+            /// <summary>
+            /// Lower right direction.
+            /// </summary>
             LowerRight,
+
+            /// <summary>
+            /// Upper left direction.
+            /// </summary>
             UpperLeft,
+
+            /// <summary>
+            /// Upper right direction.
+            /// </summary>
             UpperRight,
-            Null
+
+            /// <summary>
+            /// Not defined direction.
+            /// </summary>
+            Null,
         }
 
-        public enum eWaitTime
+        /// <summary>
+        /// Wait times of specific game items.
+        /// </summary>
+        public enum WaitTime
         {
+            /// <summary>
+            /// Player's wait time.
+            /// </summary>
             Player = 0,
+
+            /// <summary>
+            /// Player's jump wait time.
+            /// </summary>
             PlayerJump = -150,
+
+            /// <summary>
+            /// Player's recover time.
+            /// </summary>
             PlayerRecover = -50,
-            Box = -100
+
+            /// <summary>
+            /// Box's wait time.
+            /// </summary>
+            Box = -100,
         }
     }
 }

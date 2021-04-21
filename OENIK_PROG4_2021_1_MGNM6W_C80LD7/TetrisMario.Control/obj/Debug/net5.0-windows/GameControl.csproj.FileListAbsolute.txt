@@ -77,3 +77,15 @@ C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGN
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameRenderer.xml
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\farka\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\obj\Debug\net5.0-windows\GameControl.csproj.CopyComplete
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameLogic.dll
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameModel.dll
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameRenderer.dll
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameLogic.pdb
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameLogic.xml
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameModel.pdb
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameModel.xml
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameRenderer.pdb
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\bin\Debug\net5.0-windows\GameRenderer.xml
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\obj\Debug\net5.0-windows\GameControl.csprojAssemblyReference.cache
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\GameControl\obj\Debug\net5.0-windows\GameControl.csproj.CopyComplete
