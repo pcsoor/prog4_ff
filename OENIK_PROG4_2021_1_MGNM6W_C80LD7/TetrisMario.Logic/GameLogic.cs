@@ -6,6 +6,8 @@ namespace TetrisMario.Logic
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
     using TetrisMario.Model;
     using static TetrisMario.Model.Enumerators;
 
@@ -41,6 +43,64 @@ namespace TetrisMario.Logic
             get
             {
                 return this.inputs;
+            }
+        }
+
+        public void Save()
+        {
+            string lines = string.Empty;
+            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+            {
+                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+                {
+                    switch (GameModel.Map[x, y].Type)
+                    {
+                        case Enumerators.Types.Wall:
+                            lines += '1';
+                            break;
+                        case Enumerators.Types.Player:
+                            lines += '7';
+                            break;
+                        case Enumerators.Types.Block:
+                            lines += '2';
+                            break;
+                        default:
+                            lines += ' ';
+                            break;
+                    }
+                }
+            }
+
+            string docPath = "OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic";
+            File.WriteAllText(docPath, lines);
+        }
+
+        public void Load()
+        {
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt");
+            StreamReader sr = new StreamReader(stream);
+            string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
+            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+            {
+                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+                {
+                    char current = lines[y][x];
+                    switch (current)
+                    {
+                        case '1':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
+                            break;
+                        case '7':
+                            GameModel.Map[x, y] = new Player(x, y);
+                            break;
+                        case '2':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
+                            break;
+                        default:
+                            GameModel.Map[x, y] = null;
+                            break;
+                    }
+                }
             }
         }
 
