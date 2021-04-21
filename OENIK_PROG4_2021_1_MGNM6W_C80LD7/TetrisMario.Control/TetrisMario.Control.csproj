@@ -14,11 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\background.jpg" />
+    <None Remove="images\background_empty.jpg" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\background.jpg" />
+    <Resource Include="images\background_empty.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
-    <ProjectReference Include="..\GameModel\GameModel.csproj" />
-    <ProjectReference Include="..\GameRenderer\GameRenderer.csproj" />
+    <ProjectReference Include="..\TetrisMario.Logic\TetrisMario.Logic.csproj" />
+    <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
+    <ProjectReference Include="..\TetrisMario.Renderer\TetrisMario.Renderer.csproj" />
   </ItemGroup>
 
 </Project>

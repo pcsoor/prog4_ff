@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TetrisMario.Renderer</name>
+    </assembly>
+    <members>
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameRenderer/GameRenderer.xml
+=======
+        <member name="T:TetrisMario.Renderer.GameRenderer">
+            <summary>
+            Game renderer class.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Renderer.GameRenderer.#ctor(TetrisMario.Model.IGameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Renderer.GameRenderer"/> class.
+            </summary>
+            <param name="model">model reference.</param>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.PlayerBrush">
+            <summary>
+            Gets player's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.BlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.WallBrush">
+            <summary>
+            Gets wall's brush.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Renderer.GameRenderer.GetBrush(System.String,System.Boolean)">
+            <summary>
+            Returns a brush for a specific item.
+            </summary>
+            <param name="fname">file name.</param>
+            <param name="isTiled">check if tiled.</param>
+            <returns>brush.</returns>
+        </member>
+        <member name="M:TetrisMario.Renderer.GameRenderer.BuildDisplay(System.Windows.Media.DrawingContext)">
+            <summary>
+            Builder method.
+            </summary>
+            <param name="ctx">drawing context.</param>
+        </member>
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Renderer/GameRenderer.xml
+    </members>
+</doc>

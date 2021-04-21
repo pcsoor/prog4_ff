@@ -1,17 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>GameLogicTests.xml</DocumentationFile>
+    <DocumentationFile>GameRenderer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Blue Brick.bmp" />
+    <None Remove="Images\Border.bmp" />
+    <None Remove="Images\Karakter.bmp" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
@@ -20,10 +27,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\Blue Brick.bmp" />
+    <EmbeddedResource Include="Images\Border.bmp" />
+    <EmbeddedResource Include="Images\Karakter.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
   </ItemGroup>
 
 </Project>

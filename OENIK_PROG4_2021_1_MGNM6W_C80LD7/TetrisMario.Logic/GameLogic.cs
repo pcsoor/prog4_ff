@@ -1,3 +1,4 @@
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
 ﻿namespace GameLogic
 {
     using System;
@@ -19,10 +20,41 @@
         public Queue<Enums.Directions> Inputs;
 
         public MarioTetrisLogic(MarioTetrisModel model)
+=======
+﻿// <copyright file="GameLogic.cs" company="MGNM6W_C80LD7">
+// Copyright (c) MGNM6W_C80LD7. All rights reserved.
+// </copyright>
+
+namespace TetrisMario.Logic
+{
+    using System;
+    using System.Collections.Generic;
+    using TetrisMario.Model;
+    using static TetrisMario.Model.Enumerators;
+
+    /// <summary>
+    /// Game logic.
+    /// </summary>
+    public class GameLogic : IGameLogic
+    {
+        /// <summary>
+        /// Inputs.
+        /// </summary>
+        private static int nextBoxCounter;
+        private Queue<Directions> inputs;
+        private IGameModel model;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// </summary>
+        /// <param name="model">Game model referece.</param>
+        public GameLogic(IGameModel model)
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         {
             this.model = model;
             this.InitModel();
             nextBoxCounter = 0;
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
             Inputs = new Queue<Enums.Directions>();
         }
 
@@ -41,6 +73,20 @@
             }
 
             MarioTetrisModel.Map[13, 14] = new Player(13, 14);
+=======
+            this.inputs = new Queue<Directions>();
+        }
+
+        /// <summary>
+        /// Gets key input.
+        /// </summary>
+        public Queue<Directions> Inputs
+        {
+            get
+            {
+                return this.inputs;
+            }
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         }
 
         //public void Save()
@@ -105,8 +151,8 @@
             if (nextBoxCounter == 0)
             {
                 Random rnd = new Random();
-                int randomNumber = rnd.Next(1, MarioTetrisModel.Map.GetLength(0) - 1);
-                MarioTetrisModel.Map[randomNumber, 4] = new GameObject(Enums.Types.Block, randomNumber, 4);
+                int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
+                GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
                 nextBoxCounter = -500;
             }
             else
@@ -118,9 +164,9 @@
         public void CheckIfBottomIsFull()
         {
             bool result = true;
-            for (int i = 1; i < MarioTetrisModel.Map.GetLength(0) - 1; i++)
+            for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
             {
-                if (MarioTetrisModel.Map[i, MarioTetrisModel.Map.GetLength(1) - 2] == null || MarioTetrisModel.Map[i, MarioTetrisModel.Map.GetLength(1) - 2].Type == Enums.Types.Player)
+                if (GameModel.Map[i, GameModel.Map.GetLength(1) - 2] == null || GameModel.Map[i, GameModel.Map.GetLength(1) - 2].Type == Types.Player)
                 {
                     result = false;
                 }
@@ -128,31 +174,62 @@
 
             if (result)
             {
-                for (int i = 1; i < MarioTetrisModel.Map.GetLength(0) - 1; i++)
+                for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
                 {
-                    MarioTetrisModel.Map[i, MarioTetrisModel.Map.GetLength(1) - 2] = null;
+                    GameModel.Map[i, GameModel.Map.GetLength(1) - 2] = null;
                 }
             }
         }
 
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
+=======
+        /// <summary>
+        /// Initializing method.
+        /// </summary>
+        public void InitModel()
+        {
+            this.model.TileSize = Math.Min(this.model.GameWidth / 26, this.model.GameHeight / 16);
+            for (int i = 0; i < GameModel.Map.GetLength(0); i++)
+            {
+                for (int j = 0; j < GameModel.Map.GetLength(1); j++)
+                {
+                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
+                    {
+                        GameModel.Map[i, j] = new GameObject(Types.Wall, i, j);
+                    }
+                }
+            }
+
+            GameModel.Map[13, 14] = new Player(13, 14);
+        }
+
+        /// <summary>
+        /// Updates all game item.
+        /// </summary>
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
         public void Update()
         {
-            foreach (GameItem item in MarioTetrisModel.Map)
+            foreach (GameItem item in GameModel.Map)
             {
                 if (item != null)
                 {
-                    if (item.Type == Enums.Types.Player)
+                    if (item.Type == Types.Player)
                     {
                         if (item.WaitTime >= 0)
                         {
-                            if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
+                            if (item.CheckSurrounding(Directions.Down).Type == Types.Empty)
                             {
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
                                 item.WaitTime = (int)Enums.eWaitTime.PlayerJump;
+=======
+                                item.WaitTime = (int)WaitTime.PlayerJump;
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                             }
                             else if (Inputs.Count != 0)
                             {
-                                if ((item as Player).lastMove == Enums.Directions.Up)
+                                if ((item as Player).LastMove == Directions.Up)
                                 {
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
                                     item.WaitTime = (int)Enums.eWaitTime.PlayerRecover;
                                     (item as Player).lastMove = Enums.Directions.Null;
                                 }
@@ -161,23 +238,33 @@
                                     Enums.Directions input = Inputs.Dequeue();
                                     Enums.Types result = item.Push(input);
                                     if (result == Enums.Types.Empty)
+=======
+                                    item.WaitTime = (int)WaitTime.PlayerRecover;
+                                    (item as Player).LastMove = Directions.Null;
+                                }
+                                else
+                                {
+                                    Directions input = this.inputs.Dequeue();
+                                    Types result = item.Push(input);
+                                    if (result == Types.Empty)
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                                     {
-                                        (item as Player).lastMove = input;
-                                        input = Enums.Directions.Null;
+                                        (item as Player).LastMove = input;
+                                        input = Directions.Null;
                                     }
-                                    else if (result == Enums.Types.Block)
+                                    else if (result == Types.Block)
                                     {
                                         GameObject block = (GameObject)item.CheckSurrounding(input);
-                                        if ((block.CheckSurrounding(Enums.Directions.Up).Type == Enums.Types.Empty) && (block.CheckSurrounding(input).Type == Enums.Types.Empty))
+                                        if ((block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Empty))
                                         {
-                                            if (block.CheckSurrounding(Enums.Directions.Dowm).Type != Enums.Types.Empty)
+                                            if (block.CheckSurrounding(Directions.Down).Type != Types.Empty)
                                             {
-                                                if (block.Push(input) == Enums.Types.Empty)
+                                                if (block.Push(input) == Types.Empty)
                                                 {
-                                                    if (item.Push(input) == Enums.Types.Empty)
+                                                    if (item.Push(input) == Types.Empty)
                                                     {
-                                                        (item as Player).lastMove = input;
-                                                        input = Enums.Directions.Null;
+                                                        (item as Player).LastMove = input;
+                                                        input = Directions.Null;
                                                     }
                                                 }
                                             }
@@ -191,45 +278,49 @@
                             item.WaitTime += 5;
                             if (item.WaitTime == 0)
                             {
-                                item.Push(Enums.Directions.Dowm);
+                                item.Push(Directions.Down);
                             }
                             else if (Inputs.Count != 0)
                             {
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
                                 Enums.Directions input = Inputs.Dequeue();
+=======
+                                Directions input = this.inputs.Dequeue();
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
 
-                                if ((item as Player).lastMove == Enums.Directions.Up && (input == Enums.Directions.Right || input == Enums.Directions.Left))
+                                if ((item as Player).LastMove == Directions.Up && (input == Directions.Right || input == Directions.Left))
                                 {
                                     bool checkSurroundings_clear = false;
-                                    if (input == Enums.Directions.Right && item.CheckSurrounding(Enums.Directions.LowerRight).Type == Enums.Types.Block)
+                                    if (input == Directions.Right && item.CheckSurrounding(Directions.LowerRight).Type == Types.Block)
                                     {
                                         checkSurroundings_clear = true;
                                     }
-                                    else if (input == Enums.Directions.Left && item.CheckSurrounding(Enums.Directions.LowerLeft).Type == Enums.Types.Block)
+                                    else if (input == Directions.Left && item.CheckSurrounding(Directions.LowerLeft).Type == Types.Block)
                                     {
                                         checkSurroundings_clear = true;
                                     }
 
                                     if (checkSurroundings_clear)
                                     {
-                                        Enums.Types result = item.Push(input);
-                                        if (result == Enums.Types.Empty)
+                                        Types result = item.Push(input);
+                                        if (result == Types.Empty)
                                         {
                                             item.WaitTime = 0;
-                                            (item as Player).lastMove = input;
+                                            (item as Player).LastMove = input;
                                         }
-                                        else if (result == Enums.Types.Block)
+                                        else if (result == Types.Block)
                                         {
                                             GameObject block = (GameObject)item.CheckSurrounding(input);
-                                            if ((block.CheckSurrounding(Enums.Directions.Up).Type == Enums.Types.Empty) && (block.CheckSurrounding(input).Type == Enums.Types.Empty))
+                                            if ((block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Empty))
                                             {
-                                                if (block.CheckSurrounding(Enums.Directions.Dowm).Type != Enums.Types.Empty)
+                                                if (block.CheckSurrounding(Directions.Down).Type != Types.Empty)
                                                 {
-                                                    if (block.Push(input) == Enums.Types.Empty)
+                                                    if (block.Push(input) == Types.Empty)
                                                     {
-                                                        if (item.Push(input) == Enums.Types.Empty)
+                                                        if (item.Push(input) == Types.Empty)
                                                         {
-                                                            (item as Player).lastMove = input;
-                                                            input = Enums.Directions.Null;
+                                                            (item as Player).LastMove = input;
+                                                            input = Directions.Null;
                                                         }
                                                     }
                                                 }
@@ -240,13 +331,17 @@
                             }
                         }
                     }
-                    else if (item.Type == Enums.Types.Block)
+                    else if (item.Type == Types.Block)
                     {
                         if (item.WaitTime >= 0)
                         {
-                            if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
+                            if (item.CheckSurrounding(Directions.Down).Type == Types.Empty)
                             {
+<<<<<<< HEAD:OENIK_PROG4_2021_1_MGNM6W_C80LD7/GameLogic/MarioTetrisLogic.cs
                                 item.WaitTime = (int)Enums.eWaitTime.Box;
+=======
+                                item.WaitTime = (int)WaitTime.Box;
+>>>>>>> ab0325c16c9dd1e1899ba7370d1a4fca6bb9712d:OENIK_PROG4_2021_1_MGNM6W_C80LD7/TetrisMario.Logic/GameLogic.cs
                             }
                         }
                         else if (item.WaitTime != 0)
@@ -254,7 +349,7 @@
                             item.WaitTime += 5;
                             if (item.WaitTime == 0)
                             {
-                                item.Push(Enums.Directions.Dowm);
+                                item.Push(Directions.Down);
                             }
                         }
                     }
