@@ -34,41 +34,5 @@
             Damage taken by character.
             </summary>
         </member>
-        <member name="T:GameLogic.MarioTetrisLogic">
-            <summary>
-            Game logic.
-            </summary>
-        </member>
-        <member name="F:GameLogic.MarioTetrisLogic.nextBoxCounter">
-            <summary>
-            Inputs.
-            </summary>
-        </member>
-        <member name="M:GameLogic.MarioTetrisLogic.#ctor(GameModel.MarioTetrisModel)">
-            <summary>
-            Initializes a new instance of the <see cref="T:GameLogic.MarioTetrisLogic"/> class.
-            </summary>
-            <param name="model">Game model referece.</param>
-        </member>
-        <member name="M:GameLogic.MarioTetrisLogic.SpawnBlock">
-            <summary>
-            Spawn one block in random place.
-            </summary>
-        </member>
-        <member name="M:GameLogic.MarioTetrisLogic.CheckIfBottomIsFull">
-            <summary>
-            Check last layer of game area.
-            </summary>
-        </member>
-        <member name="M:GameLogic.MarioTetrisLogic.InitModel">
-            <summary>
-            Initializing method.
-            </summary>
-        </member>
-        <member name="M:GameLogic.MarioTetrisLogic.Update">
-            <summary>
-            Updates all game item.
-            </summary>
-        </member>
     </members>
 </doc>

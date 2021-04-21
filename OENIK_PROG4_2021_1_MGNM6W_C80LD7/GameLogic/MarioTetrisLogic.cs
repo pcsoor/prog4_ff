@@ -1,45 +1,105 @@
-﻿// <copyright file="MarioTetrisLogic.cs" company="MGNM6W_C80LD7">
-// Copyright (c) MGNM6W_C80LD7. All rights reserved.
-// </copyright>
-
-namespace GameLogic
+﻿namespace GameLogic
 {
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
     using GameModel;
 
-    /// <summary>
-    /// Game logic.
-    /// </summary>
     public class MarioTetrisLogic
     {
-        /// <summary>
-        /// Inputs.
-        /// </summary>
-        private static int nextBoxCounter;
-        public Queue<Enums.Directions> inputs;
         private MarioTetrisModel model;
+        static int nextBoxCounter;
+        public Queue<Enums.Directions> Inputs;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MarioTetrisLogic"/> class.
-        /// </summary>
-        /// <param name="model">Game model referece.</param>
         public MarioTetrisLogic(MarioTetrisModel model)
         {
             this.model = model;
             this.InitModel();
             nextBoxCounter = 0;
-            this.inputs = new Queue<Enums.Directions>();
+            Inputs = new Queue<Enums.Directions>();
         }
 
-        /// <summary>
-        /// Spawn one block in random place.
-        /// </summary>
+        public void InitModel()
+        {
+            model.TileSize = Math.Min(model.GameWidth / MarioTetrisModel.Map.GetLength(0), model.GameHeight / MarioTetrisModel.Map.GetLength(1));
+            for (int i = 0; i < MarioTetrisModel.Map.GetLength(0); i++)
+            {
+                for (int j = 0; j < MarioTetrisModel.Map.GetLength(1); j++)
+                {
+                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
+                    {
+                        MarioTetrisModel.Map[i, j] = new GameObject(GameModel.Enums.Types.Wall, i, j);
+                    }
+                }
+            }
+
+            MarioTetrisModel.Map[13, 14] = new Player(13, 14);
+        }
+
+        //public void Save()
+        //{
+        //    string lines = string.Empty;
+        //    for (int x = 0; x < MarioTetrisModel.Map.GetLength(0); x++)
+        //    {
+        //        for (int y = 0; y < MarioTetrisModel.Map.GetLength(1); y++)
+        //        {
+        //            switch (MarioTetrisModel.Map[x, y].Type)
+        //            {
+        //                case Enums.Types.Wall:
+        //                    lines += '1';
+        //                    break;
+        //                case Enums.Types.Player:
+        //                    lines += '7';
+        //                    break;
+        //                case Enums.Types.Block:
+        //                    lines += '2';
+        //                    break;
+        //                default:
+        //                    lines += ' ';
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    string docPath = "OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic";
+        //    File.WriteAllText(docPath, lines);
+        //}
+
+        //public void Load()
+        //{
+        //    Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt");
+        //    StreamReader sr = new StreamReader(stream);
+        //    string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
+        //    for (int x = 0; x < MarioTetrisModel.Map.GetLength(0); x++)
+        //    {
+        //        for (int y = 0; y < MarioTetrisModel.Map.GetLength(1); y++)
+        //        {
+        //            char current = lines[y][x];
+        //            switch (current)
+        //            {
+        //                case '1':
+        //                    MarioTetrisModel.Map[x, y] = new GameObject(Enums.Types.Wall, x, y);
+        //                    break;
+        //                case '7':
+        //                    MarioTetrisModel.Map[x, y] = new Player(x, y);
+        //                    break;
+        //                case '2':
+        //                    MarioTetrisModel.Map[x, y] = new GameObject(Enums.Types.Block, x, y);
+        //                    break;
+        //                default:
+        //                    MarioTetrisModel.Map[x, y] = null;
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //}
+
         public void SpawnBlock()
         {
             if (nextBoxCounter == 0)
@@ -55,9 +115,6 @@ namespace GameLogic
             }
         }
 
-        /// <summary>
-        /// Check last layer of game area.
-        /// </summary>
         public void CheckIfBottomIsFull()
         {
             bool result = true;
@@ -78,29 +135,6 @@ namespace GameLogic
             }
         }
 
-        /// <summary>
-        /// Initializing method.
-        /// </summary>
-        public void InitModel()
-        {
-            this.model.TileSize = Math.Min(this.model.GameWidth / 26, this.model.GameHeight / 16);
-            for (int i = 0; i < MarioTetrisModel.Map.GetLength(0); i++)
-            {
-                for (int j = 0; j < MarioTetrisModel.Map.GetLength(1); j++)
-                {
-                    if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
-                    {
-                        MarioTetrisModel.Map[i, j] = new GameObject(GameModel.Enums.Types.Wall, i, j);
-                    }
-                }
-            }
-
-            MarioTetrisModel.Map[13, 14] = new Player(13, 14);
-        }
-
-        /// <summary>
-        /// Updates all game item.
-        /// </summary>
         public void Update()
         {
             foreach (GameItem item in MarioTetrisModel.Map)
@@ -113,18 +147,18 @@ namespace GameLogic
                         {
                             if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
                             {
-                                item.WaitTime = (int)Enums.WaitTime.PlayerJump;
+                                item.WaitTime = (int)Enums.eWaitTime.PlayerJump;
                             }
-                            else if (this.inputs.Count != 0)
+                            else if (Inputs.Count != 0)
                             {
                                 if ((item as Player).lastMove == Enums.Directions.Up)
                                 {
-                                    item.WaitTime = (int)Enums.WaitTime.PlayerRecover;
+                                    item.WaitTime = (int)Enums.eWaitTime.PlayerRecover;
                                     (item as Player).lastMove = Enums.Directions.Null;
                                 }
                                 else
                                 {
-                                    Enums.Directions input = this.inputs.Dequeue();
+                                    Enums.Directions input = Inputs.Dequeue();
                                     Enums.Types result = item.Push(input);
                                     if (result == Enums.Types.Empty)
                                     {
@@ -159,9 +193,9 @@ namespace GameLogic
                             {
                                 item.Push(Enums.Directions.Dowm);
                             }
-                            else if (this.inputs.Count != 0)
+                            else if (Inputs.Count != 0)
                             {
-                                Enums.Directions input = this.inputs.Dequeue();
+                                Enums.Directions input = Inputs.Dequeue();
 
                                 if ((item as Player).lastMove == Enums.Directions.Up && (input == Enums.Directions.Right || input == Enums.Directions.Left))
                                 {
@@ -212,7 +246,7 @@ namespace GameLogic
                         {
                             if (item.CheckSurrounding(Enums.Directions.Dowm).Type == Enums.Types.Empty)
                             {
-                                item.WaitTime = (int)Enums.WaitTime.Box;
+                                item.WaitTime = (int)Enums.eWaitTime.Box;
                             }
                         }
                         else if (item.WaitTime != 0)

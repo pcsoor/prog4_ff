@@ -1,64 +1,38 @@
-﻿// <copyright file="MarioTetrisModel.cs" company="MGNM6W_C80LD7">
-// Copyright (c) MGNM6W_C80LD7. All rights reserved.
-// </copyright>
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static GameModel.Enums;
 
 namespace GameModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using static GameModel.Enums;
-
-    /// <summary>
-    /// Model class.
-    /// </summary>
     public class MarioTetrisModel
     {
         public static GameItem[,] Map = new GameItem[26, 16];
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MarioTetrisModel"/> class.
-        /// </summary>
-        /// <param name="w">width of the game.</param>
-        /// <param name="h">height of the game.</param>
-        public MarioTetrisModel(double w, double h)
-        {
-            this.GameWidth = w;
-            this.GameHeight = h;
-        }
+        public int MapLenght0 = 26;
 
-        /// <summary>
-        /// Gets or sets one block.
-        /// </summary>
+        public int MapLenght1 = 16;
+
         public GameObject Block { get; set; }
 
-        /// <summary>
-        /// Gets or sets one wall.
-        /// </summary>
         public GameObject Wall { get; set; }
 
-        /// <summary>
-        /// Gets or sets one mario.
-        /// </summary>
         public Player Mario { get; set; }
 
-        /// <summary>
-        /// Gets game width.
-        /// </summary>
         public double GameWidth { get; private set; }
 
-        /// <summary>
-        /// Gets game height.
-        /// </summary>
         public double GameHeight { get; private set; }
 
-        /// <summary>
-        /// Gets or sets tile size.
-        /// </summary>
         public double TileSize { get; set; }
+
+        public MarioTetrisModel(double w, double h)
+        {
+            GameWidth = w;
+            GameHeight = h;
+        }
     }
 
     public abstract class GameItem
@@ -67,40 +41,40 @@ namespace GameModel
         public int y = -1;
 
         public Types Type = Types.Undecided;
-        public UI Ui = UI.Undecided;
+        public char Ui = ' ';
         public int WaitTime = 0;
 
         public Types Push(Directions direction)
         {
-            int newX = this.x;
-            int newY = this.y;
+            int newX = x;
+            int newY = y;
 
             switch (direction)
             {
                 case Directions.Left:
-                    newX = this.x - 1;
-                    newY = this.y;
+                    newX = x - 1;
+                    newY = y;
                     break;
                 case Directions.Right:
-                    newX = this.x + 1;
-                    newY = this.y;
+                    newX = x + 1;
+                    newY = y;
                     break;
                 case Directions.Up:
-                    newX = this.x;
-                    newY = this.y - 1;
+                    newX = x;
+                    newY = y - 1;
                     break;
                 case Directions.Dowm:
-                    newX = this.x;
-                    newY = this.y + 1;
+                    newX = x;
+                    newY = y + 1;
                     break;
             }
 
             if (MarioTetrisModel.Map[newX, newY] == null)
             {
-                MarioTetrisModel.Map[this.x, this.y] = null;
+                MarioTetrisModel.Map[x, y] = null;
                 x = newX;
                 y = newY;
-                MarioTetrisModel.Map[this.x, this.y] = this;
+                MarioTetrisModel.Map[x, y] = this;
                 return Types.Empty;
             }
             else
@@ -131,14 +105,14 @@ namespace GameModel
             {
                 if (MarioTetrisModel.Map[newX, newY] == null)
                 {
-                    this.x = newX;
-                    this.y = newY;
-                    MarioTetrisModel.Map[this.x, this.y] = this;
+                    x = newX;
+                    y = newY;
+                    MarioTetrisModel.Map[x, y] = this;
                     return Types.Empty;
                 }
                 else
                 {
-                    return MarioTetrisModel.Map[this.x, this.y].Type;
+                    return MarioTetrisModel.Map[x, y].Type;
                 }
             }
             else
@@ -247,7 +221,7 @@ namespace GameModel
         public Player(int x, int y)
         {
             Type = Types.Player;
-            Ui = UI.Player;
+            Ui = '7';
             instance = this;
             this.x = x;
             this.y = y;
@@ -264,16 +238,16 @@ namespace GameModel
             switch (Type)
             {
                 case Types.Block:
-                    Ui = UI.BasicBlock;
+                    Ui = '2';
                     break;
                 case Types.Wall:
-                    Ui = UI.Wall;
+                    Ui ='1';
                     break;
                 case Types.Undecided:
-                    Ui = UI.Undecided;
+                    Ui = ' ';
                     break;
                 case Types.Empty:
-                    Ui = UI.Undecided;
+                    Ui = '0';
                     break;
 
             }

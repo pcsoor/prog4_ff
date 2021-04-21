@@ -40,28 +40,5 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:GameControl.MarioTetrisControl">
-            <summary>
-            Game control class.
-            </summary>
-        </member>
-        <member name="M:GameControl.MarioTetrisControl.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:GameControl.MarioTetrisControl"/> class.
-            </summary>
-        </member>
-        <member name="M:GameControl.MarioTetrisControl.OnRender(System.Windows.Media.DrawingContext)">
-            <summary>
-            Calls renderer.
-            </summary>
-            <param name="drawingContext">drawing context.</param>
-        </member>
-        <member name="M:GameControl.MarioTetrisControl.TimerTick(System.Object,System.EventArgs)">
-            <summary>
-            one tick in game.
-            </summary>
-            <param name="sender">sender.</param>
-            <param name="e">event.</param>
-        </member>
     </members>
 </doc>
