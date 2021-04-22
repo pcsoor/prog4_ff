@@ -53,26 +53,28 @@ namespace TetrisMario.Logic
             {
                 for (int y = 0; y < GameModel.Map.GetLength(1); y++)
                 {
-                    switch (GameModel.Map[x, y].Type)
+                    if (GameModel.Map[x, y] != null)
                     {
-                        case Enumerators.Types.Wall:
-                            lines += '1';
-                            break;
-                        case Enumerators.Types.Player:
-                            lines += '7';
-                            break;
-                        case Enumerators.Types.Block:
-                            lines += '2';
-                            break;
-                        default:
-                            lines += ' ';
-                            break;
+                        switch (GameModel.Map[x, y].Type)
+                        {
+                            case Enumerators.Types.Wall:
+                                lines += '1';
+                                break;
+                            case Enumerators.Types.Player:
+                                lines += '7';
+                                break;
+                            case Enumerators.Types.Block:
+                                lines += '2';
+                                break;
+                            default:
+                                lines += ' ';
+                                break;
+                        }
                     }
                 }
             }
 
-            string docPath = "OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic";
-            File.WriteAllText(docPath, lines);
+            File.WriteAllText(@"OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic", lines);
         }
 
         public void Load()
@@ -113,7 +115,20 @@ namespace TetrisMario.Logic
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
-                GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
+                int randomBlockType = rnd.Next(1, 100);
+                if (randomBlockType <= 70)
+                {
+                    GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
+                }
+                else if ( randomBlockType < 95 && randomBlockType > 70)
+                {
+                    GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
+                }
+                else if (randomBlockType >= 95)
+                {
+                    GameModel.Map[randomNumber, 4] = new GameObject(Types.PowerUp, randomNumber, 4);
+                }
+
                 nextBoxCounter = -500;
             }
             else
@@ -142,6 +157,8 @@ namespace TetrisMario.Logic
                 {
                     GameModel.Map[i, GameModel.Map.GetLength(1) - 2] = null;
                 }
+
+                GameModel.HighScore += 1000;
             }
         }
 
@@ -163,6 +180,27 @@ namespace TetrisMario.Logic
             }
 
             GameModel.Map[13, 14] = new Player(13, 14);
+        }
+
+        public void Shoot(Player player)
+        {
+            if (player.canShoot)
+            {
+                for (int i = player.Y + 1; i > 4; i--)
+                {
+                    if (GameModel.Map[player.X, i] != null)
+                    {
+                        if (GameModel.Map[player.X, i].Type == Enumerators.Types.Block)
+                        {
+                            GameModel.Map[player.X, i] = null;
+                        }
+                        else if (GameModel.Map[player.X, i].Type == Enumerators.Types.PowerUp)
+                        {
+
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -192,63 +230,17 @@ namespace TetrisMario.Logic
                                 else
                                 {
                                     Directions input = this.inputs.Dequeue();
-                                    Types result = item.Push(input);
-                                    if (result == Types.Empty)
+                                    if (input == Directions.Shoot)
                                     {
-                                        (item as Player).LastMove = input;
-                                        input = Directions.Null;
+                                        this.Shoot((Player)item);
                                     }
-                                    else if (result == Types.Block)
-                                    {
-                                        GameObject block = (GameObject)item.CheckSurrounding(input);
-                                        if ((block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Empty))
-                                        {
-                                            if (block.CheckSurrounding(Directions.Down).Type != Types.Empty)
-                                            {
-                                                if (block.Push(input) == Types.Empty)
-                                                {
-                                                    if (item.Push(input) == Types.Empty)
-                                                    {
-                                                        (item as Player).LastMove = input;
-                                                        input = Directions.Null;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else if (item.WaitTime != 0)
-                        {
-                            item.WaitTime += 5;
-                            if (item.WaitTime == 0)
-                            {
-                                item.Push(Directions.Down);
-                            }
-                            else if (this.inputs.Count != 0)
-                            {
-                                Directions input = this.inputs.Dequeue();
-
-                                if ((item as Player).LastMove == Directions.Up && (input == Directions.Right || input == Directions.Left))
-                                {
-                                    bool checkSurroundings_clear = false;
-                                    if (input == Directions.Right && item.CheckSurrounding(Directions.LowerRight).Type == Types.Block)
-                                    {
-                                        checkSurroundings_clear = true;
-                                    }
-                                    else if (input == Directions.Left && item.CheckSurrounding(Directions.LowerLeft).Type == Types.Block)
-                                    {
-                                        checkSurroundings_clear = true;
-                                    }
-
-                                    if (checkSurroundings_clear)
+                                    else if (true)
                                     {
                                         Types result = item.Push(input);
                                         if (result == Types.Empty)
                                         {
-                                            item.WaitTime = 0;
                                             (item as Player).LastMove = input;
+                                            input = Directions.Null;
                                         }
                                         else if (result == Types.Block)
                                         {
@@ -272,8 +264,61 @@ namespace TetrisMario.Logic
                                 }
                             }
                         }
+                        else if (item.WaitTime != 0)
+                        {
+                            item.WaitTime += 5;
+                            if (item.WaitTime == 0)
+                            {
+                                item.Push(Directions.Down);
+                            }
+                            else if (this.inputs.Count != 0)
+                            {
+                                Directions input = this.inputs.Dequeue();
+
+                                if ((item as Player).LastMove == Directions.Up && (input == Directions.Right || input == Directions.Left))
+                                {
+                                    bool checkSurroundings_clear = false;
+                                    if (input == Directions.Right && item.CheckSurrounding(Directions.LowerRight).Type != Types.Empty)
+                                    {
+                                        checkSurroundings_clear = true;
+                                    }
+                                    else if (input == Directions.Left && item.CheckSurrounding(Directions.LowerLeft).Type != Types.Empty)
+                                    {
+                                        checkSurroundings_clear = true;
+                                    }
+
+                                    if (checkSurroundings_clear)
+                                    {
+                                        Types result = item.Push(input);
+                                        if (result == Types.Empty)
+                                        {
+                                            item.WaitTime = 0;
+                                            (item as Player).LastMove = input;
+                                        }
+                                        else if (result == Types.Block || result == Types.PowerUp)
+                                        {
+                                            GameObject block = (GameObject)item.CheckSurrounding(input);
+                                            if ((block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Empty))
+                                            {
+                                                if (block.CheckSurrounding(Directions.Down).Type != Types.Empty)
+                                                {
+                                                    if (block.Push(input) == Types.Empty)
+                                                    {
+                                                        if (item.Push(input) == Types.Empty)
+                                                        {
+                                                            (item as Player).LastMove = input;
+                                                            input = Directions.Null;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else if (item.Type == Types.Block)
+                    else if (item.Type == Types.Block || item.Type == Types.Metal || item.Type == Types.PowerUp)
                     {
                         if (item.WaitTime >= 0)
                         {

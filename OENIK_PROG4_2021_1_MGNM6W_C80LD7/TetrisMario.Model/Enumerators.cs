@@ -35,9 +35,9 @@ namespace TetrisMario.Model
             /// </summary>
             BasicBlock = 2,
 
-            SteelBlock = 3,
+            Metal = 3,
 
-            PowerUpBlock = 4,
+            PowerUp = 4,
 
             /// <summary>
             /// Undecided element.
@@ -50,9 +50,9 @@ namespace TetrisMario.Model
         /// </summary>
         public enum Types
         {
-            PowerUpBlock,
+            PowerUp,
 
-            SteelBlock,
+            Metal,
 
             /// <summary>
             /// Player tile.
@@ -129,6 +129,8 @@ namespace TetrisMario.Model
             /// Not defined direction.
             /// </summary>
             Null,
+
+            Shoot,
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace TetrisMario.Model
             /// <summary>
             /// Player's jump wait time.
             /// </summary>
-            PlayerJump = -100,
+            PlayerJump = -150,
 
             /// <summary>
             /// Player's recover time.

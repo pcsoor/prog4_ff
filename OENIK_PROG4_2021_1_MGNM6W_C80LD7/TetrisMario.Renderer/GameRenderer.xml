@@ -20,7 +20,57 @@
             Gets player's brush.
             </summary>
         </member>
-        <member name="P:TetrisMario.Renderer.GameRenderer.BlockBrush">
+        <member name="P:TetrisMario.Renderer.GameRenderer.BlueBlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.BrownBlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GreenBlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GreyBlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GoldBlockBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.BlueMetalBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GreenMetalBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.BrownMetalBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GoldMetalBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.GreyMetalBrush">
+            <summary>
+            Gets block's brush.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.PowerUpBrush">
             <summary>
             Gets block's brush.
             </summary>

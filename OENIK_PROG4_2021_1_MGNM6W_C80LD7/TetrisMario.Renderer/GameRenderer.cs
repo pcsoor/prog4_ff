@@ -4,6 +4,7 @@
 
 namespace TetrisMario.Renderer
 {
+    using System;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Windows;
@@ -42,11 +43,121 @@ namespace TetrisMario.Renderer
         /// <summary>
         /// Gets block's brush.
         /// </summary>
-        public Brush BlockBrush
+        public Brush BlueBlockBrush
         {
             get
             {
                 return this.GetBrush("TetrisMario.Renderer.Images.Blue Brick.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush BrownBlockBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Brown Brick.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GreenBlockBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Green Brick.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GreyBlockBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Grey Brick.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GoldBlockBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Gold Brick.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush BlueMetalBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Blue Metal.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GreenMetalBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Green Metal.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush BrownMetalBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Brown Metal.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GoldMetalBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Gold Metal.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush GreyMetalBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Grey Metal.bmp", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets block's brush.
+        /// </summary>
+        public Brush PowerUpBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Power Up.bmp", false);
             }
         }
 
@@ -103,21 +214,67 @@ namespace TetrisMario.Renderer
                     {
                         if (GameModel.Map[x, y] != null)
                         {
+                            Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                             if (GameModel.Map[x, y].Type == Enumerators.Types.Block)
                             {
-                                Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                                ctx.DrawGeometry(this.BlockBrush, null, box);
+                                if (GameModel.Map[x, y].Color == 1)
+                                {
+                                    ctx.DrawGeometry(this.BlueBlockBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 2)
+                                {
+                                    ctx.DrawGeometry(this.GreenBlockBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 3)
+                                {
+                                    ctx.DrawGeometry(this.GoldBlockBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 4)
+                                {
+                                    ctx.DrawGeometry(this.GreyBlockBrush, null, box);
+                                }
+                                else if(GameModel.Map[x, y].Color == 5)
+                                {
+                                    ctx.DrawGeometry(this.BrownBlockBrush, null, box);
+                                }
+                            }
+
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.Metal)
+                            {
+                                if (GameModel.Map[x, y].Color == 1)
+                                {
+                                    ctx.DrawGeometry(this.BlueMetalBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 2)
+                                {
+                                    ctx.DrawGeometry(this.GreenMetalBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 3)
+                                {
+                                    ctx.DrawGeometry(this.GoldMetalBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 4)
+                                {
+                                    ctx.DrawGeometry(this.GreyMetalBrush, null, box);
+                                }
+                                else if (GameModel.Map[x, y].Color == 5)
+                                {
+                                    ctx.DrawGeometry(this.BrownMetalBrush, null, box);
+                                }
+                            }
+
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.PowerUp)
+                            {
+                                ctx.DrawGeometry(this.PowerUpBrush, null, box);
                             }
 
                             if (GameModel.Map[x, y].Type == Enumerators.Types.Wall)
                             {
-                                Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                 ctx.DrawGeometry(this.WallBrush, null, box);
                             }
 
                             if (GameModel.Map[x, y].Type == Enumerators.Types.Player)
                             {
-                                Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                 ctx.DrawGeometry(this.PlayerBrush, null, box);
                             }
                         }

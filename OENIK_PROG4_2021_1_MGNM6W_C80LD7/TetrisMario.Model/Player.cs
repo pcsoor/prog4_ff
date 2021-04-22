@@ -16,6 +16,7 @@ namespace TetrisMario.Model
     /// </summary>
     public class Player : GameItem
     {
+        public bool canShoot = true;
         private static Player instance;
         private Directions lastMove = Directions.Null;
 

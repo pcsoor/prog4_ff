@@ -16,6 +16,9 @@ namespace TetrisMario.Model
     /// </summary>
     public class GameItem : IGameItem
     {
+
+        public bool Pushable = true;
+        public int Color = 0;
         private Types type = Types.Undecided;
         private UiElements ui = UiElements.Undecided;
         private int waitTime;

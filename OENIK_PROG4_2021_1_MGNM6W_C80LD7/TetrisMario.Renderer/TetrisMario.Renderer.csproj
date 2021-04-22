@@ -17,8 +17,18 @@
 
   <ItemGroup>
     <None Remove="Images\Blue Brick.bmp" />
+    <None Remove="Images\Blue Metal.bmp" />
     <None Remove="Images\Border.bmp" />
+    <None Remove="Images\Brown Brick.bmp" />
+    <None Remove="Images\Brown Metal.bmp" />
+    <None Remove="Images\Gold Brick.bmp" />
+    <None Remove="Images\Gold Metal.bmp" />
+    <None Remove="Images\Green brick.bmp" />
+    <None Remove="Images\Green Metal.bmp" />
+    <None Remove="Images\Grey Brick.bmp" />
+    <None Remove="Images\Grey Metal.bmp" />
     <None Remove="Images\Karakter.bmp" />
+    <None Remove="Images\Power Up.bmp" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
@@ -28,8 +38,18 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Images\Blue Brick.bmp" />
+    <EmbeddedResource Include="Images\Blue Metal.bmp" />
     <EmbeddedResource Include="Images\Border.bmp" />
+    <EmbeddedResource Include="Images\Brown Brick.bmp" />
+    <EmbeddedResource Include="Images\Brown Metal.bmp" />
+    <EmbeddedResource Include="Images\Gold Brick.bmp" />
+    <EmbeddedResource Include="Images\Gold Metal.bmp" />
+    <EmbeddedResource Include="Images\Green Brick.bmp" />
+    <EmbeddedResource Include="Images\Green Metal.bmp" />
+    <EmbeddedResource Include="Images\Grey Brick.bmp" />
+    <EmbeddedResource Include="Images\Grey Metal.bmp" />
     <EmbeddedResource Include="Images\Karakter.bmp" />
+    <EmbeddedResource Include="Images\Power Up.bmp" />
   </ItemGroup>
 
   <ItemGroup>

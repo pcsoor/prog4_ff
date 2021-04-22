@@ -27,19 +27,31 @@ namespace TetrisMario.Model
             this.X = x;
             this.Y = y;
             this.Type = type;
+            Random rnd = new Random();
+            int num = rnd.Next(1, 6);
             switch (this.Type)
             {
                 case Types.Block:
+                    this.Color = num;
                     this.UiElement = UiElements.BasicBlock;
                     break;
                 case Types.Wall:
                     this.UiElement = UiElements.Wall;
+                    this.Pushable = false;
                     break;
                 case Types.Undecided:
                     this.UiElement = UiElements.Undecided;
                     break;
                 case Types.Empty:
                     this.UiElement = UiElements.Undecided;
+                    break;
+                case Types.Metal:
+                    this.Color = num;
+                    this.UiElement = UiElements.Metal;
+                    this.Pushable = false;
+                    break;
+                case Types.PowerUp:
+                    this.UiElement = UiElements.PowerUp;
                     break;
             }
         }

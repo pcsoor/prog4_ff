@@ -10,7 +10,7 @@ namespace TetrisMario.Model
     public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
-
+        public static int HighScore;
         /// <summary>
         /// Initializes a new instance of the <see cref="GameModel"/> class.
         /// </summary>

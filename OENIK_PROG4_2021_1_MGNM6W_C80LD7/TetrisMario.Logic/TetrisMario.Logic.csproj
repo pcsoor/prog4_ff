@@ -12,11 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="stylecop.json" />
+    <Resource Include="IGameLogic.cs" />
+    <Resource Include="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +25,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Save.txt" />
   </ItemGroup>
 
 </Project>

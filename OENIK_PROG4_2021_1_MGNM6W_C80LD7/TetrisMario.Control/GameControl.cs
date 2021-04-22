@@ -71,10 +71,10 @@ namespace TetrisMario.Control
             switch (e.Key)
             {
                 case Key.W: this.logic.Inputs.Enqueue(Enumerators.Directions.Up); break;
-                case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Down); break;
+                case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Shoot); break;
                 case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
                 case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
-                case Key.Escape:; break;
+                case Key.Escape: this.logic.Save(); break;
             }
 
             this.InvalidateVisual();
