@@ -35,6 +35,10 @@ namespace TetrisMario.Model
             /// </summary>
             BasicBlock = 2,
 
+            SteelBlock = 3,
+
+            PowerUpBlock = 4,
+
             /// <summary>
             /// Undecided element.
             /// </summary>
@@ -46,6 +50,10 @@ namespace TetrisMario.Model
         /// </summary>
         public enum Types
         {
+            PowerUpBlock,
+
+            SteelBlock,
+
             /// <summary>
             /// Player tile.
             /// </summary>
@@ -136,7 +144,7 @@ namespace TetrisMario.Model
             /// <summary>
             /// Player's jump wait time.
             /// </summary>
-            PlayerJump = -150,
+            PlayerJump = -100,
 
             /// <summary>
             /// Player's recover time.
