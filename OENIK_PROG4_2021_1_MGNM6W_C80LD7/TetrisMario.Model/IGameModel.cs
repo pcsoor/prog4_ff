@@ -30,5 +30,11 @@ namespace TetrisMario.Model
         /// Gets or sets tile size.
         /// </summary>
         double TileSize { get; set; }
+
+        static int Highscore { get; set; }
+
+        bool BlockStormActive { get; set; }
+
+        public int playerLife { get; set; }
     }
 }

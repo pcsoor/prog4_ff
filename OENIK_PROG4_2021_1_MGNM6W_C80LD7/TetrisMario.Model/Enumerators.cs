@@ -157,6 +157,19 @@ namespace TetrisMario.Model
             /// Box's wait time.
             /// </summary>
             Box = -100,
+
+            DoubleJump = -50000000,
+
+            DoublePush = -50000000,
+
+            NextBlockBasic = -500,
+
+            NextBlockBlockStorm = -250
+        }
+
+        public enum ScorePoints
+        {
+            BottomFull = 1000
         }
     }
 }

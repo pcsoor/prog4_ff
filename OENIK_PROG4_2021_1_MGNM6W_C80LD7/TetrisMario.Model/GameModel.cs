@@ -10,7 +10,13 @@ namespace TetrisMario.Model
     public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
-        public static int HighScore;
+
+        public static int HighScore { get; set; }
+
+        public bool BlockStormActive { get; set; }
+
+        public int playerLife { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameModel"/> class.
         /// </summary>
@@ -20,6 +26,9 @@ namespace TetrisMario.Model
         {
             this.GameWidth = w;
             this.GameHeight = h;
+            BlockStormActive = false;
+            HighScore = 0;
+            playerLife = 1;
         }
 
         /// <summary>
