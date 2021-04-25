@@ -74,7 +74,7 @@ namespace TetrisMario.Logic
                 }
             }
 
-            File.WriteAllText(@"OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic", lines);
+            File.WriteAllText(@"OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt", lines);
         }
 
         public void Load()

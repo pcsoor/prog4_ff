@@ -52,7 +52,7 @@ namespace TetrisMario.Control
             this.gameItem = new GameItem();
             this.logic = new Logic.GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
-
+            stw.Start();
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -61,6 +61,15 @@ namespace TetrisMario.Control
                 this.mainTimer.Interval = TimeSpan.FromMilliseconds(1);
                 this.mainTimer.Tick += this.TimerTick;
                 this.mainTimer.Start();
+                if (stw.ElapsedMilliseconds % 30000 == 0)
+                {
+                    model.BlockStormActive = true;
+                }
+
+                if (stw.ElapsedTicks % 360000 == 0)
+                {
+                    model.BlockStormActive = false;
+                }
             }
 
             this.InvalidateVisual();
