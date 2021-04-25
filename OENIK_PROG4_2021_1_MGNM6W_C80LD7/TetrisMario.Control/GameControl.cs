@@ -61,14 +61,24 @@ namespace TetrisMario.Control
                 this.mainTimer.Interval = TimeSpan.FromMilliseconds(1);
                 this.mainTimer.Tick += this.TimerTick;
                 this.mainTimer.Start();
-                if (stw.ElapsedMilliseconds % 30000 == 0)
+                if (stw.ElapsedMilliseconds % 360000 == 0)
                 {
                     model.BlockStormActive = true;
                 }
 
-                if (stw.ElapsedTicks % 360000 == 0)
+                if (stw.ElapsedMilliseconds % 180000 == 0)
+                {
+                    model.MetalBlocksOnly = true;
+                }
+
+                if (stw.ElapsedTicks % 420000 == 0)
                 {
                     model.BlockStormActive = false;
+                }
+
+                if (stw.ElapsedMilliseconds % 240000 == 0)
+                {
+                    model.MetalBlocksOnly = false;
                 }
             }
 

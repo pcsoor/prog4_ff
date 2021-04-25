@@ -29,6 +29,14 @@ namespace TetrisMario.Renderer
             this.model = model;
         }
 
+        public Brush BulletBrush
+        {
+            get
+            {
+                return this.GetBrush("TetrisMario.Renderer.Images.Bullet.bmp", false);
+            }
+        }
+
         /// <summary>
         /// Gets player's brush.
         /// </summary>
@@ -276,6 +284,11 @@ namespace TetrisMario.Renderer
                             if (GameModel.Map[x, y].Type == Enumerators.Types.Player)
                             {
                                 ctx.DrawGeometry(this.PlayerBrush, null, box);
+                            }
+
+                            if (GameModel.Map[x, y].Type == Enumerators.Types.Bullet)
+                            {
+                                ctx.DrawGeometry(this.BulletBrush, null, box);
                             }
                         }
                     }

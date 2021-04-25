@@ -15,7 +15,13 @@ namespace TetrisMario.Model
 
         public bool BlockStormActive { get; set; }
 
+        public bool MetalBlocksOnly { get; set; }
+
         public int playerLife { get; set; }
+
+        public int timeLeftForDoubleJump { get; set; }
+
+        public int timeLeftForDoublePush { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameModel"/> class.
@@ -29,6 +35,8 @@ namespace TetrisMario.Model
             BlockStormActive = false;
             HighScore = 0;
             playerLife = 1;
+            timeLeftForDoubleJump = 0;
+            timeLeftForDoublePush = 0;
         }
 
         /// <summary>

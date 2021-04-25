@@ -36,5 +36,11 @@ namespace TetrisMario.Model
         bool BlockStormActive { get; set; }
 
         public int playerLife { get; set; }
+
+        bool MetalBlocksOnly { get; set; }
+
+        int timeLeftForDoubleJump { get; set; }
+
+        int timeLeftForDoublePush { get; set; }
     }
 }

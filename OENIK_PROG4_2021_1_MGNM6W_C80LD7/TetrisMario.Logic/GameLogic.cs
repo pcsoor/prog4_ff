@@ -74,7 +74,7 @@ namespace TetrisMario.Logic
                 }
             }
 
-            File.WriteAllText(@"OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt", lines);
+            File.WriteAllText(@"Save.txt", lines);
         }
 
         public void Load()
@@ -115,18 +115,26 @@ namespace TetrisMario.Logic
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
-                int randomBlockType = rnd.Next(1, 101);
-                if (randomBlockType <= 80)
-                {
-                    GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
-                }
-                else if (randomBlockType < 99 && randomBlockType > 80)
+                if (model.MetalBlocksOnly == true)
                 {
                     GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
                 }
-                else if (randomBlockType >= 99)
+                else
                 {
-                    GameModel.Map[randomNumber, 4] = new GameObject(Types.PowerUp, randomNumber, 4);
+                    int randomBlockType = rnd.Next(1, 101);
+                    if (randomBlockType <= 80)
+                    {
+                        GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
+                    }
+                    else if (randomBlockType < 99 && randomBlockType > 80)
+                    {
+                        GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
+                    }
+                    else if (randomBlockType >= 99)
+                    {
+                        GameModel.Map[randomNumber, 4] = new GameObject(Types.PowerUp, randomNumber, 4);
+                    }
+
                 }
 
                 if (model.BlockStormActive == true)
@@ -191,39 +199,43 @@ namespace TetrisMario.Logic
 
         public void Shoot(Player player)
         {
-            if (player.canShoot)
+            if (GameModel.Map[player.X, player.Y - 1] == null)
             {
-                for (int i = player.Y - 1; i > 4; i--)
-                {
-                    if (GameModel.Map[player.X, i] != null)
-                    {
-                        if (GameModel.Map[player.X, i].Type == Enumerators.Types.Block)
-                        {
-                            GameModel.Map[player.X, i] = null;
-                        }
-                        else if (GameModel.Map[player.X, i].Type == Enumerators.Types.PowerUp)
-                        {
-                            GameModel.Map[player.X, i] = null;
-                            Random rnd = new Random();
-                            int powerUpChance = rnd.Next(1, 4);
-                            if (powerUpChance == 1)
-                            {
-                                player.canDoubleJump = true;
-                                player.timeLeftForDoubleJump += (int)WaitTime.DoubleJump;
-                            }
-                            else if (powerUpChance == 2)
-                            {
-                                model.playerLife += 1;
-                            }
-                            else
-                            {
-                                player.canDoublePush = true;
-                                player.timeLeftForDoublePush += (int)WaitTime.DoublePush;
-                            }
-                        }
-                    }
-                }
+                GameModel.Map[player.X, player.Y - 1] = new GameObject(Types.Bullet, player.X, player.Y - 1);
             }
+            //if (player.canShoot)
+            //{
+            //    for (int i = player.Y - 1; i > 4; i--)
+            //    {
+            //        if (GameModel.Map[player.X, i] != null)
+            //        {
+            //            if (GameModel.Map[player.X, i].Type == Enumerators.Types.Block)
+            //            {
+            //                GameModel.Map[player.X, i] = null;
+            //            }
+            //            else if (GameModel.Map[player.X, i].Type == Enumerators.Types.PowerUp)
+            //            {
+            //                GameModel.Map[player.X, i] = null;
+            //                Random rnd = new Random();
+            //                int powerUpChance = rnd.Next(1, 4);
+            //                if (powerUpChance == 1)
+            //                {
+            //                    player.canDoubleJump = true;
+            //                    player.timeLeftForDoubleJump += (int)WaitTime.DoubleJump;
+            //                }
+            //                else if (powerUpChance == 2)
+            //                {
+            //                    model.playerLife += 1;
+            //                }
+            //                else
+            //                {
+            //                    player.canDoublePush = true;
+            //                    player.timeLeftForDoublePush += (int)WaitTime.DoublePush;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -235,24 +247,57 @@ namespace TetrisMario.Logic
             {
                 if (item != null)
                 {
-                    if (item.Type == Types.Player)
+                    if (item.Type == Types.Bullet)
                     {
-                        if ((item as Player).canDoubleJump == true && (item as Player).timeLeftForDoubleJump < 0)
+                        if (item.WaitTime == 0)
                         {
-                            (item as Player).timeLeftForDoubleJump += 5;
+                            Types result = item.Push(Directions.Up);
+                            if (result == Types.Block)
+                            {
+                                GameModel.Map[item.X, item.Y] = null;
+                                GameModel.Map[item.X, item.Y - 1] = null;
+                            }
+                            else if (result == Types.PowerUp)
+                            {
+                                GameModel.Map[item.X, item.Y] = null;
+                                GameModel.Map[item.X, item.Y - 1] = null;
+                                Random rnd = new Random();
+                                int powerUpChance = rnd.Next(1, 4);
+                                if (powerUpChance == 1)
+                                {
+                                    model.timeLeftForDoubleJump += (int)WaitTime.DoubleJump;
+                                }
+                                else if (powerUpChance == 2)
+                                {
+                                    model.playerLife += 1;
+                                }
+                                else
+                                {
+                                    model.timeLeftForDoublePush += (int)WaitTime.DoublePush;
+                                }
+                            }
+                            else if (result == Types.Metal || result == Types.Wall)
+                            {
+                                GameModel.Map[item.X, item.Y] = null;
+                            }
+
+                            item.WaitTime = (int)WaitTime.BulletWaitTime;
                         }
                         else
                         {
-                            (item as Player).canDoubleJump = false;
+                            item.WaitTime += 5;
+                        }
+                    }
+                    else if (item.Type == Types.Player)
+                    {
+                        if (model.timeLeftForDoubleJump < 0)
+                        {
+                            model.timeLeftForDoubleJump += 5;
                         }
 
-                        if ((item as Player).canDoublePush == true && (item as Player).timeLeftForDoublePush < 0)
+                        if (model.timeLeftForDoublePush < 0)
                         {
-                            (item as Player).timeLeftForDoublePush += 5;
-                        }
-                        else
-                        {
-                            (item as Player).canDoublePush = false;
+                            model.timeLeftForDoublePush += 5;
                         }
 
                         if (item.WaitTime >= 0)
@@ -300,7 +345,7 @@ namespace TetrisMario.Logic
                                                     }
                                                 }
                                             }
-                                            else if ((item as Player).canDoublePush == true && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
+                                            else if (model.timeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
                                             {
                                                 GameObject block2 = (GameObject)block.CheckSurrounding(input);
                                                 if ((block2.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block2.CheckSurrounding(input).Type == Types.Empty))
@@ -374,7 +419,7 @@ namespace TetrisMario.Logic
                                                     }
                                                 }
                                             }
-                                            else if ((item as Player).canDoublePush == true && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
+                                            else if (model.timeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
                                             {
                                                 GameObject block2 = (GameObject)block.CheckSurrounding(input);
                                                 if ((block2.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block2.CheckSurrounding(input).Type == Types.Empty))
@@ -398,7 +443,7 @@ namespace TetrisMario.Logic
                                         }
                                     }
                                 }
-                                else if ((item as Player).canDoubleJump == true && (item as Player).LastMove == Directions.Up)
+                                else if (model.timeLeftForDoubleJump < 0 && (item as Player).LastMove == Directions.Up)
                                 {
                                     if (item.Y + 2 < GameModel.Map.GetLength(1))
                                     {

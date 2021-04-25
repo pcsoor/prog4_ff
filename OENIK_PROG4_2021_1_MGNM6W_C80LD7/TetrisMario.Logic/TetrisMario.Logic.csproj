@@ -12,6 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Save.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Save.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="IGameLogic.cs" />
     <Resource Include="stylecop.json" />
   </ItemGroup>

@@ -69,6 +69,8 @@ namespace TetrisMario.Model
             /// </summary>
             Wall,
 
+            Bullet,
+
             /// <summary>
             /// Undecided tile.
             /// </summary>
@@ -158,13 +160,15 @@ namespace TetrisMario.Model
             /// </summary>
             Box = -100,
 
-            DoubleJump = -50000000,
+            DoubleJump = -60000,
 
-            DoublePush = -50000000,
+            DoublePush = -60000,
 
             NextBlockBasic = -500,
 
-            NextBlockBlockStorm = -250
+            NextBlockBlockStorm = -250,
+
+            BulletWaitTime = -10
         }
 
         public enum ScorePoints

@@ -21,6 +21,7 @@
     <None Remove="Images\Border.bmp" />
     <None Remove="Images\Brown Brick.bmp" />
     <None Remove="Images\Brown Metal.bmp" />
+    <None Remove="Images\Bullet.bmp" />
     <None Remove="Images\Gold Brick.bmp" />
     <None Remove="Images\Gold Metal.bmp" />
     <None Remove="Images\Green brick.bmp" />
@@ -42,6 +43,7 @@
     <EmbeddedResource Include="Images\Border.bmp" />
     <EmbeddedResource Include="Images\Brown Brick.bmp" />
     <EmbeddedResource Include="Images\Brown Metal.bmp" />
+    <EmbeddedResource Include="Images\Bullet.bmp" />
     <EmbeddedResource Include="Images\Gold Brick.bmp" />
     <EmbeddedResource Include="Images\Gold Metal.bmp" />
     <EmbeddedResource Include="Images\Green Brick.bmp" />
