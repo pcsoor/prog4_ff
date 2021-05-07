@@ -19,6 +19,7 @@ namespace TetrisMario.Control
     /// </summary>
     public class GameControl : FrameworkElement
     {
+        public string name = "";
         private IGameModel model;
         private IGameItem gameItem;
         private Logic.GameLogic logic;
