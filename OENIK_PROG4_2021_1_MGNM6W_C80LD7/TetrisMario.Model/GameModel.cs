@@ -10,6 +10,7 @@ namespace TetrisMario.Model
     public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
+        private bool gameOver;
 
         public static int HighScore { get; set; }
 
@@ -34,12 +35,13 @@ namespace TetrisMario.Model
         {
             this.GameWidth = w;
             this.GameHeight = h;
-            BlockStormActive = 0;
-            MetalBlocksOnly = 0;
+            this.BlockStormActive = 0;
+            this.MetalBlocksOnly = 0;
             HighScore = 0;
-            playerLife = 1;
-            timeLeftForDoubleJump = 0;
-            timeLeftForDoublePush = 0;
+            this.playerLife = 1;
+            this.timeLeftForDoubleJump = 0;
+            this.timeLeftForDoublePush = 0;
+            this.gameOver = false;
         }
 
         /// <summary>
@@ -65,5 +67,6 @@ namespace TetrisMario.Model
         /// Gets or sets tile size.
         /// </summary>
         public double TileSize { get; set; }
+        public bool GameOver { get { return this.gameOver; } set { this.gameOver = value; } }
     }
 }

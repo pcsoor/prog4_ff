@@ -90,5 +90,54 @@ namespace TetrisMario.Logic.Tests
 
             Assert.IsTrue(result);
         }
+
+        /// <summary>
+        /// Checks if players life was decreased in update method.
+        /// </summary>
+        [Test]
+        public void CheckIfLifeDecreased()
+        {
+            int life = 2;
+            GameModel.Map = new GameItem[26, 16];
+
+            GameObject item = new GameObject(Types.Block, 10, 10);
+            GameModel.Map[10, 10] = item;
+
+            GameObject nextItem = new GameObject(Types.Player, 10, 11);
+            GameModel.Map[10, 11] = nextItem;
+
+            this.logic.Update();
+
+            Assert.AreNotEqual(this.gameModel.playerLife, life);
+        }
+
+        [Test]
+        public void BlockShouldNotFall_Test()
+        {
+            GameObject item = new GameObject(Types.Block, 13, 14);
+            GameModel.Map[13, 14] = item;
+
+            this.logic.Update();
+
+            Assert.That(GameModel.Map[item.X, item.Y] != null);
+        }
+
+        [Test]
+        public void GameIsOver_Test()
+        {
+            this.gameModel.playerLife = 1;
+            this.gameModel.GameOver = false;
+            GameModel.Map = new GameItem[26, 16];
+
+            GameObject item = new GameObject(Types.Block, 10, 10);
+            GameModel.Map[10, 10] = item;
+
+            GameObject nextItem = new GameObject(Types.Player, 10, 11);
+            GameModel.Map[10, 11] = nextItem;
+
+            this.logic.Update();
+
+            Assert.That(this.gameModel.GameOver == true);
+        }
     }
 }

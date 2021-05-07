@@ -46,7 +46,6 @@ namespace TetrisMario.Logic
             }
         }
 
-<<<<<<< HEAD
         public void Save(string fname)
         {
             StreamWriter sw = new StreamWriter(fname);
@@ -109,8 +108,6 @@ namespace TetrisMario.Logic
             }
         }
 
-=======
->>>>>>> 1b9113473035922357ffbd0d148bb12ffa9cba4a
         /// <summary>
         /// Spawn one block in random place.
         /// </summary>
@@ -452,7 +449,14 @@ namespace TetrisMario.Logic
                             else if (item.CheckSurrounding(Directions.Down).Type == Types.Player)
                             {
                                 GameModel.Map[item.X, item.Y] = null;
-                                model.playerLife -= 1;
+                                if (this.model.playerLife > 1)
+                                {
+                                    this.model.playerLife -= 1;
+                                }
+                                else
+                                {
+                                    this.model.GameOver = true;
+                                }
                             }
                         }
                         else if (item.WaitTime != 0)
@@ -464,7 +468,14 @@ namespace TetrisMario.Logic
                                 if (result == Types.Player)
                                 {
                                     GameModel.Map[item.X, item.Y] = null;
-                                    model.playerLife -= 1;
+                                    if (this.model.playerLife > 1)
+                                    {
+                                        this.model.playerLife -= 1;
+                                    }
+                                    else
+                                    {
+                                        this.model.GameOver = true;
+                                    }
                                 }
                             }
                         }

@@ -27,6 +27,7 @@ namespace TetrisMario.Control
         private DispatcherTimer mainTimer;
         private Repo repo;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameControl"/> class.
         /// </summary>
@@ -86,11 +87,7 @@ namespace TetrisMario.Control
                 case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Shoot); break;
                 case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
                 case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
-<<<<<<< HEAD
-                case Key.Escape: this.logic.Save("Save.txt"); break;
-=======
                 case Key.Escape: this.repo.Save(); this.repo.SaveHighScores(); break;
->>>>>>> 1b9113473035922357ffbd0d148bb12ffa9cba4a
             }
 
             this.InvalidateVisual();
@@ -107,6 +104,17 @@ namespace TetrisMario.Control
             this.logic.Update();
             this.logic.CheckIfBottomIsFull();
             this.InvalidateVisual();
+
+            if (this.model.GameOver)
+            {
+                this.GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            this.stw.Stop();
+            MessageBox.Show("Game Over!");
         }
     }
 }

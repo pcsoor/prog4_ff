@@ -42,5 +42,6 @@ namespace TetrisMario.Model
         int timeLeftForDoubleJump { get; set; }
 
         int timeLeftForDoublePush { get; set; }
+        bool GameOver { get; set; }
     }
 }
