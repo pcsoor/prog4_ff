@@ -48,38 +48,33 @@ namespace TetrisMario.Logic
 
         public void Save()
         {
-            string lines = string.Empty;
-            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+            StreamWriter sw = new StreamWriter("Save.txt");
+            for (int y = 0; y < GameModel.Map.GetLength(1); y++)
             {
-                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
                 {
                     if (GameModel.Map[x, y] != null)
                     {
-                        switch (GameModel.Map[x, y].Type)
-                        {
-                            case Enumerators.Types.Wall:
-                                lines += '1';
-                                break;
-                            case Enumerators.Types.Player:
-                                lines += '7';
-                                break;
-                            case Enumerators.Types.Block:
-                                lines += '2';
-                                break;
-                            default:
-                                lines += ' ';
-                                break;
-                        }
+                        string line = ((int)GameModel.Map[x, y].UiElement).ToString();
+                        sw.Write(line);
+                    }
+                    else
+                    {
+                        string line = " ";
+                        sw.Write(line);
                     }
                 }
+
+                sw.WriteLine();
             }
 
-            File.WriteAllText(@"Save.txt", lines);
+            sw.Flush();
+            sw.Close();
         }
 
         public void Load()
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OENIK_PROG4_2021_1_MGNM6W_C80LD7.GameLogic.Save.txt");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Save.txt");
             StreamReader sr = new StreamReader(stream);
             string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
             for (int x = 0; x < GameModel.Map.GetLength(0); x++)
@@ -97,6 +92,12 @@ namespace TetrisMario.Logic
                             break;
                         case '2':
                             GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
+                            break;
+                        case '3':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
+                            break;
+                        case '4':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
                             break;
                         default:
                             GameModel.Map[x, y] = null;
