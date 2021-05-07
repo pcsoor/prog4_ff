@@ -93,7 +93,7 @@ namespace TetrisMario.Control
                 case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Shoot); break;
                 case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
                 case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
-                case Key.Escape: this.logic.Save(); break;
+                case Key.Escape: this.logic.Save("Save.txt"); break;
             }
 
             this.InvalidateVisual();

@@ -46,9 +46,9 @@ namespace TetrisMario.Logic
             }
         }
 
-        public void Save()
+        public void Save(string fname)
         {
-            StreamWriter sw = new StreamWriter("Save.txt");
+            StreamWriter sw = new StreamWriter(fname);
             for (int y = 0; y < GameModel.Map.GetLength(1); y++)
             {
                 for (int x = 0; x < GameModel.Map.GetLength(0); x++)
@@ -70,6 +70,7 @@ namespace TetrisMario.Logic
 
             sw.Flush();
             sw.Close();
+
         }
 
         public void Load()
