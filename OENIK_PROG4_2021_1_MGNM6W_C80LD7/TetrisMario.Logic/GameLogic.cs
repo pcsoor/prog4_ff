@@ -156,7 +156,7 @@ namespace TetrisMario.Logic
         /// <summary>
         /// Check last layer of game area.
         /// </summary>
-        public void CheckIfBottomIsFull()
+        public bool CheckIfBottomIsFull()
         {
             bool result = true;
             for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
@@ -164,6 +164,7 @@ namespace TetrisMario.Logic
                 if (GameModel.Map[i, GameModel.Map.GetLength(1) - 2] == null || GameModel.Map[i, GameModel.Map.GetLength(1) - 2].Type == Types.Player)
                 {
                     result = false;
+                    return result;
                 }
             }
 
@@ -176,6 +177,8 @@ namespace TetrisMario.Logic
 
                 GameModel.HighScore += (int)ScorePoints.BottomFull;
             }
+
+            return result;
         }
 
         /// <summary>
@@ -198,46 +201,15 @@ namespace TetrisMario.Logic
             GameModel.Map[13, 14] = new Player(13, 14);
         }
 
-        public void Shoot(Player player)
+        public bool Shoot(Player player)
         {
             if (GameModel.Map[player.X, player.Y - 1] == null)
             {
                 GameModel.Map[player.X, player.Y - 1] = new GameObject(Types.Bullet, player.X, player.Y - 1);
+                return true;
             }
 
-            //if (player.canShoot)
-            //{
-            //    for (int i = player.Y - 1; i > 4; i--)
-            //    {
-            //        if (GameModel.Map[player.X, i] != null)
-            //        {
-            //            if (GameModel.Map[player.X, i].Type == Enumerators.Types.Block)
-            //            {
-            //                GameModel.Map[player.X, i] = null;
-            //            }
-            //            else if (GameModel.Map[player.X, i].Type == Enumerators.Types.PowerUp)
-            //            {
-            //                GameModel.Map[player.X, i] = null;
-            //                Random rnd = new Random();
-            //                int powerUpChance = rnd.Next(1, 4);
-            //                if (powerUpChance == 1)
-            //                {
-            //                    player.canDoubleJump = true;
-            //                    player.timeLeftForDoubleJump += (int)WaitTime.DoubleJump;
-            //                }
-            //                else if (powerUpChance == 2)
-            //                {
-            //                    model.playerLife += 1;
-            //                }
-            //                else
-            //                {
-            //                    player.canDoublePush = true;
-            //                    player.timeLeftForDoublePush += (int)WaitTime.DoublePush;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+            return false;
         }
 
         /// <summary>
@@ -245,7 +217,7 @@ namespace TetrisMario.Logic
         /// </summary>
         public void Update()
         {
-            foreach (IGameItem item in GameModel.Map)
+            foreach (GameItem item in GameModel.Map)
             {
                 if (item != null)
                 {

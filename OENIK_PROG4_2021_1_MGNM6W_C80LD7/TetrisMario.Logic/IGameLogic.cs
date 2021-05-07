@@ -28,7 +28,7 @@ namespace TetrisMario.Logic
         /// <summary>
         /// Checks that bottom layer is wether full or not.
         /// </summary>
-        void CheckIfBottomIsFull();
+        bool CheckIfBottomIsFull();
 
         /// <summary>
         /// Spawn one block.
