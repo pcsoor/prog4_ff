@@ -22,7 +22,10 @@ namespace TetrisMario.Renderer
         private int oldLifeValue = -1;
         private FormattedText lifeText;
         private FormattedText stormActiveText;
-        private int oldBlockStorm = 0;
+        private FormattedText metalActiveText;
+        private FormattedText doubleJumpActiveText;
+        private FormattedText doublePushActiveText;
+        private FormattedText highscore;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameRenderer"/> class.
@@ -234,7 +237,7 @@ namespace TetrisMario.Renderer
             if (this.model.BlockStormActive >= 0)
             {
                 this.stormActiveText = new FormattedText(
-                    "BLOCKSTORM: -",
+                    "BLOCKSTORM: - ",
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Consolas"),
@@ -254,9 +257,106 @@ namespace TetrisMario.Renderer
                     2);
             }
 
-            ctx.DrawText(this.stormActiveText, new Point(10 * this.model.TileSize, 1.5 * this.model.TileSize));
+            ctx.DrawText(this.stormActiveText, new Point(3.5 * this.model.TileSize, 1.5 * this.model.TileSize));
         }
 
+        private void DrawMetalActive(DrawingContext ctx)
+        {
+            if (this.model.MetalBlocksOnly >= 0)
+            {
+                this.metalActiveText = new FormattedText(
+                    "Metal Blocks Only: - ",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.metalActiveText = new FormattedText(
+                    "Metal Blocks Only: ACTIVE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.metalActiveText, new Point(8 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawDoubleJumpActive(DrawingContext ctx)
+        {
+            if (this.model.timeLeftForDoubleJump < 0)
+            {
+                this.doubleJumpActiveText = new FormattedText(
+                    "Double Jump: " + model.timeLeftForDoubleJump/1000,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.doubleJumpActiveText = new FormattedText(
+                    "Double Jump: 0",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.doubleJumpActiveText, new Point(15 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawDoublePushActive(DrawingContext ctx)
+        {
+            if (this.model.timeLeftForDoublePush < 0)
+            {
+                this.doublePushActiveText = new FormattedText(
+                    "Double Push: " + model.timeLeftForDoublePush / 1000,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.doublePushActiveText = new FormattedText(
+                    "Double Push: 0",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.doublePushActiveText, new Point(20 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void Highscore(DrawingContext ctx)
+        {
+            this.highscore = new FormattedText(
+                    "Score: " + GameModel.HighScore,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+
+            ctx.DrawText(this.highscore, new Point(13 * this.model.TileSize, 1 * this.model.TileSize));
+        }
 
         /// <summary>
         /// Builder method.
@@ -346,6 +446,10 @@ namespace TetrisMario.Renderer
 
                 this.DrawLifeText(ctx);
                 this.DrawBlockStormActive(ctx);
+                this.DrawMetalActive(ctx);
+                this.DrawDoubleJumpActive(ctx);
+                this.DrawDoublePushActive(ctx);
+                this.Highscore(ctx);
             }
         }
     }

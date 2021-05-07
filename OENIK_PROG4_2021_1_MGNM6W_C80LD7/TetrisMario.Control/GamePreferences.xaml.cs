@@ -6,6 +6,7 @@ namespace TetrisMario.Control
 {
     using System.Windows;
     using global::GameControl;
+    using TetrisMario.Model;
 
     /// <summary>
     /// Interaction logic for GamePreferences.xaml.

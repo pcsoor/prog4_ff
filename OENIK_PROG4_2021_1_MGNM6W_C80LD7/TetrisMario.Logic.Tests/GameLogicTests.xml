@@ -14,11 +14,6 @@
             SetUp method.
             </summary>
         </member>
-        <member name="M:TetrisMario.Logic.Tests.GameTests.TestUpdate">
-            <summary>
-            Test spawn method.
-            </summary>
-        </member>
         <member name="M:TetrisMario.Logic.Tests.GameTests.CheckIfBottomIsFullTest">
             <summary>
             Testing check that last layer is full or not.

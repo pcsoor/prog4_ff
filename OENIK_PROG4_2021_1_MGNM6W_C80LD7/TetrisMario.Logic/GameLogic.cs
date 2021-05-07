@@ -66,11 +66,11 @@ namespace TetrisMario.Logic
                     {
                         GameModel.Map[randomNumber, 4] = new GameObject(Types.Block, randomNumber, 4);
                     }
-                    else if (randomBlockType < 99 && randomBlockType > 80)
+                    else if (randomBlockType < 95 && randomBlockType > 80)
                     {
                         GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
                     }
-                    else if (randomBlockType >= 99)
+                    else if (randomBlockType >= 95)
                     {
                         GameModel.Map[randomNumber, 4] = new GameObject(Types.PowerUp, randomNumber, 4);
                     }
