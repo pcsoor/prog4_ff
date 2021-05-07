@@ -1,5 +1,5 @@
-﻿// <copyright file="GameLogic.cs" company="MGNM6W_C80LD7">
-// Copyright (c) MGNM6W_C80LD7. All rights reserved.
+﻿// <copyright file="GameLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace TetrisMario.Logic
@@ -46,66 +46,20 @@ namespace TetrisMario.Logic
             }
         }
 
-        public void Save(string fname)
+        /// <summary>
+        /// Shoot nethod for the player. Spawns a bullet above the player.
+        /// </summary>
+        /// <param name="player">The player.</param>
+        /// <returns>Returns true if there is nothing above the player.</returns>
+        public static bool Shoot(Player player)
         {
-            StreamWriter sw = new StreamWriter(fname);
-            for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+            if (GameModel.Map[player.X, player.Y - 1] == null)
             {
-                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
-                {
-                    if (GameModel.Map[x, y] != null)
-                    {
-                        string line = ((int)GameModel.Map[x, y].UiElement).ToString();
-                        sw.Write(line);
-                    }
-                    else
-                    {
-                        string line = " ";
-                        sw.Write(line);
-                    }
-                }
-
-                sw.WriteLine();
+                GameModel.Map[player.X, player.Y - 1] = new GameObject(Types.Bullet, player.X, player.Y - 1);
+                return true;
             }
 
-            sw.Flush();
-            sw.Close();
-
-        }
-
-        public void Load()
-        {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Save.txt");
-            StreamReader sr = new StreamReader(stream);
-            string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
-            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
-            {
-                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
-                {
-                    char current = lines[y][x];
-                    switch (current)
-                    {
-                        case '1':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
-                            break;
-                        case '7':
-                            GameModel.Map[x, y] = new Player(x, y);
-                            break;
-                        case '2':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
-                            break;
-                        case '3':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
-                            break;
-                        case '4':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
-                            break;
-                        default:
-                            GameModel.Map[x, y] = null;
-                            break;
-                    }
-                }
-            }
+            return false;
         }
 
         /// <summary>
@@ -117,7 +71,7 @@ namespace TetrisMario.Logic
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
-                if (model.MetalBlocksOnly < 0)
+                if (GameModel.MetalBlocksOnly < 0)
                 {
                     GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
                 }
@@ -136,10 +90,9 @@ namespace TetrisMario.Logic
                     {
                         GameModel.Map[randomNumber, 4] = new GameObject(Types.PowerUp, randomNumber, 4);
                     }
-
                 }
 
-                if (model.BlockStormActive < 0)
+                if (GameModel.BlockStormActive < 0)
                 {
                     nextBoxCounter = (int)WaitTime.NextBlockBlockStorm;
                 }
@@ -151,14 +104,15 @@ namespace TetrisMario.Logic
             else
             {
                 nextBoxCounter += 5;
-                model.MetalBlocksOnly += 5;
-                model.BlockStormActive += 5;
+                GameModel.MetalBlocksOnly += 5;
+                GameModel.BlockStormActive += 5;
             }
         }
 
         /// <summary>
         /// Check last layer of game area.
         /// </summary>
+        /// <returns>Return true if the bottom is full.</returns>
         public bool CheckIfBottomIsFull()
         {
             bool result = true;
@@ -189,11 +143,17 @@ namespace TetrisMario.Logic
         /// </summary>
         public void InitModel()
         {
+            bool playerAlreadyExist = false;
             this.model.TileSize = Math.Min(this.model.GameWidth / 26, this.model.GameHeight / 16);
             for (int i = 0; i < GameModel.Map.GetLength(0); i++)
             {
                 for (int j = 0; j < GameModel.Map.GetLength(1); j++)
                 {
+                    if (GameModel.Map[i, j] != null && GameModel.Map[i, j].Type == Types.Player)
+                    {
+                        playerAlreadyExist = true;
+                    }
+
                     if (i == 0 || j == 0 || j == 3 || i == 25 || j == 15)
                     {
                         GameModel.Map[i, j] = new GameObject(Types.Wall, i, j);
@@ -201,18 +161,10 @@ namespace TetrisMario.Logic
                 }
             }
 
-            GameModel.Map[13, 14] = new Player(13, 14);
-        }
-
-        public bool Shoot(Player player)
-        {
-            if (GameModel.Map[player.X, player.Y - 1] == null)
+            if (playerAlreadyExist == false)
             {
-                GameModel.Map[player.X, player.Y - 1] = new GameObject(Types.Bullet, player.X, player.Y - 1);
-                return true;
+                GameModel.Map[13, 14] = new Player(13, 14);
             }
-
-            return false;
         }
 
         /// <summary>
@@ -242,15 +194,15 @@ namespace TetrisMario.Logic
                                 int powerUpChance = rnd.Next(1, 4);
                                 if (powerUpChance == 1)
                                 {
-                                    model.timeLeftForDoubleJump += (int)WaitTime.DoubleJump;
+                                    GameModel.TimeLeftForDoubleJump += (int)WaitTime.DoubleJump;
                                 }
                                 else if (powerUpChance == 2)
                                 {
-                                    model.playerLife += 1;
+                                    GameModel.PlayerLife += 1;
                                 }
                                 else
                                 {
-                                    model.timeLeftForDoublePush += (int)WaitTime.DoublePush;
+                                    GameModel.TimeLeftForDoublePush += (int)WaitTime.DoublePush;
                                 }
                             }
                             else if (result == Types.Metal || result == Types.Wall)
@@ -267,14 +219,14 @@ namespace TetrisMario.Logic
                     }
                     else if (item.Type == Types.Player)
                     {
-                        if (model.timeLeftForDoubleJump < 0)
+                        if (GameModel.TimeLeftForDoubleJump < 0)
                         {
-                            model.timeLeftForDoubleJump += 5;
+                            GameModel.TimeLeftForDoubleJump += 5;
                         }
 
-                        if (model.timeLeftForDoublePush < 0)
+                        if (GameModel.TimeLeftForDoublePush < 0)
                         {
-                            model.timeLeftForDoublePush += 5;
+                            GameModel.TimeLeftForDoublePush += 5;
                         }
 
                         if (item.WaitTime >= 0)
@@ -295,7 +247,7 @@ namespace TetrisMario.Logic
                                     Directions input = this.inputs.Dequeue();
                                     if (input == Directions.Shoot)
                                     {
-                                        this.Shoot((Player)item);
+                                        Shoot((Player)item);
                                     }
                                     else
                                     {
@@ -322,7 +274,7 @@ namespace TetrisMario.Logic
                                                     }
                                                 }
                                             }
-                                            else if (model.timeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
+                                            else if (GameModel.TimeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
                                             {
                                                 GameObject block2 = (GameObject)block.CheckSurrounding(input);
                                                 if ((block2.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block2.CheckSurrounding(input).Type == Types.Empty))
@@ -396,7 +348,7 @@ namespace TetrisMario.Logic
                                                     }
                                                 }
                                             }
-                                            else if (model.timeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
+                                            else if (GameModel.TimeLeftForDoublePush < 0 && (block.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block.CheckSurrounding(input).Type == Types.Block || block.CheckSurrounding(input).Type == Types.PowerUp))
                                             {
                                                 GameObject block2 = (GameObject)block.CheckSurrounding(input);
                                                 if ((block2.CheckSurrounding(Directions.Up).Type == Types.Empty) && (block2.CheckSurrounding(input).Type == Types.Empty))
@@ -420,7 +372,7 @@ namespace TetrisMario.Logic
                                         }
                                     }
                                 }
-                                else if (model.timeLeftForDoubleJump < 0 && (item as Player).LastMove == Directions.Up)
+                                else if (GameModel.TimeLeftForDoubleJump < 0 && (item as Player).LastMove == Directions.Up)
                                 {
                                     if (item.Y + 2 < GameModel.Map.GetLength(1))
                                     {
@@ -449,13 +401,13 @@ namespace TetrisMario.Logic
                             else if (item.CheckSurrounding(Directions.Down).Type == Types.Player)
                             {
                                 GameModel.Map[item.X, item.Y] = null;
-                                if (this.model.playerLife > 1)
+                                if (GameModel.PlayerLife > 1)
                                 {
-                                    this.model.playerLife -= 1;
+                                    GameModel.PlayerLife -= 1;
                                 }
                                 else
                                 {
-                                    this.model.GameOver = true;
+                                    GameModel.GameOver = true;
                                 }
                             }
                         }
@@ -468,13 +420,14 @@ namespace TetrisMario.Logic
                                 if (result == Types.Player)
                                 {
                                     GameModel.Map[item.X, item.Y] = null;
-                                    if (this.model.playerLife > 1)
+                                    if (GameModel.PlayerLife > 1)
                                     {
-                                        this.model.playerLife -= 1;
+                                        GameModel.PlayerLife -= 1;
                                     }
                                     else
                                     {
-                                        this.model.GameOver = true;
+                                        GameModel.GameOver = true;
+                                        File.Delete("TetrisMario.Repository.Save.txt");
                                     }
                                 }
                             }

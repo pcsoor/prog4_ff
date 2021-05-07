@@ -12,17 +12,14 @@ namespace TetrisMario.Control
     using System.Threading.Tasks;
     using GalaSoft.MvvmLight;
 
+    /// <summary>
+    /// Main view model for the highscore window.
+    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         /// <summary>
-        /// gets or sets highsocers.
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
-        public ObservableCollection<Highscore> HighScores { get; private set; }
-
-        string highscoreSelected;
-
-        public string HighscoreSelected { get; set; }
-
         public MainViewModel()
         {
             this.HighScores = new ObservableCollection<Highscore>();
@@ -38,9 +35,19 @@ namespace TetrisMario.Control
                 for (int i = 0; i < lines.Length; i++)
                 {
                     Highscore newHighscore = new Highscore() { Data = lines[i] };
-                    HighScores.Add(newHighscore);
+                    this.HighScores.Add(newHighscore);
                 }
             }
         }
+
+        /// <summary>
+        /// Gets ts highscoers.
+        /// </summary>
+        public ObservableCollection<Highscore> HighScores { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the selected highscore.
+        /// </summary>
+        public string HighscoreSelected { get; set; }
     }
 }

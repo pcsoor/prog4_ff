@@ -31,17 +31,44 @@ namespace TetrisMario.Model
         /// </summary>
         double TileSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets highscore of the current game.
+        /// </summary>
         static int Highscore { get; set; }
 
-        int BlockStormActive { get; set; }
+        /// <summary>
+        /// Gets or sets the time left for the blockstorm event.
+        /// </summary>
+        static int BlockStormActive { get; set; }
 
-        public int playerLife { get; set; }
+        /// <summary>
+        /// Gets or sets the players life.
+        /// </summary>
+        public static int PlayerLife { get; set; }
 
-        int MetalBlocksOnly { get; set; }
+        /// <summary>
+        /// Gets or sets the time left for metal storm event.
+        /// </summary>
+        static int MetalBlocksOnly { get; set; }
 
-        int timeLeftForDoubleJump { get; set; }
+        /// <summary>
+        /// Gets or sets time left for the double jump power up.
+        /// </summary>
+        static int TimeLeftForDoubleJump { get; set; }
 
-        int timeLeftForDoublePush { get; set; }
-        bool GameOver { get; set; }
+        /// <summary>
+        /// Gets or sets the time for double push power up.
+        /// </summary>
+        static int TimeLeftForDoublePush { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the game is over.
+        /// </summary>
+        static bool GameOver { get; set; }
+
+        /// <summary>
+        /// Gets or sets the players name.
+        /// </summary>
+        static string PlayerName { get; set; }
     }
 }

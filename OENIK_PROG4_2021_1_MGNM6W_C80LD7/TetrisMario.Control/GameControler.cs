@@ -1,4 +1,4 @@
-﻿// <copyright file="GameControl.cs" company="MGNM6W_C80LD7">
+﻿// <copyright file="GameControler.cs" company="MGNM6W_C80LD7">
 // Copyright (c) MGNM6W_C80LD7. All rights reserved.
 // </copyright>
 
@@ -17,22 +17,23 @@ namespace TetrisMario.Control
     /// <summary>
     /// Game control class.
     /// </summary>
-    public class GameControl : FrameworkElement
+    public class GameControler : FrameworkElement
     {
-        public string name = "";
+        /// <summary>
+        /// Name of the player.
+        /// </summary>
+        public new string Name = string.Empty;
         private IGameModel model;
         private IGameItem gameItem;
         private Logic.GameLogic logic;
         private GameRenderer renderer;
         private Stopwatch stw;
         private DispatcherTimer mainTimer;
-        private Repo repo;
-
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameControl"/> class.
+        /// Initializes a new instance of the <see cref="GameControler"/> class.
         /// </summary>
-        public GameControl()
+        public GameControler()
         {
             this.Loaded += this.MarioTetrisControl_Loaded;
         }
@@ -57,7 +58,6 @@ namespace TetrisMario.Control
             this.logic = new Logic.GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
             this.stw.Start();
-            this.repo = new Repo();
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -68,12 +68,12 @@ namespace TetrisMario.Control
                 this.mainTimer.Start();
                 if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 360000 == 0)
                 {
-                    this.model.BlockStormActive = -30000;
+                    GameModel.BlockStormActive = -30000;
                 }
 
                 if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 240000 == 0)
                 {
-                    this.model.MetalBlocksOnly = -30000;
+                    GameModel.MetalBlocksOnly = -30000;
                 }
             }
 
@@ -88,7 +88,7 @@ namespace TetrisMario.Control
                 case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Shoot); break;
                 case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
                 case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
-                case Key.Escape: this.repo.Save(); this.repo.SaveHighScores(); break;
+                case Key.Escape: Repo.Save(); Repo.SaveHighScores(); break;
             }
 
             this.InvalidateVisual();
@@ -106,7 +106,7 @@ namespace TetrisMario.Control
             this.logic.CheckIfBottomIsFull();
             this.InvalidateVisual();
 
-            if (this.model.GameOver)
+            if (GameModel.GameOver)
             {
                 this.GameOver();
             }

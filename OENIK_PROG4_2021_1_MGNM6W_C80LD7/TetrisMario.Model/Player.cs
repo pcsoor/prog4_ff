@@ -16,9 +16,10 @@ namespace TetrisMario.Model
     /// </summary>
     public class Player : GameItem
     {
-        private bool canShoot = true;
-        public bool CanShoot { get { return canShoot; } set { this.canShoot = value; } }
         private static Player instance;
+
+        private bool canShoot = true;
+
         private Directions lastMove = Directions.Null;
 
         /// <summary>
@@ -33,6 +34,14 @@ namespace TetrisMario.Model
             instance = this;
             this.X = x;
             this.Y = y;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the player can shoot.
+        /// </summary>
+        public bool CanShoot
+        {
+            get { return this.canShoot; } set { this.canShoot = value; }
         }
 
         /// <summary>

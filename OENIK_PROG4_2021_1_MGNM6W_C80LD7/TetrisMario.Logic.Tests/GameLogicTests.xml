@@ -24,5 +24,15 @@
             Checks if players life was decreased in update method.
             </summary>
         </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.BlockShouldNotFall_Test">
+            <summary>
+            Checks whether the block falls even if it has support.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.GameIsOver_Test">
+            <summary>
+            Checks if the game of works properly.
+            </summary>
+        </member>
     </members>
 </doc>

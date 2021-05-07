@@ -29,7 +29,17 @@
             Basic block element.
             </summary>
         </member>
-        <member name="F:TetrisMario.Model.Enumerators.UiElements.Undecided">
+        <member name="F:TetrisMario.Model.Enumerators.UiElements.Metal">
+            <summary>
+            Metal block element.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.UiElements.PowerUp">
+            <summary>
+            Power UP block element.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.UiElements.None">
             <summary>
             Undecided element.
             </summary>
@@ -39,19 +49,34 @@
             Tile types.
             </summary>
         </member>
+        <member name="F:TetrisMario.Model.Enumerators.Types.PowerUp">
+            <summary>
+            Power Up block type.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.Types.Metal">
+            <summary>
+            Metal block type.
+            </summary>
+        </member>
         <member name="F:TetrisMario.Model.Enumerators.Types.Player">
             <summary>
-            Player tile.
+            Player block type.
             </summary>
         </member>
         <member name="F:TetrisMario.Model.Enumerators.Types.Block">
             <summary>
-            Block tile.
+            Basic block type.
             </summary>
         </member>
         <member name="F:TetrisMario.Model.Enumerators.Types.Wall">
             <summary>
-            Wall tile.
+            Wall block type.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.Types.Bullet">
+            <summary>
+            Bullet block type.
             </summary>
         </member>
         <member name="F:TetrisMario.Model.Enumerators.Types.Undecided">
@@ -114,6 +139,11 @@
             Not defined direction.
             </summary>
         </member>
+        <member name="F:TetrisMario.Model.Enumerators.Directions.Shoot">
+            <summary>
+            Shoot action type.
+            </summary>
+        </member>
         <member name="T:TetrisMario.Model.Enumerators.WaitTime">
             <summary>
             Wait times of specific game items.
@@ -139,9 +169,49 @@
             Box's wait time.
             </summary>
         </member>
+        <member name="F:TetrisMario.Model.Enumerators.WaitTime.DoubleJump">
+            <summary>
+            Double jump time.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.WaitTime.DoublePush">
+            <summary>
+            Double push time.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.WaitTime.NextBlockBasic">
+            <summary>
+            Wait time till the next block spawning.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.WaitTime.NextBlockBlockStorm">
+            <summary>
+            Wait time till the next block spawning when block storm is active.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.WaitTime.BulletWaitTime">
+            <summary>
+            Wait time for bullets next movement.
+            </summary>
+        </member>
+        <member name="T:TetrisMario.Model.Enumerators.ScorePoints">
+            <summary>
+            Points you get for certain events.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.Enumerators.ScorePoints.BottomFull">
+            <summary>
+            The score given for filling the bottom of the map.
+            </summary>
+        </member>
         <member name="T:TetrisMario.Model.GameItem">
             <summary>
             Game item class.
+            </summary>
+        </member>
+        <member name="F:TetrisMario.Model.GameItem.Color">
+            <summary>
+            Block color.
             </summary>
         </member>
         <member name="P:TetrisMario.Model.GameItem.Type">
@@ -176,14 +246,6 @@
             <param name="direction">direction.</param>
             <returns>Types.</returns>
         </member>
-        <member name="M:TetrisMario.Model.GameItem.Move(System.Int32,System.Int32)">
-            <summary>
-            Game item's moving.
-            </summary>
-            <param name="newX">x coordinates.</param>
-            <param name="newY">y coordinates.</param>
-            <returns>Type.</returns>
-        </member>
         <member name="M:TetrisMario.Model.GameItem.CheckSurrounding(TetrisMario.Model.Enumerators.Directions)">
             <summary>
             Checks surrounded items.
@@ -203,9 +265,49 @@
             <param name="w">width of the game.</param>
             <param name="h">height of the game.</param>
         </member>
+        <member name="P:TetrisMario.Model.GameModel.HighScore">
+            <summary>
+            Gets or sets the highscore for the current game.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.BlockStormActive">
+            <summary>
+            Gets or sets the time of the blocstorm.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.MetalBlocksOnly">
+            <summary>
+            Gets or sets the time of the metal strorm event.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.PlayerLife">
+            <summary>
+            Gets or sets the players life.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.TimeLeftForDoubleJump">
+            <summary>
+            Gets or sets the time left for the double jump power up.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.TimeLeftForDoublePush">
+            <summary>
+            Gets or sets the time left for the double push power up.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.PlayerName">
+            <summary>
+            Gets or sets the players name.
+            </summary>
+        </member>
         <member name="P:TetrisMario.Model.GameModel.Map">
             <summary>
             Gets or sets the map.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.GameModel.GameOver">
+            <summary>
+            Gets or sets a value indicating whether the game is over or not.
             </summary>
         </member>
         <member name="P:TetrisMario.Model.GameModel.GameWidth">
@@ -277,14 +379,6 @@
             Push element to one direction.
             </summary>
             <param name="direction">direction.</param>
-            <returns>Types.</returns>
-        </member>
-        <member name="M:TetrisMario.Model.IGameItem.Move(System.Int32,System.Int32)">
-            <summary>
-            Move item.
-            </summary>
-            <param name="newX">new x coordinate.</param>
-            <param name="newY">new y coordinate.</param>
             <returns>Types.</returns>
         </member>
         <member name="M:TetrisMario.Model.IGameItem.CheckSurrounding(TetrisMario.Model.Enumerators.Directions)">

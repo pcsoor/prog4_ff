@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="Game Preferences" Height="700" Width="900"
         WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <data:GameControl x:Key="VM" />
-    </Window.Resources>
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="images/background_empty.jpg" Stretch="UniformToFill" />

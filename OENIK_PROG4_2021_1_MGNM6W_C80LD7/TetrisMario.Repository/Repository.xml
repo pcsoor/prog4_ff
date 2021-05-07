@@ -19,5 +19,31 @@
             Gets or sets game board.
             </summary>
         </member>
+        <member name="T:TetrisMario.Repository.Repo">
+            <summary>
+            Class containing methods for saving and loading.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Repository.Repo.LoadHighscores">
+            <summary>
+            Method for loading the highscores.
+            </summary>
+            <returns>Returns the highscores.</returns>
+        </member>
+        <member name="M:TetrisMario.Repository.Repo.SaveHighScores">
+            <summary>
+            Saves the high scores into a file.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Repository.Repo.Save">
+            <summary>
+            Saves the current state of the game into a file.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Repository.Repo.Load">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>

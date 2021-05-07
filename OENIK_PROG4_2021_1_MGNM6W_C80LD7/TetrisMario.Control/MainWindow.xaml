@@ -7,5 +7,5 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="602" Width="897"
         WindowState="Maximized">
-    <local:GameControl />
+    <local:GameControler />
 </Window>

@@ -12,7 +12,7 @@
             <ImageBrush ImageSource="images/background.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <Button Content="New Game" HorizontalAlignment="Center" Height="57" Margin="0,250,0,0" VerticalAlignment="Top" Width="257" Click="StartGame_Click" FontFamily="Consolas" FontSize="20"/>
-        <Button Content="Load Game" HorizontalAlignment="Center" Height="57" Margin="0,390,0,0" VerticalAlignment="Top" Width="257" FontFamily="Consolas"  FontSize="20"/>
+        <Button Content="Load Game" HorizontalAlignment="Center" Height="57" Margin="0,390,0,0" VerticalAlignment="Top" Width="257" FontFamily="Consolas" Click="Load_Click"  FontSize="20"/>
         <Button Content="Highscores" HorizontalAlignment="Center" Height="57" Margin="0,320,0,0" VerticalAlignment="Top" Width="257" Click="Highscores_Click" FontFamily="Consolas"  FontSize="20"/>
         <Button Content="Exit" HorizontalAlignment="Center" Height="57" Margin="0,460,0,0" VerticalAlignment="Top" Width="257" Click="Exit_Click" FontFamily="Consolas"  FontSize="20"/>
     </Grid>

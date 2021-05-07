@@ -37,18 +37,16 @@ namespace TetrisMario.Model
                     break;
                 case Types.Wall:
                     this.UiElement = UiElements.Wall;
-                    this.Pushable = false;
                     break;
                 case Types.Undecided:
-                    this.UiElement = UiElements.Undecided;
+                    this.UiElement = UiElements.None;
                     break;
                 case Types.Empty:
-                    this.UiElement = UiElements.Undecided;
+                    this.UiElement = UiElements.None;
                     break;
                 case Types.Metal:
                     this.Color = num;
                     this.UiElement = UiElements.Metal;
-                    this.Pushable = false;
                     break;
                 case Types.PowerUp:
                     this.UiElement = UiElements.PowerUp;

@@ -1,5 +1,5 @@
-﻿// <copyright file="IGameLogic.cs" company="MGNM6W_C80LD7">
-// Copyright (c) MGNM6W_C80LD7. All rights reserved.
+﻿// <copyright file="IGameLogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace TetrisMario.Logic
@@ -28,6 +28,7 @@ namespace TetrisMario.Logic
         /// <summary>
         /// Checks that bottom layer is wether full or not.
         /// </summary>
+        /// <returns>True if the bottom is full.</returns>
         bool CheckIfBottomIsFull();
 
         /// <summary>

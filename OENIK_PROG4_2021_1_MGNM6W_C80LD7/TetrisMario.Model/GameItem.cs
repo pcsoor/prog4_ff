@@ -16,10 +16,12 @@ namespace TetrisMario.Model
     /// </summary>
     public class GameItem : IGameItem
     {
-        public bool Pushable = true;
+        /// <summary>
+        /// Block color.
+        /// </summary>
         public int Color = 0;
         private Types type = Types.Undecided;
-        private UiElements ui = UiElements.Undecided;
+        private UiElements ui = UiElements.None;
         private int waitTime;
         private int x = -1;
         private int y = -1;
@@ -105,28 +107,6 @@ namespace TetrisMario.Model
             else
             {
                 return GameModel.Map[newX, newY].Type;
-            }
-        }
-
-        /// <summary>
-        /// Game item's moving.
-        /// </summary>
-        /// <param name="newX">x coordinates.</param>
-        /// <param name="newY">y coordinates.</param>
-        /// <returns>Type.</returns>
-        public Types Move(int newX, int newY)
-        {
-            if (GameModel.Map[newX, newY] == null)
-            {
-                GameModel.Map[this.X, this.Y] = null;
-                this.X = newX;
-                this.Y = newY;
-                GameModel.Map[this.X, this.Y] = this;
-                return Types.Empty;
-            }
-            else
-            {
-                return GameModel.Map[this.X, this.Y].Type;
             }
         }
 
