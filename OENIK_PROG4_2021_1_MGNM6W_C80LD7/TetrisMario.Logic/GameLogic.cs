@@ -46,67 +46,6 @@ namespace TetrisMario.Logic
             }
         }
 
-        public void Save()
-        {
-            StreamWriter sw = new StreamWriter("Save.txt");
-            for (int y = 0; y < GameModel.Map.GetLength(1); y++)
-            {
-                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
-                {
-                    if (GameModel.Map[x, y] != null)
-                    {
-                        string line = ((int)GameModel.Map[x, y].UiElement).ToString();
-                        sw.Write(line);
-                    }
-                    else
-                    {
-                        string line = " ";
-                        sw.Write(line);
-                    }
-                }
-
-                sw.WriteLine();
-            }
-
-            sw.Flush();
-            sw.Close();
-        }
-
-        public void Load()
-        {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Save.txt");
-            StreamReader sr = new StreamReader(stream);
-            string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
-            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
-            {
-                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
-                {
-                    char current = lines[y][x];
-                    switch (current)
-                    {
-                        case '1':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
-                            break;
-                        case '7':
-                            GameModel.Map[x, y] = new Player(x, y);
-                            break;
-                        case '2':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
-                            break;
-                        case '3':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
-                            break;
-                        case '4':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
-                            break;
-                        default:
-                            GameModel.Map[x, y] = null;
-                            break;
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// Spawn one block in random place.
         /// </summary>
@@ -116,7 +55,7 @@ namespace TetrisMario.Logic
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
-                if (model.MetalBlocksOnly == true)
+                if (model.MetalBlocksOnly < 0)
                 {
                     GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
                 }
@@ -138,7 +77,7 @@ namespace TetrisMario.Logic
 
                 }
 
-                if (model.BlockStormActive == true)
+                if (model.BlockStormActive < 0)
                 {
                     nextBoxCounter = (int)WaitTime.NextBlockBlockStorm;
                 }
@@ -150,6 +89,8 @@ namespace TetrisMario.Logic
             else
             {
                 nextBoxCounter += 5;
+                model.MetalBlocksOnly += 5;
+                model.BlockStormActive += 5;
             }
         }
 

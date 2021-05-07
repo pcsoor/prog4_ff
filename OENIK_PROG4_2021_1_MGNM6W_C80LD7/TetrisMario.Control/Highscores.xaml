@@ -9,22 +9,26 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:MainViewModel x:Key="VM" />
-        <DataTemplate x:Key="listTemplate">
+        <DataTemplate x:Key="listTemplate" DataType="{x:Type local:Highscore}">
             <DockPanel>
-                <Label Content="{Binding Path=HighScores}" DockPanel.Dock="Left" />
-                <Label />
+                <Label Content="{Binding Path=Data}" DockPanel.Dock="Left" HorizontalContentAlignment="Center"  />
             </DockPanel>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource VM}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="307*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="images/background_empty.jpg" Stretch="UniformToFill" />
         </Grid.Background>
 
-        <Button Content="Back" HorizontalAlignment="Center" Height="52" Margin="0,575,0,0" VerticalAlignment="Top" Width="190" FontSize="22" FontFamily="Consolas" Background="#FDFFFFFF" Click="BackToMainMenu_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Height="52" Margin="355,575,0,0" VerticalAlignment="Top" Width="190" FontSize="22" FontFamily="Consolas" Background="#FDFFFFFF" Click="BackToMainMenu_Click"/>
         <ListBox ItemTemplate="{StaticResource listTemplate}"
-                 HorizontalAlignment="Center" Height="375" Margin="0,132,0,0" VerticalAlignment="Top" Width="401"
-                 ItemsSource="{Binding Path=HighScores}"/>
-        <Label Content="Highscores" HorizontalAlignment="Center" Height="48" Margin="0,46,0,0" VerticalAlignment="Top" Width="279" Foreground="White" FontSize="30" HorizontalContentAlignment="Center" FontFamily="Consolas"/>
+            ItemsSource="{Binding Path=HighScores}" SelectedItem="{Binding Path=HighscoreSelected}"
+            HorizontalContentAlignment="Stretch"
+            HorizontalAlignment="Left" Height="251" Margin="297,187,0,0" VerticalAlignment="Top" Width="307" />
+        <Label Content="Highscores" HorizontalAlignment="Left" Height="48" Margin="310,50,0,0" VerticalAlignment="Top" Width="280" Foreground="White" FontSize="30" HorizontalContentAlignment="Center" FontFamily="Consolas"/>
     </Grid>
 </Window>

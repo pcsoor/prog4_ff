@@ -22,7 +22,7 @@ namespace TetrisMario.Renderer
         private int oldLifeValue = -1;
         private FormattedText lifeText;
         private FormattedText stormActiveText;
-        private bool oldBlockStorm = false;
+        private int oldBlockStorm = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameRenderer"/> class.
@@ -231,7 +231,7 @@ namespace TetrisMario.Renderer
 
         private void DrawBlockStormActive(DrawingContext ctx)
         {
-            if (this.model.BlockStormActive != oldBlockStorm)
+            if (this.model.BlockStormActive >= 0)
             {
                 this.stormActiveText = new FormattedText(
                     "BLOCKSTORM: -",

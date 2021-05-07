@@ -40,6 +40,7 @@
     <ProjectReference Include="..\TetrisMario.Logic\TetrisMario.Logic.csproj" />
     <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
     <ProjectReference Include="..\TetrisMario.Renderer\TetrisMario.Renderer.csproj" />
+    <ProjectReference Include="..\TetrisMario.Repository\TetrisMario.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -33,11 +33,11 @@ namespace TetrisMario.Model
 
         static int Highscore { get; set; }
 
-        bool BlockStormActive { get; set; }
+        int BlockStormActive { get; set; }
 
         public int playerLife { get; set; }
 
-        bool MetalBlocksOnly { get; set; }
+        int MetalBlocksOnly { get; set; }
 
         int timeLeftForDoubleJump { get; set; }
 
