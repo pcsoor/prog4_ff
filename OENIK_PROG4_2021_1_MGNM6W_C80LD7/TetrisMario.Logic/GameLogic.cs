@@ -46,6 +46,68 @@ namespace TetrisMario.Logic
             }
         }
 
+        public void Save(string fname)
+        {
+            StreamWriter sw = new StreamWriter(fname);
+            for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+            {
+                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+                {
+                    if (GameModel.Map[x, y] != null)
+                    {
+                        string line = ((int)GameModel.Map[x, y].UiElement).ToString();
+                        sw.Write(line);
+                    }
+                    else
+                    {
+                        string line = " ";
+                        sw.Write(line);
+                    }
+                }
+
+                sw.WriteLine();
+            }
+
+            sw.Flush();
+            sw.Close();
+
+        }
+
+        public void Load()
+        {
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Save.txt");
+            StreamReader sr = new StreamReader(stream);
+            string[] lines = sr.ReadToEnd().Replace("\r", "").Split('\n');
+            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+            {
+                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+                {
+                    char current = lines[y][x];
+                    switch (current)
+                    {
+                        case '1':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
+                            break;
+                        case '7':
+                            GameModel.Map[x, y] = new Player(x, y);
+                            break;
+                        case '2':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
+                            break;
+                        case '3':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
+                            break;
+                        case '4':
+                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
+                            break;
+                        default:
+                            GameModel.Map[x, y] = null;
+                            break;
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Spawn one block in random place.
         /// </summary>
@@ -387,7 +449,14 @@ namespace TetrisMario.Logic
                             else if (item.CheckSurrounding(Directions.Down).Type == Types.Player)
                             {
                                 GameModel.Map[item.X, item.Y] = null;
-                                model.playerLife -= 1;
+                                if (this.model.playerLife > 1)
+                                {
+                                    this.model.playerLife -= 1;
+                                }
+                                else
+                                {
+                                    this.model.GameOver = true;
+                                }
                             }
                         }
                         else if (item.WaitTime != 0)
@@ -399,7 +468,14 @@ namespace TetrisMario.Logic
                                 if (result == Types.Player)
                                 {
                                     GameModel.Map[item.X, item.Y] = null;
-                                    model.playerLife -= 1;
+                                    if (this.model.playerLife > 1)
+                                    {
+                                        this.model.playerLife -= 1;
+                                    }
+                                    else
+                                    {
+                                        this.model.GameOver = true;
+                                    }
                                 }
                             }
                         }

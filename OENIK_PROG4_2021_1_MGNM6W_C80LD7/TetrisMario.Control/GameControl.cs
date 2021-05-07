@@ -27,6 +27,7 @@ namespace TetrisMario.Control
         private DispatcherTimer mainTimer;
         private Repo repo;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameControl"/> class.
         /// </summary>
@@ -103,6 +104,17 @@ namespace TetrisMario.Control
             this.logic.Update();
             this.logic.CheckIfBottomIsFull();
             this.InvalidateVisual();
+
+            if (this.model.GameOver)
+            {
+                this.GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            this.stw.Stop();
+            MessageBox.Show("Game Over!");
         }
     }
 }

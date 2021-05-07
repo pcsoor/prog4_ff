@@ -19,5 +19,10 @@
             Testing check that last layer is full or not.
             </summary>
         </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.CheckIfLifeDecreased">
+            <summary>
+            Checks if players life was decreased in update method.
+            </summary>
+        </member>
     </members>
 </doc>
