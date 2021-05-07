@@ -14,24 +14,33 @@ namespace TetrisMario.Control
 
     public class MainViewModel : ViewModelBase
     {
-        public MainViewModel()
-        {
-            this.HighScores = new ObservableCollection<string>();
-
-            if (this.IsInDesignMode)
-            {
-                this.HighScores.Add("Erik");
-                this.HighScores.Add("Peti");
-            }
-            else
-            {
-                this.HighScores.Add("asd");
-            }
-        }
-
         /// <summary>
         /// gets or sets highsocers.
         /// </summary>
-        public ObservableCollection<string> HighScores { get; private set; }
+        public ObservableCollection<Highscore> HighScores { get; private set; }
+
+        string highscoreSelected;
+
+        public string HighscoreSelected { get; set; }
+
+        public MainViewModel()
+        {
+            this.HighScores = new ObservableCollection<Highscore>();
+
+            if (this.IsInDesignMode)
+            {
+                Highscore h1 = new Highscore() { Data = "erik - 10000" };
+                this.HighScores.Add(h1);
+            }
+            else
+            {
+                string[] lines = Repository.Repo.LoadHighscores();
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    Highscore newHighscore = new Highscore() { Data = lines[i] };
+                    HighScores.Add(newHighscore);
+                }
+            }
+        }
     }
 }

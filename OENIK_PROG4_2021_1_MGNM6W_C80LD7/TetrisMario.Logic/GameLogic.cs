@@ -46,6 +46,7 @@ namespace TetrisMario.Logic
             }
         }
 
+<<<<<<< HEAD
         public void Save(string fname)
         {
             StreamWriter sw = new StreamWriter(fname);
@@ -108,6 +109,8 @@ namespace TetrisMario.Logic
             }
         }
 
+=======
+>>>>>>> 1b9113473035922357ffbd0d148bb12ffa9cba4a
         /// <summary>
         /// Spawn one block in random place.
         /// </summary>
@@ -117,7 +120,7 @@ namespace TetrisMario.Logic
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(1, GameModel.Map.GetLength(0) - 1);
-                if (model.MetalBlocksOnly == true)
+                if (model.MetalBlocksOnly < 0)
                 {
                     GameModel.Map[randomNumber, 4] = new GameObject(Types.Metal, randomNumber, 4);
                 }
@@ -139,7 +142,7 @@ namespace TetrisMario.Logic
 
                 }
 
-                if (model.BlockStormActive == true)
+                if (model.BlockStormActive < 0)
                 {
                     nextBoxCounter = (int)WaitTime.NextBlockBlockStorm;
                 }
@@ -151,6 +154,8 @@ namespace TetrisMario.Logic
             else
             {
                 nextBoxCounter += 5;
+                model.MetalBlocksOnly += 5;
+                model.BlockStormActive += 5;
             }
         }
 

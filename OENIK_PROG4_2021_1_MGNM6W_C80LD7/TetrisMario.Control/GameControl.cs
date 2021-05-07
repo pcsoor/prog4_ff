@@ -12,6 +12,7 @@ namespace TetrisMario.Control
     using System.Windows.Threading;
     using TetrisMario.Model;
     using TetrisMario.Renderer;
+    using TetrisMario.Repository;
 
     /// <summary>
     /// Game control class.
@@ -24,6 +25,7 @@ namespace TetrisMario.Control
         private GameRenderer renderer;
         private Stopwatch stw;
         private DispatcherTimer mainTimer;
+        private Repo repo;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameControl"/> class.
@@ -53,6 +55,7 @@ namespace TetrisMario.Control
             this.logic = new Logic.GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
             this.stw.Start();
+            this.repo = new Repo();
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -61,24 +64,14 @@ namespace TetrisMario.Control
                 this.mainTimer.Interval = TimeSpan.FromMilliseconds(1);
                 this.mainTimer.Tick += this.TimerTick;
                 this.mainTimer.Start();
-                if (this.stw.ElapsedMilliseconds % 360000 == 0)
+                if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 10000 == 0)
                 {
-                    this.model.BlockStormActive = true;
+                    this.model.BlockStormActive = -30000;
                 }
 
-                //if (this.stw.ElapsedMilliseconds % 180000 == 0)
-                //{
-                //    this.model.MetalBlocksOnly = true;
-                //}
-
-                if (this.stw.ElapsedMilliseconds % 180000 == 0)
+                if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 240000 == 0)
                 {
-                    this.model.BlockStormActive = true;
-                }
-
-                if (this.stw.ElapsedMilliseconds % 240000 == 0)
-                {
-                    this.model.MetalBlocksOnly = true;
+                    this.model.MetalBlocksOnly = -30000;
                 }
             }
 
@@ -93,7 +86,11 @@ namespace TetrisMario.Control
                 case Key.S: this.logic.Inputs.Enqueue(Enumerators.Directions.Shoot); break;
                 case Key.A: this.logic.Inputs.Enqueue(Enumerators.Directions.Left); break;
                 case Key.D: this.logic.Inputs.Enqueue(Enumerators.Directions.Right); break;
+<<<<<<< HEAD
                 case Key.Escape: this.logic.Save("Save.txt"); break;
+=======
+                case Key.Escape: this.repo.Save(); this.repo.SaveHighScores(); break;
+>>>>>>> 1b9113473035922357ffbd0d148bb12ffa9cba4a
             }
 
             this.InvalidateVisual();
