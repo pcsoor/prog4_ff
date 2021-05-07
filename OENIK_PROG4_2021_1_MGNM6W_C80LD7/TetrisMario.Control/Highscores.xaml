@@ -7,13 +7,24 @@
         mc:Ignorable="d"
         Title="Highscores" Height="700" Width="900"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:MainViewModel x:Key="VM" />
+        <DataTemplate x:Key="listTemplate">
+            <DockPanel>
+                <Label Content="{Binding Path=HighScores}" DockPanel.Dock="Left" />
+                <Label />
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="images/background_empty.jpg" Stretch="UniformToFill" />
         </Grid.Background>
 
         <Button Content="Back" HorizontalAlignment="Center" Height="52" Margin="0,575,0,0" VerticalAlignment="Top" Width="190" FontSize="22" FontFamily="Consolas" Background="#FDFFFFFF" Click="BackToMainMenu_Click"/>
-        <ListBox HorizontalAlignment="Center" Height="375" Margin="0,132,0,0" VerticalAlignment="Top" Width="401"/>
+        <ListBox ItemTemplate="{StaticResource listTemplate}"
+                 HorizontalAlignment="Center" Height="375" Margin="0,132,0,0" VerticalAlignment="Top" Width="401"
+                 ItemsSource="{Binding Path=HighScores}"/>
         <Label Content="Highscores" HorizontalAlignment="Center" Height="48" Margin="0,46,0,0" VerticalAlignment="Top" Width="279" Foreground="White" FontSize="30" HorizontalContentAlignment="Center" FontFamily="Consolas"/>
     </Grid>
 </Window>

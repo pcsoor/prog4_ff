@@ -203,6 +203,7 @@ namespace TetrisMario.Logic
             {
                 GameModel.Map[player.X, player.Y - 1] = new GameObject(Types.Bullet, player.X, player.Y - 1);
             }
+
             //if (player.canShoot)
             //{
             //    for (int i = player.Y - 1; i > 4; i--)
@@ -243,7 +244,7 @@ namespace TetrisMario.Logic
         /// </summary>
         public void Update()
         {
-            foreach (GameItem item in GameModel.Map)
+            foreach (IGameItem item in GameModel.Map)
             {
                 if (item != null)
                 {

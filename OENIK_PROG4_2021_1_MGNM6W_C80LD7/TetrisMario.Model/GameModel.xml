@@ -247,6 +247,31 @@
             Game item interface.
             </summary>
         </member>
+        <member name="P:TetrisMario.Model.IGameItem.Type">
+            <summary>
+            Gets or sets type.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameItem.UiElement">
+            <summary>
+            Gets or sets UiElements.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameItem.WaitTime">
+            <summary>
+            Gets or sets wait time.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameItem.X">
+            <summary>
+            Gets or sets x coordinate.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameItem.Y">
+            <summary>
+            Gets or sets y coordinate.
+            </summary>
+        </member>
         <member name="M:TetrisMario.Model.IGameItem.Push(TetrisMario.Model.Enumerators.Directions)">
             <summary>
             Push element to one direction.

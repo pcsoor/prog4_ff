@@ -19,6 +19,10 @@ namespace TetrisMario.Renderer
     {
         private IGameModel model;
         private Dictionary<string, Brush> myBrushes = new Dictionary<string, Brush>();
+        private int oldLifeValue = -1;
+        private FormattedText lifeText;
+        private FormattedText stormActiveText;
+        private bool oldBlockStorm = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameRenderer"/> class.
@@ -208,6 +212,52 @@ namespace TetrisMario.Renderer
             return this.myBrushes[fname];
         }
 
+        private void DrawLifeText(DrawingContext ctx)
+        {
+            if (this.oldLifeValue != this.model.playerLife)
+            {
+                this.lifeText = new FormattedText(
+                    "Life: "+ this.model.playerLife.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.lifeText, new Point(1.5 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawBlockStormActive(DrawingContext ctx)
+        {
+            if (this.model.BlockStormActive != oldBlockStorm)
+            {
+                this.stormActiveText = new FormattedText(
+                    "BLOCKSTORM: -",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.stormActiveText = new FormattedText(
+                    "BLOCKSTORM: ACTIVE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.stormActiveText, new Point(10 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+
         /// <summary>
         /// Builder method.
         /// </summary>
@@ -241,7 +291,7 @@ namespace TetrisMario.Renderer
                                 {
                                     ctx.DrawGeometry(this.GreyBlockBrush, null, box);
                                 }
-                                else if(GameModel.Map[x, y].Color == 5)
+                                else if (GameModel.Map[x, y].Color == 5)
                                 {
                                     ctx.DrawGeometry(this.BrownBlockBrush, null, box);
                                 }
@@ -293,6 +343,9 @@ namespace TetrisMario.Renderer
                         }
                     }
                 }
+
+                this.DrawLifeText(ctx);
+                this.DrawBlockStormActive(ctx);
             }
         }
     }

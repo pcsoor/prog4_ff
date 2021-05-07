@@ -52,7 +52,7 @@ namespace TetrisMario.Control
             this.gameItem = new GameItem();
             this.logic = new Logic.GameLogic(this.model);
             this.renderer = new GameRenderer(this.model);
-            stw.Start();
+            this.stw.Start();
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -61,24 +61,24 @@ namespace TetrisMario.Control
                 this.mainTimer.Interval = TimeSpan.FromMilliseconds(1);
                 this.mainTimer.Tick += this.TimerTick;
                 this.mainTimer.Start();
-                if (stw.ElapsedMilliseconds % 360000 == 0)
+                if (this.stw.ElapsedMilliseconds % 360000 == 0)
                 {
-                    model.BlockStormActive = true;
+                    this.model.BlockStormActive = true;
                 }
 
-                if (stw.ElapsedMilliseconds % 180000 == 0)
+                //if (this.stw.ElapsedMilliseconds % 180000 == 0)
+                //{
+                //    this.model.MetalBlocksOnly = true;
+                //}
+
+                if (this.stw.ElapsedMilliseconds % 180000 == 0)
                 {
-                    model.MetalBlocksOnly = true;
+                    this.model.BlockStormActive = true;
                 }
 
-                if (stw.ElapsedTicks % 420000 == 0)
+                if (this.stw.ElapsedMilliseconds % 240000 == 0)
                 {
-                    model.BlockStormActive = false;
-                }
-
-                if (stw.ElapsedMilliseconds % 240000 == 0)
-                {
-                    model.MetalBlocksOnly = false;
+                    this.model.MetalBlocksOnly = true;
                 }
             }
 

@@ -18,8 +18,9 @@ namespace TetrisMario.Logic.Tests
         private Types types;
         private Directions dir;
         private GameLogic logic;
+        private Player testPlayer;
 
-        private Mock<GameItem> MockedGameItem { get; set; }
+        private Mock<IGameItem> MockedGameItem { get; set; }
 
         private Mock<IGameModel> MockedGameModel { get; set; }
 
@@ -29,12 +30,14 @@ namespace TetrisMario.Logic.Tests
         [SetUp]
         public void Setup()
         {
-            this.MockedGameItem = new Mock<GameItem>(MockBehavior.Loose);
+            this.MockedGameItem = new Mock<IGameItem>(MockBehavior.Loose);
             this.MockedGameModel = new Mock<IGameModel>(MockBehavior.Loose);
 
             this.logic = new GameLogic(this.MockedGameModel.Object);
 
             // this.types = Types.Block;
+
+            this.testPlayer = new Player(10, 10);
         }
 
         /// <summary>
@@ -87,5 +90,6 @@ namespace TetrisMario.Logic.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
     }
 }

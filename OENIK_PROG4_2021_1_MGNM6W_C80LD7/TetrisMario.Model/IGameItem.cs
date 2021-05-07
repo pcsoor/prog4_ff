@@ -17,6 +17,31 @@ namespace TetrisMario.Model
     public interface IGameItem
     {
         /// <summary>
+        /// Gets or sets type.
+        /// </summary>
+        Types Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets UiElements.
+        /// </summary>
+        UiElements UiElement { get; set; }
+
+        /// <summary>
+        /// Gets or sets wait time.
+        /// </summary>
+        int WaitTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets x coordinate.
+        /// </summary>
+        int X { get; set; }
+
+        /// <summary>
+        /// Gets or sets y coordinate.
+        /// </summary>
+        int Y { get; set; }
+
+        /// <summary>
         /// Push element to one direction.
         /// </summary>
         /// <param name="direction">direction.</param>
