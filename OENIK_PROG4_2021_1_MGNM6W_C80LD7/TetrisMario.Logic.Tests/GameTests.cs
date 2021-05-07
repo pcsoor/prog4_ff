@@ -19,10 +19,11 @@ namespace TetrisMario.Logic.Tests
         private Directions dir;
         private GameLogic logic;
         private Player testPlayer;
+        private GameModel gameModel;
+        private GameItem gameItem;
+        private Player player;
 
-        private Mock<IGameItem> MockedGameItem { get; set; }
-
-        private Mock<IGameModel> MockedGameModel { get; set; }
+        public Mock<IGameItem> MockedGameItem { get; set; }
 
         /// <summary>
         /// SetUp method.
@@ -30,10 +31,12 @@ namespace TetrisMario.Logic.Tests
         [SetUp]
         public void Setup()
         {
-            this.MockedGameItem = new Mock<IGameItem>(MockBehavior.Loose);
-            this.MockedGameModel = new Mock<IGameModel>(MockBehavior.Loose);
+            this.gameModel = new GameModel(20, 20);
+            this.gameItem = new GameItem();
 
-            this.logic = new GameLogic(this.MockedGameModel.Object);
+            this.MockedGameItem = new Mock<IGameItem>();
+
+            this.logic = new GameLogic(this.gameModel);
 
             // this.types = Types.Block;
 
@@ -43,21 +46,20 @@ namespace TetrisMario.Logic.Tests
         /// <summary>
         /// Test spawn method.
         /// </summary>
-        [Test]
-        public void TestUpdate()
-        {
-            // Arrange
-            this.types = Types.Block;
-            this.dir = Directions.Down;
+        //[Test]
+        //public void TestUpdate()
+        //{
+        //    // Arrange
+        //    this.types = Types.Block;
+        //    this.dir = Directions.Up;
+        //    this.MockedGameItem.Setup(item => item.Push(It.IsAny<Directions>()));
 
-            this.MockedGameItem.Setup(item => item.Push(It.IsAny<Directions>()));
+        //    // Act
+        //    this.logic.Update();
 
-            // Act
-            this.logic.Update();
-
-            // Assert
-            this.MockedGameItem.Verify(item => item.Push(this.dir), Times.AtLeastOnce);
-        }
+        //    // Assert
+        //    this.MockedGameItem.Verify(item => item.Push(It.IsAny<Directions>()), Times.AtLeastOnce);
+        //}
 
         /// <summary>
         /// Testing check that last layer is full or not.
@@ -65,31 +67,28 @@ namespace TetrisMario.Logic.Tests
         [Test]
         public void CheckIfBottomIsFullTest()
         {
-            // Arrange
-            bool result = true;
+            GameModel.Map = new GameItem[26,16];
 
-            for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
-            {
-                if (GameModel.Map[i, GameModel.Map.GetLength(1) - 2] == null || GameModel.Map[i, GameModel.Map.GetLength(1) - 2].Type == Enumerators.Types.Player)
-                {
-                    result = false;
-                }
-            }
+            GameModel.Map[0, GameModel.Map.GetLength(1) - 2] = null;
+            bool firstResult = this.logic.CheckIfBottomIsFull();
 
-            // Act
-            if (result)
-            {
-                for (int i = 1; i < GameModel.Map.GetLength(0) - 1; i++)
-                {
-                    GameModel.Map[i, GameModel.Map.GetLength(1) - 2] = null;
-                }
-            }
+            GameModel.Map[1, GameModel.Map.GetLength(1) - 2] = new GameItem();
+            GameModel.Map[1, GameModel.Map.GetLength(1) - 2].Type = Types.Player;
+            bool secondResult = this.logic.CheckIfBottomIsFull();
 
-            this.logic.CheckIfBottomIsFull();
-
-            // Assert
-            Assert.IsTrue(result);
+            Assert.False(firstResult);
+            Assert.False(secondResult);
         }
 
+        [Test]
+        public void ShootTest()
+        {
+            Player testPlayer = new Player(10, 10);
+            GameModel.Map[testPlayer.X, testPlayer.Y - 1] = null;
+
+            bool result = this.logic.Shoot(testPlayer);
+
+            Assert.IsTrue(result);
+        }
     }
 }
