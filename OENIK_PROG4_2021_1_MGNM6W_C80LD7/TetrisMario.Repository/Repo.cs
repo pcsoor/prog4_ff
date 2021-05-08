@@ -19,6 +19,12 @@ namespace TetrisMario.Repository
         /// <returns>Returns the highscores.</returns>
         public static string[] LoadHighscores()
         {
+            if (!File.Exists("Highscores.txt"))
+            {
+                StreamWriter sw2 = new StreamWriter("Highscores.txt");
+                sw2.Close();
+            }
+
             StreamReader sr = new StreamReader("Highscores.txt");
             string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
             sr.Close();
