@@ -104,6 +104,11 @@
             Highscores
             </summary>
         </member>
+        <member name="M:TetrisMario.Control.Highscores.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Control.Highscores"/> class.
+            </summary>
+        </member>
         <member name="M:TetrisMario.Control.Highscores.InitializeComponent">
             <summary>
             InitializeComponent

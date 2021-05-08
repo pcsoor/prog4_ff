@@ -106,7 +106,7 @@ namespace TetrisMario.Control
             this.logic.CheckIfBottomIsFull();
             this.InvalidateVisual();
 
-            if (GameModel.GameOver)
+            if (this.model.GameOver)
             {
                 this.GameOver();
             }

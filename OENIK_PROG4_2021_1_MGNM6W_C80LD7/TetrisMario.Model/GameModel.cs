@@ -10,7 +10,7 @@ namespace TetrisMario.Model
     public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
-        private readonly bool gameOver;
+        private bool gameOver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameModel"/> class.
@@ -77,7 +77,11 @@ namespace TetrisMario.Model
         /// <summary>
         /// Gets or sets a value indicating whether the game is over or not.
         /// </summary>
-        public static bool GameOver { get; set; }
+        public bool GameOver
+        {
+            get { return this.gameOver; }
+            set { this.gameOver = value; }
+        }
 
         /// <summary>
         /// Gets game width.

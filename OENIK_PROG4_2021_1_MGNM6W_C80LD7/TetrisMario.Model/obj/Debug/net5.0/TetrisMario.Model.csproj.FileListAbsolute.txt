@@ -22,4 +22,3 @@ C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2
 C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\TetrisMario.Model\bin\Debug\net5.0\ref\TetrisMario.Model.dll
 C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\TetrisMario.Model\bin\Debug\net5.0\TetrisMario.Model.pdb
 C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\TetrisMario.Model\bin\Debug\net5.0\GameModel.xml
-C:\Users\csoor\OneDrive\Documents\oenik_prog4_2021_1_mgnm6w_c80ld7\OENIK_PROG4_2021_1_MGNM6W_C80LD7\TetrisMario.Model\obj\Debug\net5.0\TetrisMario.Model.csprojAssemblyReference.cache

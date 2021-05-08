@@ -42,7 +42,7 @@
         </member>
         <member name="M:TetrisMario.Repository.Repo.Load">
             <summary>
-            
+            Load the game model with the saved data.
             </summary>
         </member>
     </members>

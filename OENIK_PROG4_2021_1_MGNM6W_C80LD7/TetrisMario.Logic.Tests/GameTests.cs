@@ -15,13 +15,10 @@ namespace TetrisMario.Logic.Tests
     [TestFixture]
     public class GameTests
     {
-        private Types types;
-        private Directions dir;
         private GameLogic logic;
         private Player testPlayer;
         private GameModel gameModel;
         private GameItem gameItem;
-        private Player player;
 
         /// <summary>
         /// Gets or sets the mocked game item.
@@ -41,28 +38,8 @@ namespace TetrisMario.Logic.Tests
 
             this.logic = new GameLogic(this.gameModel);
 
-            // this.types = Types.Block;
-
             this.testPlayer = new Player(10, 10);
         }
-
-        /// <summary>
-        /// Test spawn method.
-        /// </summary>
-        //[Test]
-        //public void TestUpdate()
-        //{
-        //    // Arrange
-        //    this.types = Types.Block;
-        //    this.dir = Directions.Up;
-        //    this.MockedGameItem.Setup(item => item.Push(It.IsAny<Directions>()));
-
-        //    // Act
-        //    this.logic.Update();
-
-        //    // Assert
-        //    this.MockedGameItem.Verify(item => item.Push(It.IsAny<Directions>()), Times.AtLeastOnce);
-        //}
 
         /// <summary>
         /// Testing check that last layer is full or not.
@@ -121,7 +98,7 @@ namespace TetrisMario.Logic.Tests
         /// Checks whether the block falls even if it has support.
         /// </summary>
         [Test]
-        public void BlockShouldNotFall_Test()
+        public void BlockShouldNotFallTest()
         {
             GameObject item = new GameObject(Types.Block, 13, 14);
             GameModel.Map[13, 14] = item;
@@ -135,10 +112,10 @@ namespace TetrisMario.Logic.Tests
         /// Checks if the game of works properly.
         /// </summary>
         [Test]
-        public void GameIsOver_Test()
+        public void GameIsOverTest()
         {
             GameModel.PlayerLife = 1;
-            GameModel.GameOver = false;
+            this.gameModel.GameOver = false;
             GameModel.Map = new GameItem[26, 16];
 
             GameObject item = new GameObject(Types.Block, 10, 10);
@@ -149,7 +126,7 @@ namespace TetrisMario.Logic.Tests
 
             this.logic.Update();
 
-            Assert.That(GameModel.GameOver == true);
+            Assert.IsTrue(this.gameModel.GameOver);
         }
     }
 }

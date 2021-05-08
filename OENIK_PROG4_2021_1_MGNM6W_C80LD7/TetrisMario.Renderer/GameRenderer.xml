@@ -15,6 +15,11 @@
             </summary>
             <param name="model">model reference.</param>
         </member>
+        <member name="P:TetrisMario.Renderer.GameRenderer.BulletBrush">
+            <summary>
+            Gets the bullet's brush.
+            </summary>
+        </member>
         <member name="P:TetrisMario.Renderer.GameRenderer.PlayerBrush">
             <summary>
             Gets player's brush.

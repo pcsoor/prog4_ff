@@ -40,23 +40,28 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:TetrisMario.Control.GameControl">
+        <member name="T:TetrisMario.Control.GameControler">
             <summary>
             Game control class.
             </summary>
         </member>
-        <member name="M:TetrisMario.Control.GameControl.#ctor">
+        <member name="F:TetrisMario.Control.GameControler.Name">
             <summary>
-            Initializes a new instance of the <see cref="T:TetrisMario.Control.GameControl"/> class.
+            Name of the player.
             </summary>
         </member>
-        <member name="M:TetrisMario.Control.GameControl.OnRender(System.Windows.Media.DrawingContext)">
+        <member name="M:TetrisMario.Control.GameControler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Control.GameControler"/> class.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Control.GameControler.OnRender(System.Windows.Media.DrawingContext)">
             <summary>
             Calls renderer.
             </summary>
             <param name="drawingContext">drawing context.</param>
         </member>
-        <member name="M:TetrisMario.Control.GameControl.TimerTick(System.Object,System.EventArgs)">
+        <member name="M:TetrisMario.Control.GameControler.TimerTick(System.Object,System.EventArgs)">
             <summary>
             one tick in game.
             </summary>
@@ -81,12 +86,27 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:TetrisMario.Control.Highscore">
+            <summary>
+            Class for storing highscores.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Control.Highscore.Data">
+            <summary>
+            Gets or sets name of the player and their score.
+            </summary>
+        </member>
         <member name="T:TetrisMario.Control.Highscores">
             <summary>
-            Interaction logic for Highscores.xaml
+            Interaction logic for Highscores.xaml.
             </summary>
             <summary>
             Highscores
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Control.Highscores.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Control.Highscores"/> class.
             </summary>
         </member>
         <member name="M:TetrisMario.Control.Highscores.InitializeComponent">
@@ -112,9 +132,24 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:TetrisMario.Control.MainViewModel">
+            <summary>
+            Main view model for the highscore window.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Control.MainViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TetrisMario.Control.MainViewModel"/> class.
+            </summary>
+        </member>
         <member name="P:TetrisMario.Control.MainViewModel.HighScores">
             <summary>
-            gets or sets highsocers.
+            Gets ts highscoers.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Control.MainViewModel.HighscoreSelected">
+            <summary>
+            Gets or sets the selected highscore.
             </summary>
         </member>
     </members>

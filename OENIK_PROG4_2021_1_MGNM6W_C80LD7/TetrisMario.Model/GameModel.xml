@@ -408,6 +408,46 @@
             Gets or sets tile size.
             </summary>
         </member>
+        <member name="P:TetrisMario.Model.IGameModel.Highscore">
+            <summary>
+            Gets or sets highscore of the current game.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.BlockStormActive">
+            <summary>
+            Gets or sets the time left for the blockstorm event.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.PlayerLife">
+            <summary>
+            Gets or sets the players life.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.MetalBlocksOnly">
+            <summary>
+            Gets or sets the time left for metal storm event.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.TimeLeftForDoubleJump">
+            <summary>
+            Gets or sets time left for the double jump power up.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.TimeLeftForDoublePush">
+            <summary>
+            Gets or sets the time for double push power up.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.GameOver">
+            <summary>
+            Gets or sets a value indicating whether the game is over.
+            </summary>
+        </member>
+        <member name="P:TetrisMario.Model.IGameModel.PlayerName">
+            <summary>
+            Gets or sets the players name.
+            </summary>
+        </member>
         <member name="T:TetrisMario.Model.Player">
             <summary>
             Player game item class.
@@ -419,6 +459,11 @@
             </summary>
             <param name="x">x coordinates.</param>
             <param name="y">y coordinates.</param>
+        </member>
+        <member name="P:TetrisMario.Model.Player.CanShoot">
+            <summary>
+            Gets or sets a value indicating whether the player can shoot.
+            </summary>
         </member>
         <member name="P:TetrisMario.Model.Player.LastMove">
             <summary>

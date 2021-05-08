@@ -54,7 +54,7 @@ namespace TetrisMario.Control {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TetrisMario.Control;V1.0.0.0;component/gamepreferences.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TetrisMario.Control;component/gamepreferences.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\GamePreferences.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

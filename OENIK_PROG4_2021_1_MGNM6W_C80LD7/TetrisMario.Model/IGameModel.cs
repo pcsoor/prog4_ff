@@ -64,7 +64,7 @@ namespace TetrisMario.Model
         /// <summary>
         /// Gets or sets a value indicating whether the game is over.
         /// </summary>
-        static bool GameOver { get; set; }
+        public bool GameOver { get; set; }
 
         /// <summary>
         /// Gets or sets the players name.

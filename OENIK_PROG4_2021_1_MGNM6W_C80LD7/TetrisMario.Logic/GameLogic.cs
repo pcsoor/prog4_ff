@@ -407,7 +407,7 @@ namespace TetrisMario.Logic
                                 }
                                 else
                                 {
-                                    GameModel.GameOver = true;
+                                    this.model.GameOver = true;
                                 }
                             }
                         }
@@ -426,7 +426,7 @@ namespace TetrisMario.Logic
                                     }
                                     else
                                     {
-                                        GameModel.GameOver = true;
+                                        this.model.GameOver = true;
                                         File.Delete("TetrisMario.Repository.Save.txt");
                                     }
                                 }

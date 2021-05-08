@@ -9,6 +9,11 @@
             Logic tests.
             </summary>
         </member>
+        <member name="P:TetrisMario.Logic.Tests.GameTests.MockedGameItem">
+            <summary>
+            Gets or sets the mocked game item.
+            </summary>
+        </member>
         <member name="M:TetrisMario.Logic.Tests.GameTests.Setup">
             <summary>
             SetUp method.
@@ -19,9 +24,24 @@
             Testing check that last layer is full or not.
             </summary>
         </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.ShootTest">
+            <summary>
+            Test for the shoot method.
+            </summary>
+        </member>
         <member name="M:TetrisMario.Logic.Tests.GameTests.CheckIfLifeDecreased">
             <summary>
             Checks if players life was decreased in update method.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.BlockShouldNotFallTest">
+            <summary>
+            Checks whether the block falls even if it has support.
+            </summary>
+        </member>
+        <member name="M:TetrisMario.Logic.Tests.GameTests.GameIsOverTest">
+            <summary>
+            Checks if the game of works properly.
             </summary>
         </member>
     </members>
