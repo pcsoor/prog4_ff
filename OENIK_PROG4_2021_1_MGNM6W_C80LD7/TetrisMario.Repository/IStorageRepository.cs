@@ -13,7 +13,7 @@ namespace Repository
     /// <summary>
     /// Storage repository interface.
     /// </summary>
-    internal interface IStorageRepository
+    public interface IStorageRepository
     {
         /// <summary>
         /// Gets or sets highscore.
