@@ -24,6 +24,7 @@ namespace TetrisMario.Control
         /// Name of the player.
         /// </summary>
         public new string Name = string.Empty;
+        private int elapsedTime = 0;
         private IGameModel model;
         private IGameItem gameItem;
         private Logic.GameLogic logic;
@@ -96,23 +97,24 @@ namespace TetrisMario.Control
             this.logic.SpawnBlock();
             this.logic.Update();
             this.logic.CheckIfBottomIsFull();
-            GameModel.BlockStormActive += 1;
-            GameModel.MetalBlocksOnly += 1;
-            GameModel.TimeLeftForDoubleJump += 1;
-            GameModel.TimeLeftForDoublePush += 1;
+            this.elapsedTime += 8;
+            GameModel.BlockStormActive += 8;
+            GameModel.MetalBlocksOnly += 8;
+            GameModel.TimeLeftForDoubleJump += 8;
+            GameModel.TimeLeftForDoublePush += 8;
             if (this.model.GameOver)
             {
                 this.GameOver();
             }
 
-            if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 120000 == 0)
+            if (this.elapsedTime % 15000 == 0)
             {
-                GameModel.BlockStormActive = -30000;
+                GameModel.BlockStormActive = -10000;
             }
 
-            if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 240000 == 0)
+            if (this.elapsedTime % 35000 == 0)
             {
-                GameModel.MetalBlocksOnly = -30000;
+                GameModel.MetalBlocksOnly = -5000;
             }
 
             this.InvalidateVisual();

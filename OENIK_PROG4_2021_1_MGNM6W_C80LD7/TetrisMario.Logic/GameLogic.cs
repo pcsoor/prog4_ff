@@ -195,7 +195,7 @@ namespace TetrisMario.Logic
                                 int powerUpChance = rnd.Next(1, 4);
                                 if (powerUpChance == 1)
                                 {
-                                    GameModel.TimeLeftForDoubleJump += (int)WaitTime.DoubleJump;
+                                    GameModel.TimeLeftForDoubleJump = (int)WaitTime.DoubleJump;
                                 }
                                 else if (powerUpChance == 2)
                                 {
@@ -203,7 +203,7 @@ namespace TetrisMario.Logic
                                 }
                                 else
                                 {
-                                    GameModel.TimeLeftForDoublePush += (int)WaitTime.DoublePush;
+                                    GameModel.TimeLeftForDoublePush = (int)WaitTime.DoublePush;
                                 }
                             }
                             else if (result == Types.Metal || result == Types.Wall)

@@ -30,8 +30,12 @@ namespace TetrisMario.Repository
         /// </summary>
         public static void SaveHighScores()
         {
-            StreamWriter sw2 = new StreamWriter("Highscores.txt");
-            sw2.Close();
+            if (!File.Exists("Highscores.txt"))
+            {
+                StreamWriter sw2 = new StreamWriter("Highscores.txt");
+                sw2.Close();
+            }
+
             StreamReader sr = new StreamReader("Highscores.txt");
             string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
             sr.Close();

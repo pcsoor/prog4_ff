@@ -9,3 +9,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:Fields should be private", Justification = "idk", Scope = "member", Target = "~F:TetrisMario.Control.GameControler.Name")]
 [assembly: SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "renderer", Scope = "member", Target = "~M:TetrisMario.Control.GameControler.MarioTetrisControl_Loaded(System.Object,System.Windows.RoutedEventArgs)")]
 [assembly: SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "renderer", Scope = "member", Target = "~M:TetrisMario.Control.GameControler.OnRender(System.Windows.Media.DrawingContext)")]
+[assembly: SuppressMessage("Performance", "CA1805:Do not initialize unnecessarily", Justification = "idk", Scope = "member", Target = "~F:TetrisMario.Control.GameControler.elapsedTime")]
