@@ -5,13 +5,8 @@
 namespace TetrisMario.Control
 {
     using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Shapes;
+    using global::GameControl;
+    using TetrisMario.Repository;
 
     /// <summary>
     /// Interaction logic for MainMenu.xaml.
@@ -43,6 +38,14 @@ namespace TetrisMario.Control
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow game_win = new MainWindow();
+            Repo.Load();
+            this.Close();
+            game_win.Show();
         }
     }
 }

@@ -36,6 +36,9 @@ namespace TetrisMario.Renderer
             this.model = model;
         }
 
+        /// <summary>
+        /// Gets the bullet's brush.
+        /// </summary>
         public Brush BulletBrush
         {
             get
@@ -215,149 +218,6 @@ namespace TetrisMario.Renderer
             return this.myBrushes[fname];
         }
 
-        private void DrawLifeText(DrawingContext ctx)
-        {
-            if (this.oldLifeValue != this.model.playerLife)
-            {
-                this.lifeText = new FormattedText(
-                    "Life: "+ this.model.playerLife.ToString(),
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-
-            ctx.DrawText(this.lifeText, new Point(1.5 * this.model.TileSize, 1.5 * this.model.TileSize));
-        }
-
-        private void DrawBlockStormActive(DrawingContext ctx)
-        {
-            if (this.model.BlockStormActive >= 0)
-            {
-                this.stormActiveText = new FormattedText(
-                    "BLOCKSTORM: - ",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-            else
-            {
-                this.stormActiveText = new FormattedText(
-                    "BLOCKSTORM: ACTIVE",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-
-            ctx.DrawText(this.stormActiveText, new Point(3.5 * this.model.TileSize, 1.5 * this.model.TileSize));
-        }
-
-        private void DrawMetalActive(DrawingContext ctx)
-        {
-            if (this.model.MetalBlocksOnly >= 0)
-            {
-                this.metalActiveText = new FormattedText(
-                    "Metal Blocks Only: - ",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-            else
-            {
-                this.metalActiveText = new FormattedText(
-                    "Metal Blocks Only: ACTIVE",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-
-            ctx.DrawText(this.metalActiveText, new Point(8 * this.model.TileSize, 1.5 * this.model.TileSize));
-        }
-
-        private void DrawDoubleJumpActive(DrawingContext ctx)
-        {
-            if (this.model.timeLeftForDoubleJump < 0)
-            {
-                this.doubleJumpActiveText = new FormattedText(
-                    "Double Jump: " + model.timeLeftForDoubleJump/1000,
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-            else
-            {
-                this.doubleJumpActiveText = new FormattedText(
-                    "Double Jump: 0",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-
-            ctx.DrawText(this.doubleJumpActiveText, new Point(15 * this.model.TileSize, 1.5 * this.model.TileSize));
-        }
-
-        private void DrawDoublePushActive(DrawingContext ctx)
-        {
-            if (this.model.timeLeftForDoublePush < 0)
-            {
-                this.doublePushActiveText = new FormattedText(
-                    "Double Push: " + model.timeLeftForDoublePush / 1000,
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-            else
-            {
-                this.doublePushActiveText = new FormattedText(
-                    "Double Push: 0",
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-            }
-
-            ctx.DrawText(this.doublePushActiveText, new Point(20 * this.model.TileSize, 1.5 * this.model.TileSize));
-        }
-
-        private void Highscore(DrawingContext ctx)
-        {
-            this.highscore = new FormattedText(
-                    "Score: " + GameModel.HighScore,
-                    System.Globalization.CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface("Consolas"),
-                    26,
-                    Brushes.Black,
-                    2);
-
-            ctx.DrawText(this.highscore, new Point(13 * this.model.TileSize, 1 * this.model.TileSize));
-        }
-
         /// <summary>
         /// Builder method.
         /// </summary>
@@ -451,6 +311,149 @@ namespace TetrisMario.Renderer
                 this.DrawDoublePushActive(ctx);
                 this.Highscore(ctx);
             }
+        }
+
+        private void DrawLifeText(DrawingContext ctx)
+        {
+            if (this.oldLifeValue != GameModel.PlayerLife)
+            {
+                this.lifeText = new FormattedText(
+                    "Life: " + GameModel.PlayerLife.ToString(),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.lifeText, new Point(1.5 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawBlockStormActive(DrawingContext ctx)
+        {
+            if (GameModel.BlockStormActive >= 0)
+            {
+                this.stormActiveText = new FormattedText(
+                    "BLOCKSTORM: - ",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.stormActiveText = new FormattedText(
+                    "BLOCKSTORM: ACTIVE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.stormActiveText, new Point(3.5 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawMetalActive(DrawingContext ctx)
+        {
+            if (GameModel.MetalBlocksOnly >= 0)
+            {
+                this.metalActiveText = new FormattedText(
+                    "Metal Blocks Only: - ",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.metalActiveText = new FormattedText(
+                    "Metal Blocks Only: ACTIVE",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.metalActiveText, new Point(8 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawDoubleJumpActive(DrawingContext ctx)
+        {
+            if (GameModel.TimeLeftForDoubleJump < 0)
+            {
+                this.doubleJumpActiveText = new FormattedText(
+                    "Double Jump: " + (GameModel.TimeLeftForDoubleJump / 1000),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.doubleJumpActiveText = new FormattedText(
+                    "Double Jump: 0",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.doubleJumpActiveText, new Point(15 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void DrawDoublePushActive(DrawingContext ctx)
+        {
+            if (GameModel.TimeLeftForDoublePush < 0)
+            {
+                this.doublePushActiveText = new FormattedText(
+                    "Double Push: " + (GameModel.TimeLeftForDoublePush / 1000),
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+            else
+            {
+                this.doublePushActiveText = new FormattedText(
+                    "Double Push: 0",
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+            }
+
+            ctx.DrawText(this.doublePushActiveText, new Point(20 * this.model.TileSize, 1.5 * this.model.TileSize));
+        }
+
+        private void Highscore(DrawingContext ctx)
+        {
+            this.highscore = new FormattedText(
+                    "Score: " + GameModel.HighScore,
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface("Consolas"),
+                    26,
+                    Brushes.Black,
+                    2);
+
+            ctx.DrawText(this.highscore, new Point(13 * this.model.TileSize, 1 * this.model.TileSize));
         }
     }
 }

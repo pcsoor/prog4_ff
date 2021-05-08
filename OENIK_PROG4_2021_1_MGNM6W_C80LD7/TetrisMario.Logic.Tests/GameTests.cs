@@ -23,6 +23,9 @@ namespace TetrisMario.Logic.Tests
         private GameItem gameItem;
         private Player player;
 
+        /// <summary>
+        /// Gets or sets the mocked game item.
+        /// </summary>
         public Mock<IGameItem> MockedGameItem { get; set; }
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace TetrisMario.Logic.Tests
         [Test]
         public void CheckIfBottomIsFullTest()
         {
-            GameModel.Map = new GameItem[26,16];
+            GameModel.Map = new GameItem[26, 16];
 
             GameModel.Map[0, GameModel.Map.GetLength(1) - 2] = null;
             bool firstResult = this.logic.CheckIfBottomIsFull();
@@ -80,15 +83,73 @@ namespace TetrisMario.Logic.Tests
             Assert.False(secondResult);
         }
 
+        /// <summary>
+        /// Test for the shoot method.
+        /// </summary>
         [Test]
         public void ShootTest()
         {
             Player testPlayer = new Player(10, 10);
             GameModel.Map[testPlayer.X, testPlayer.Y - 1] = null;
 
-            bool result = this.logic.Shoot(testPlayer);
+            bool result = GameLogic.Shoot(testPlayer);
 
             Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Checks if players life was decreased in update method.
+        /// </summary>
+        [Test]
+        public void CheckIfLifeDecreased()
+        {
+            int life = 2;
+            GameModel.Map = new GameItem[26, 16];
+
+            GameObject item = new GameObject(Types.Block, 10, 10);
+            GameModel.Map[10, 10] = item;
+
+            GameObject nextItem = new GameObject(Types.Player, 10, 11);
+            GameModel.Map[10, 11] = nextItem;
+
+            this.logic.Update();
+
+            Assert.AreNotEqual(GameModel.PlayerLife, life);
+        }
+
+        /// <summary>
+        /// Checks whether the block falls even if it has support.
+        /// </summary>
+        [Test]
+        public void BlockShouldNotFall_Test()
+        {
+            GameObject item = new GameObject(Types.Block, 13, 14);
+            GameModel.Map[13, 14] = item;
+
+            this.logic.Update();
+
+            Assert.That(GameModel.Map[item.X, item.Y] != null);
+        }
+
+        /// <summary>
+        /// Checks if the game of works properly.
+        /// </summary>
+        [Test]
+        public void GameIsOver_Test()
+        {
+            GameModel.PlayerLife = 1;
+            GameModel.GameOver = false;
+            GameModel.Map = new GameItem[26, 16];
+
+            GameObject item = new GameObject(Types.Block, 10, 10);
+            GameModel.Map[10, 10] = item;
+
+            GameObject nextItem = new GameObject(Types.Player, 10, 11);
+            GameModel.Map[10, 11] = nextItem;
+
+            this.logic.Update();
+
+            Assert.That(GameModel.GameOver == true);
         }
     }
 }

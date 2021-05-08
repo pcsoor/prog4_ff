@@ -5,3 +5,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("", "CA1014", Justification = "<NikGitStats>", Scope = "module")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "idk", Scope = "member", Target = "~M:TetrisMario.Renderer.GameRenderer.DrawLifeText(System.Windows.Media.DrawingContext)")]

@@ -10,20 +10,7 @@ namespace TetrisMario.Model
     public class GameModel : IGameModel
     {
         private static GameItem[,] map = new GameItem[26, 16];
-
-        public static int HighScore { get; set; }
-
-        public int BlockStormActive { get; set; }
-
-        public int MetalBlocksOnly { get; set; }
-
-        public int playerLife { get; set; }
-
-        public int timeLeftForDoubleJump { get; set; }
-
-        public int timeLeftForDoublePush { get; set; }
-
-        public static string PlayerName { get; set; }
+        private readonly bool gameOver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameModel"/> class.
@@ -34,13 +21,49 @@ namespace TetrisMario.Model
         {
             this.GameWidth = w;
             this.GameHeight = h;
-            BlockStormActive = 0;
-            MetalBlocksOnly = 0;
+            GameModel.BlockStormActive = 0;
+            GameModel.MetalBlocksOnly = 0;
             HighScore = 0;
-            playerLife = 1;
-            timeLeftForDoubleJump = 0;
-            timeLeftForDoublePush = 0;
+            GameModel.PlayerLife = 1;
+            GameModel.TimeLeftForDoubleJump = 0;
+            GameModel.TimeLeftForDoublePush = 0;
+            this.gameOver = false;
         }
+
+        /// <summary>
+        /// Gets or sets the highscore for the current game.
+        /// </summary>
+        public static int HighScore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time of the blocstorm.
+        /// </summary>
+        public static int BlockStormActive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time of the metal strorm event.
+        /// </summary>
+        public static int MetalBlocksOnly { get; set; }
+
+        /// <summary>
+        /// Gets or sets the players life.
+        /// </summary>
+        public static int PlayerLife { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time left for the double jump power up.
+        /// </summary>
+        public static int TimeLeftForDoubleJump { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time left for the double push power up.
+        /// </summary>
+        public static int TimeLeftForDoublePush { get; set; }
+
+        /// <summary>
+        /// Gets or sets the players name.
+        /// </summary>
+        public static string PlayerName { get; set; }
 
         /// <summary>
         /// Gets or sets the map.
@@ -50,6 +73,11 @@ namespace TetrisMario.Model
             get { return map; }
             set { map = value; }
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the game is over or not.
+        /// </summary>
+        public static bool GameOver { get; set; }
 
         /// <summary>
         /// Gets game width.

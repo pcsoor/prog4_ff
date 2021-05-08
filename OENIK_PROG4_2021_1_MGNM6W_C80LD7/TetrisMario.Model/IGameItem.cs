@@ -49,14 +49,6 @@ namespace TetrisMario.Model
         Types Push(Directions direction);
 
         /// <summary>
-        /// Move item.
-        /// </summary>
-        /// <param name="newX">new x coordinate.</param>
-        /// <param name="newY">new y coordinate.</param>
-        /// <returns>Types.</returns>
-        Types Move(int newX, int newY);
-
-        /// <summary>
         /// Check items surrounded by one item.
         /// </summary>
         /// <param name="direction">Direction.</param>

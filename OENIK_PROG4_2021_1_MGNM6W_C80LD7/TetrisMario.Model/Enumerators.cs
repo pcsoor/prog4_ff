@@ -18,6 +18,7 @@ namespace TetrisMario.Model
         /// <summary>
         /// Ui elements.
         /// </summary>
+        [Flags]
         public enum UiElements
         {
             /// <summary>
@@ -35,14 +36,20 @@ namespace TetrisMario.Model
             /// </summary>
             BasicBlock = 2,
 
+            /// <summary>
+            /// Metal block element.
+            /// </summary>
             Metal = 3,
 
+            /// <summary>
+            /// Power UP block element.
+            /// </summary>
             PowerUp = 4,
 
             /// <summary>
             /// Undecided element.
             /// </summary>
-            Undecided = 0,
+            None = 0,
         }
 
         /// <summary>
@@ -50,25 +57,34 @@ namespace TetrisMario.Model
         /// </summary>
         public enum Types
         {
+            /// <summary>
+            /// Power Up block type.
+            /// </summary>
             PowerUp,
 
+            /// <summary>
+            /// Metal block type.
+            /// </summary>
             Metal,
 
             /// <summary>
-            /// Player tile.
+            /// Player block type.
             /// </summary>
             Player,
 
             /// <summary>
-            /// Block tile.
+            /// Basic block type.
             /// </summary>
             Block,
 
             /// <summary>
-            /// Wall tile.
+            /// Wall block type.
             /// </summary>
             Wall,
 
+            /// <summary>
+            /// Bullet block type.
+            /// </summary>
             Bullet,
 
             /// <summary>
@@ -132,6 +148,9 @@ namespace TetrisMario.Model
             /// </summary>
             Null,
 
+            /// <summary>
+            /// Shoot action type.
+            /// </summary>
             Shoot,
         }
 
@@ -160,20 +179,41 @@ namespace TetrisMario.Model
             /// </summary>
             Box = -100,
 
+            /// <summary>
+            /// Double jump time.
+            /// </summary>
             DoubleJump = -60000,
 
+            /// <summary>
+            /// Double push time.
+            /// </summary>
             DoublePush = -60000,
 
+            /// <summary>
+            /// Wait time till the next block spawning.
+            /// </summary>
             NextBlockBasic = -500,
 
+            /// <summary>
+            /// Wait time till the next block spawning when block storm is active.
+            /// </summary>
             NextBlockBlockStorm = -250,
 
-            BulletWaitTime = -10
+            /// <summary>
+            /// Wait time for bullets next movement.
+            /// </summary>
+            BulletWaitTime = -10,
         }
 
+        /// <summary>
+        /// Points you get for certain events.
+        /// </summary>
         public enum ScorePoints
         {
-            BottomFull = 1000
+            /// <summary>
+            /// The score given for filling the bottom of the map.
+            /// </summary>
+            BottomFull = 1000,
         }
     }
 }
