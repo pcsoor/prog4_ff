@@ -40,10 +40,11 @@
             Saves the current state of the game into a file.
             </summary>
         </member>
-        <member name="M:TetrisMario.Repository.Repo.Load">
+        <member name="M:TetrisMario.Repository.Repo.Load(System.String)">
             <summary>
             Load the game model with the saved data.
             </summary>
+            <param name="name">Name of the txt.</param>
         </member>
     </members>
 </doc>

@@ -23,9 +23,9 @@ namespace TetrisMario.Control
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            GamePreferences main_win = new GamePreferences();
+            MainWindow game_win = new MainWindow();
             this.Close();
-            main_win.Show();
+            game_win.Show();
         }
 
         private void Highscores_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace TetrisMario.Control
         private void Load_Click(object sender, RoutedEventArgs e)
         {
             MainWindow game_win = new MainWindow();
-            Repo.Load();
+            Repo.Load("Save.txt");
             this.Close();
             game_win.Show();
         }

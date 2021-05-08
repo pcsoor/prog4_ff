@@ -19,9 +19,9 @@ namespace TetrisMario.Repository
         /// <returns>Returns the highscores.</returns>
         public static string[] LoadHighscores()
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("TetrisMario.Repository.Highscores.txt");
-            StreamReader sr = new StreamReader(stream);
+            StreamReader sr = new StreamReader("Highscores.txt");
             string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
+            sr.Close();
             return lines;
         }
 
@@ -30,8 +30,18 @@ namespace TetrisMario.Repository
         /// </summary>
         public static void SaveHighScores()
         {
-            StreamWriter sw = new StreamWriter("TetrisMario.Repository.Highscores.txt");
-            sw.WriteLine(GameModel.HighScore.ToString() + " - " + GameModel.PlayerName);
+            StreamWriter sw2 = new StreamWriter("Highscores.txt");
+            sw2.Close();
+            StreamReader sr = new StreamReader("Highscores.txt");
+            string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
+            sr.Close();
+            StreamWriter sw = new StreamWriter("Highscores.txt");
+            sw.WriteLine(GameModel.HighScore.ToString());
+            for (int i = 0; i < lines.Length; i++)
+            {
+                sw.WriteLine(lines[i]);
+            }
+
             sw.Flush();
             sw.Close();
         }
@@ -76,66 +86,70 @@ namespace TetrisMario.Repository
         /// <summary>
         /// Load the game model with the saved data.
         /// </summary>
-        public static void Load()
+        /// <param name="name">Name of the txt.</param>
+        public static void Load(string name)
         {
-            StreamReader sr = new StreamReader("Save.txt");
-            string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
-            for (int x = 0; x < GameModel.Map.GetLength(0); x++)
+            if (File.Exists(name))
             {
-                for (int y = 0; y < GameModel.Map.GetLength(1); y++)
+                StreamReader sr = new StreamReader(name);
+                string[] lines = sr.ReadToEnd().Replace("\r", string.Empty).Split('\n');
+                for (int x = 0; x < GameModel.Map.GetLength(0); x++)
                 {
-                    char current = lines[y][x];
-                    switch (current)
+                    for (int y = 0; y < GameModel.Map.GetLength(1); y++)
                     {
-                        case '1':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
-                            break;
-                        case '7':
-                            GameModel.Map[x, y] = new Player(x, y);
-                            break;
-                        case '2':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
-                            break;
-                        case '3':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
-                            break;
-                        case '4':
-                            GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
-                            break;
-                        default:
-                            GameModel.Map[x, y] = null;
-                            break;
+                        char current = lines[y][x];
+                        switch (current)
+                        {
+                            case '1':
+                                GameModel.Map[x, y] = new GameObject(Enumerators.Types.Wall, x, y);
+                                break;
+                            case '7':
+                                GameModel.Map[x, y] = new Player(x, y);
+                                break;
+                            case '2':
+                                GameModel.Map[x, y] = new GameObject(Enumerators.Types.Block, x, y);
+                                break;
+                            case '3':
+                                GameModel.Map[x, y] = new GameObject(Enumerators.Types.Metal, x, y);
+                                break;
+                            case '4':
+                                GameModel.Map[x, y] = new GameObject(Enumerators.Types.PowerUp, x, y);
+                                break;
+                            default:
+                                GameModel.Map[x, y] = null;
+                                break;
+                        }
                     }
                 }
-            }
 
-            for (int i = GameModel.Map.GetLength(1); i < lines.Length; i++)
-            {
-                if (lines[i] != null)
+                for (int i = GameModel.Map.GetLength(1); i < lines.Length; i++)
                 {
-                    switch (i)
+                    if (lines[i] != null)
                     {
-                        case 1:
-                            GameModel.PlayerLife = int.Parse(lines[i]);
-                            break;
-                        case 2:
-                            GameModel.BlockStormActive = int.Parse(lines[i]);
-                            break;
-                        case 3:
-                            GameModel.MetalBlocksOnly = int.Parse(lines[i]);
-                            break;
-                        case 4:
-                            GameModel.TimeLeftForDoubleJump = int.Parse(lines[i]);
-                            break;
-                        case 5:
-                            GameModel.TimeLeftForDoublePush = int.Parse(lines[i]);
-                            break;
-                        case 6:
-                            GameModel.HighScore = int.Parse(lines[i]);
-                            break;
-                        case 7:
-                            GameModel.PlayerName = lines[i];
-                            break;
+                        switch (i)
+                        {
+                            case 16:
+                                GameModel.PlayerLife = int.Parse(lines[i]);
+                                break;
+                            case 17:
+                                GameModel.BlockStormActive = int.Parse(lines[i]);
+                                break;
+                            case 18:
+                                GameModel.MetalBlocksOnly = int.Parse(lines[i]);
+                                break;
+                            case 19:
+                                GameModel.TimeLeftForDoubleJump = int.Parse(lines[i]);
+                                break;
+                            case 20:
+                                GameModel.TimeLeftForDoublePush = int.Parse(lines[i]);
+                                break;
+                            case 21:
+                                GameModel.HighScore = int.Parse(lines[i]);
+                                break;
+                            case 22:
+                                GameModel.PlayerName = lines[i];
+                                break;
+                        }
                     }
                 }
             }

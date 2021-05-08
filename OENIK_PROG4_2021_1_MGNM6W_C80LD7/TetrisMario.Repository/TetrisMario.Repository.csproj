@@ -12,16 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Highscores.txt" />
     <None Remove="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Highscores.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TetrisMario.Logic\TetrisMario.Logic.csproj" />
     <ProjectReference Include="..\TetrisMario.Model\TetrisMario.Model.csproj" />
   </ItemGroup>
 

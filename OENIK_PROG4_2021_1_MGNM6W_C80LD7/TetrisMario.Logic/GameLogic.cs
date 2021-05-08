@@ -104,8 +104,9 @@ namespace TetrisMario.Logic
             else
             {
                 nextBoxCounter += 5;
-                GameModel.MetalBlocksOnly += 5;
-                GameModel.BlockStormActive += 5;
+
+                // GameModel.MetalBlocksOnly += 5;
+                // GameModel.BlockStormActive += 5;
             }
         }
 
@@ -219,17 +220,16 @@ namespace TetrisMario.Logic
                     }
                     else if (item.Type == Types.Player)
                     {
-                        if (GameModel.TimeLeftForDoubleJump < 0)
-                        {
-                            GameModel.TimeLeftForDoubleJump += 5;
-                        }
+                        // if (GameModel.TimeLeftForDoubleJump < 0)
+                        // {
+                        //    GameModel.TimeLeftForDoubleJump += 5;
+                        // }
 
-                        if (GameModel.TimeLeftForDoublePush < 0)
-                        {
-                            GameModel.TimeLeftForDoublePush += 5;
-                        }
-
-                        if (item.WaitTime >= 0)
+                        // if (GameModel.TimeLeftForDoublePush < 0)
+                        // {
+                        //    GameModel.TimeLeftForDoublePush += 5;
+                        // }
+                         if (item.WaitTime >= 0)
                         {
                             if (item.CheckSurrounding(Directions.Down).Type == Types.Empty)
                             {

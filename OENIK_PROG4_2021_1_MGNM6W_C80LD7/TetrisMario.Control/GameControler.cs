@@ -10,6 +10,7 @@ namespace TetrisMario.Control
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
+    using GameControl;
     using TetrisMario.Model;
     using TetrisMario.Renderer;
     using TetrisMario.Repository;
@@ -66,15 +67,6 @@ namespace TetrisMario.Control
                 this.mainTimer.Interval = TimeSpan.FromMilliseconds(1);
                 this.mainTimer.Tick += this.TimerTick;
                 this.mainTimer.Start();
-                if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 360000 == 0)
-                {
-                    GameModel.BlockStormActive = -30000;
-                }
-
-                if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 240000 == 0)
-                {
-                    GameModel.MetalBlocksOnly = -30000;
-                }
             }
 
             this.InvalidateVisual();
@@ -104,18 +96,41 @@ namespace TetrisMario.Control
             this.logic.SpawnBlock();
             this.logic.Update();
             this.logic.CheckIfBottomIsFull();
-            this.InvalidateVisual();
-
+            GameModel.BlockStormActive += 1;
+            GameModel.MetalBlocksOnly += 1;
+            GameModel.TimeLeftForDoubleJump += 1;
+            GameModel.TimeLeftForDoublePush += 1;
             if (this.model.GameOver)
             {
                 this.GameOver();
             }
+
+            if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 120000 == 0)
+            {
+                GameModel.BlockStormActive = -30000;
+            }
+
+            if (this.stw.ElapsedMilliseconds > 0 && this.stw.ElapsedMilliseconds % 240000 == 0)
+            {
+                GameModel.MetalBlocksOnly = -30000;
+            }
+
+            this.InvalidateVisual();
         }
 
         private void GameOver()
         {
             this.stw.Stop();
+            this.stw.Reset();
+            Repo.SaveHighScores();
             MessageBox.Show("Game Over!");
+            this.model.GameOver = false;
+            this.mainTimer.Stop();
+            Repo.Load("Save2.txt");
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            Window win = Window.GetWindow(this);
+            win.Close();
         }
     }
 }
